@@ -1,6 +1,9 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("sunrise-commander" "http://joseito.republika.pl/sunrise-commander/") t)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("sunrise-cmd" . "http://joseito.republika.pl/sunrise-commander/") t)
 (package-initialize)
 
 (defun emacs-version-<= (&rest min-ver-list)
@@ -109,6 +112,9 @@
    (quote
     (("t" "Task" entry
       (file+headline "tasks/default.org" "INBOX")
+      "* TODO %?")
+     ("b" "BUY" entry
+      (file+headline "tasks/buy.org" "INBOX")
       "* TODO %?")
      ("e" "Event" entry
       (file+headline "events/default.org" "INBOX")
