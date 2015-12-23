@@ -51,6 +51,7 @@
 
 (use-package cider
   :ensure cider
+  :bind ("C-c C-j i" . cider-jack-in)
   :config
   (progn
     (add-hook 'cider-mode-hook 'eldoc-mode)))
