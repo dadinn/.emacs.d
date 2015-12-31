@@ -89,7 +89,7 @@
   :config
   (custom-set-variables
    '(sr-cursor-follows-mouse nil)
-   '(sr-listing-switches "-lAv --group-directories-first")
+   '(sr-listing-switches "-lA --group-directories-first")
    '(sr-show-file-attributes nil)
    '(sr-window-split-style (quote horizontal))
    '(sr-windows-default-ratio 80)))
@@ -98,7 +98,7 @@
   :ensure clojure-mode)
 
 (use-package cider
-  :ensure cider
+  :ensure t
   :bind ("C-c C-j i" . cider-jack-in)
   :config
   (progn
