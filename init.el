@@ -146,7 +146,7 @@
 (use-package dracula-theme
   :ensure t
   :config
-  (load-theme 'dracula))
+  (load-theme 'dracula t))
 
 (use-package solarized-theme)
 
