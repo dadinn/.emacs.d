@@ -6,15 +6,16 @@
 (add-to-list 'package-archives '("sunrise-cmd" . "http://joseito.republika.pl/sunrise-commander/") t)
 (package-initialize)
 
+(setq custom-file "custom.el")
+
 (defun min-emacs-version (&rest min-ver-list)
   (let ((verno (nth 2 (split-string (emacs-version) " "))))
     (let ((verno-list (mapcar 'string-to-number (split-string verno "\\."))))
       (version-list-<= min-ver-list verno-list))))
 
-(if (not (package-installed-p 'use-package))
-    (progn
-      (package-refresh-contents)
-      (package-install 'use-package)))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 (require 'use-package)
 
 (use-package ido
@@ -38,8 +39,9 @@
      '(calendar-week-start-day 1)
      '(org-startup-indented t)
      '(org-directory "~/Documents/org")
-     '(org-agenda-files '("~/Documents/org/tasks" "~/Documents/org/events"))
      '(org-archive-location "archived/%s_archived::")
+     '(org-agenda-files (quote ("tasks.org" "events.org")))
+     '(org-agenda-skip-unavailable-files t)
      '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
      '(org-agenda-skip-scheduled-if-deadline-is-shown t)
      '(org-agenda-skip-scheduled-if-done t)
@@ -55,20 +57,19 @@
      '(org-outline-path-complete-in-steps nil)
      '(org-priority-start-cycle-with-default nil)
      '(org-todo-keywords (quote ((sequence "TODO" "|" "DONE" "CANCELED"))))
+     '(org-agenda-diary-file "diary.org")
      '(org-capture-templates
        (quote
 	(("t" "Task" entry
-	  (file+headline "tasks/default.org" "INBOX")
-	  "* TODO %?")
-	 ("b" "BUY" entry
-	  (file+headline "tasks/buy.org" "INBOX")
-	  "* TODO %?")
+	  (file+headline "tasks.org" "INBOX")
+	  "* TODO %?
+SCHEDULE: %t")
 	 ("m" "Memo" entry
-	  (file+headline "notes/memo.org" "INBOX")
-	  "* %?")
+	  (file+headline "memo.org" "INBOX")
+	  "* %?%T")
 	 ("e" "Event" entry
-	  (file+headline "events/default.org" "INBOX")
-	  "* %?")))))
+	  (file+headline "events.org" "INBOX")
+	  "* %?%^T")))))
     (defun org-archive-done-tasks ()
       (interactive)
       (org-map-entries
@@ -79,7 +80,11 @@
 
 (use-package magit
   :ensure t
-  :bind ("C-c C-s" . magit-status))
+  :bind ("C-c C-s" . magit-status)
+  :config
+  (custom-set-variables
+   '(magit-repository-directories (quote ("~/Workspace/dev")))
+   '(magit-repository-directories-depth 1)))
 
 (use-package undo-tree
   :ensure t
@@ -102,7 +107,9 @@
    '(sr-windows-default-ratio 80)))
 
 (use-package clojure-mode
-  :ensure clojure-mode)
+  :ensure t
+  :config
+  (customize-set-variable 'clojure-defun-style-default-indent t))
 
 (use-package cider
   :ensure t
@@ -113,7 +120,8 @@
   (progn
     (add-hook 'cider-mode-hook 'eldoc-mode)
     (custom-set-variables
-     '(cider-lein-command "/opt/bin/lein"))))
+      '(cider-lein-command "/opt/bin/lein")
+      '(cider-prompt-for-symbol nil))))
 
 (use-package ac-cider
   :ensure t)
@@ -179,7 +187,7 @@
  '(org-agenda-span (quote day))
  '(org-agenda-tags-todo-honor-ignore-options t)
  '(org-agenda-todo-ignore-scheduled (quote future))
- '(org-agenda-window-setup (quote current-window))
+ '(org-agenda-window-setup 'current-window)
  '(org-archive-location "archived/%s_archived::")
  '(org-capture-templates
    (quote
