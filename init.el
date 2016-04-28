@@ -7,6 +7,7 @@
 (package-initialize)
 
 (setq custom-file "custom.el")
+(define-key global-map "\C-x\C-b" 'bs-show)
 
 (defun min-emacs-version (&rest min-ver-list)
   (let ((verno (nth 2 (split-string (emacs-version) " "))))
@@ -151,6 +152,7 @@ SCHEDULE: %t")
 (use-package haskell-mode)
 (use-package markdown-mode)
 (use-package json-mode)
+
 (use-package dracula-theme
   :ensure t
   :config
@@ -158,64 +160,5 @@ SCHEDULE: %t")
 
 (use-package solarized-theme)
 
-(define-key global-map "\C-x\C-b" 'bs-show)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(calendar-week-start-day 1)
- '(cider-lein-command "/opt/bin/lein")
- '(cider-prompt-for-symbol nil)
- '(clojure-defun-style-default-indent t)
- '(custom-safe-themes
-   (quote
-    ("795d8a0785b16437ee67da091c2c684e4149a12991199c7f5ae4b91637ea0c9c" "71ecffba18621354a1be303687f33b84788e13f40141580fa81e7840752d31bf" default)))
- '(ido-enable-flex-matching t)
- '(ido-everywhere t)
- '(ido-mode t nil (ido))
- '(inhibit-startup-screen t)
- '(magit-repo-dirs (quote ("~/Documents/dev")))
- '(make-backup-files nil)
- '(menu-bar-mode nil)
- '(org-agenda-diary-file (quote diary-file) nil nil "This is an interesting option")
- '(org-agenda-files (quote ("~/Documents/org/tasks" "~/Documents/org/events")))
- '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
- '(org-agenda-skip-scheduled-if-deadline-is-shown t)
- '(org-agenda-skip-scheduled-if-done t)
- '(org-agenda-span (quote day))
- '(org-agenda-tags-todo-honor-ignore-options t)
- '(org-agenda-todo-ignore-scheduled (quote future))
- '(org-agenda-window-setup 'current-window)
- '(org-archive-location "archived/%s_archived::")
- '(org-capture-templates
-   (quote
-    (("t" "Task" entry
-      (file+headline "tasks/default.org" "INBOX")
-      "* TODO %?")
-     ("b" "BUY" entry
-      (file+headline "tasks/buy.org" "INBOX")
-      "* TODO %?")
-     ("e" "Event" entry
-      (file+headline "events/default.org" "INBOX")
-      "* %?"))))
- '(org-completion-use-ido t)
- '(org-default-priority 66)
- '(org-directory "~/Documents/org")
- '(org-enforce-todo-dependencies t)
- '(org-highest-priority 65)
- '(org-lowest-priority 67)
- '(org-outline-path-complete-in-steps nil)
- '(org-priority-start-cycle-with-default nil)
- '(org-refile-use-outline-path t)
- '(org-startup-indented t)
- '(org-todo-keywords (quote ((sequence "TODO" "|" "DONE" "CANCELED"))))
- '(tool-bar-mode nil))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
