@@ -1,3 +1,4 @@
+(load "~/.emacs.d/custom.el")
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
@@ -6,7 +7,6 @@
 (add-to-list 'package-archives '("sunrise-cmd" . "http://joseito.republika.pl/sunrise-commander/") t)
 (package-initialize)
 
-(setq custom-file "custom.el")
 (define-key global-map "\C-x\C-b" 'bs-show)
 
 (defun min-emacs-version (&rest min-ver-list)
