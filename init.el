@@ -41,7 +41,7 @@
      '(org-startup-indented t)
      '(org-directory "~/Documents/org")
      '(org-archive-location "archived/%s_archived::")
-     '(org-agenda-files (quote ("tasks.org" "events.org")))
+     '(org-agenda-files (quote ("~/Documents/org/tasks.org" "~/Documents/events.org")))
      '(org-agenda-skip-unavailable-files t)
      '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
      '(org-agenda-skip-scheduled-if-deadline-is-shown t)
@@ -81,7 +81,7 @@ SCHEDULE: %t")
 
 (use-package magit
   :ensure t
-  :bind ("C-c C-s" . magit-status)
+  :bind ("C-x C-s" . magit-status)
   :config
   (custom-set-variables
    '(magit-repository-directories (quote ("~/Workspace/dev")))
