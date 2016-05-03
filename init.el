@@ -41,7 +41,9 @@
      '(org-startup-indented t)
      '(org-directory "~/Documents/org")
      '(org-archive-location "archived/%s_archived::")
-     '(org-agenda-files (quote ("~/Documents/org/tasks.org" "~/Documents/events.org")))
+     '(org-agenda-files
+       (quote ("~/Documents/org/tasks.org"
+	       "~/Documents/org/events.org")))
      '(org-agenda-skip-unavailable-files t)
      '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
      '(org-agenda-skip-scheduled-if-deadline-is-shown t)
@@ -95,7 +97,7 @@ SCHEDULE: %t")
    '(global-undo-tree-mode)))
 
 (use-package sunrise-commander
-  :ensure sunrise-commander
+  :ensure t
   :bind (("C-x d" . sunrise)
 	 ("C-x C-d" . sunrise-cd))
   :config
