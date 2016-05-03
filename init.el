@@ -81,7 +81,7 @@ SCHEDULE: %t")
 
 (use-package magit
   :ensure t
-  :bind ("C-x C-s" . magit-status)
+  :bind ("C-x C-g" . magit-status)
   :config
   (custom-set-variables
    '(magit-repository-directories (quote ("~/Workspace/dev")))
