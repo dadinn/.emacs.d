@@ -1,18 +1,23 @@
-(load "~/.emacs.d/custom.el")
 (require 'package)
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("sunrise-cmd" . "http://joseito.republika.pl/sunrise-commander/") t)
+(customize-set-variable
+  'package-archives
+  '(("gnu" . "http://elpa.gnu.org/packages/")
+    ("melpa" . "http://melpa.org/packages/")
+    ("melpa-stable" . "http://stable.melpa.org/packages/")
+    ("marmalade" . "http://marmalade-repo.org/packages/")
+    ; orgmode repository not working TSL connection error
+    ;("org" . "http://orgmode.org/elpa/")
+    ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
 (package-initialize)
 
-(define-key global-map "\C-x\C-b" 'bs-show)
+(custom-set-variables
+ '(inhibit-startup-screen t)
+ '(make-backup-files nil)
+ '(custom-file "~/.emacs.d/custom.el")
+ '(menu-bar-mode nil)
+ '(tool-bar-mode nil))
 
-(defun min-emacs-version (&rest min-ver-list)
-  (let ((verno (nth 2 (split-string (emacs-version) " "))))
-    (let ((verno-list (mapcar 'string-to-number (split-string verno "\\."))))
-      (version-list-<= min-ver-list verno-list))))
+(define-key global-map "\C-x\C-b" 'bs-show)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -31,7 +36,8 @@
   :ensure t
   :bind
   (("C-c k" . org-capture)
-   ("C-c a" . org-agenda))
+   ("C-c a" . org-agenda)
+   ("C-c C-c e" . org-babel-execute-src-block))
   :config
   (progn
     (add-hook 'text-mode-hook 'auto-fill-mode)
@@ -61,6 +67,7 @@
      '(org-priority-start-cycle-with-default nil)
      '(org-todo-keywords (quote ((sequence "TODO" "|" "DONE" "CANCELED"))))
      '(org-agenda-diary-file "diary.org")
+;     '(org-agenda-include-diary t)
      '(org-capture-templates
        (quote
 	(("t" "Task" entry
@@ -72,7 +79,8 @@ SCHEDULE: %t")
 	  "* %?%T")
 	 ("e" "Event" entry
 	  (file+headline "events.org" "INBOX")
-	  "* %?%^T")))))
+	  "* %?
+^T")))))
     (defun org-archive-done-tasks ()
       (interactive)
       (org-map-entries
@@ -112,7 +120,8 @@ SCHEDULE: %t")
 (use-package clojure-mode
   :ensure t
   :config
-  (customize-set-variable 'clojure-defun-style-default-indent t))
+  (customize-set-variable
+   'clojure-defun-style-default-indent t))
 
 (use-package cider
   :ensure t
@@ -155,12 +164,7 @@ SCHEDULE: %t")
 (use-package markdown-mode)
 (use-package json-mode)
 
-(use-package dracula-theme
-  :ensure t
-  :config
-  (load-theme 'dracula t))
-
 (use-package solarized-theme)
-
-
-
+(use-package zenburn-theme)
+(use-package monokai-theme
+  :ensure t)
