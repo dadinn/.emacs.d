@@ -47,9 +47,7 @@
      '(org-startup-indented t)
      '(org-directory "~/Documents/org")
      '(org-archive-location "archived/%s_archived::")
-     '(org-agenda-files
-       (quote ("~/Documents/org/tasks.org"
-	       "~/Documents/org/events.org")))
+     '(org-agenda-files (list org-directory))
      '(org-agenda-skip-unavailable-files t)
      '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
      '(org-agenda-skip-scheduled-if-deadline-is-shown t)
@@ -80,7 +78,7 @@ SCHEDULE: %t")
 	 ("e" "Event" entry
 	  (file+headline "events.org" "INBOX")
 	  "* %?
-^T")))))
+%^T")))))
     (defun org-archive-done-tasks ()
       (interactive)
       (org-map-entries
