@@ -5,5 +5,6 @@ url/
 *~
 ido.last
 bookmarks
+custom.el
 session.*
 *.bak
