@@ -4,9 +4,8 @@
   '(("gnu" . "http://elpa.gnu.org/packages/")
     ("melpa" . "http://melpa.org/packages/")
     ("melpa-stable" . "http://stable.melpa.org/packages/")
-    ("marmalade" . "http://marmalade-repo.org/packages/")
-    ; orgmode repository not working TSL connection error
-    ;("org" . "http://orgmode.org/elpa/")
+;    ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
+    ("orgmode" . "http://orgmode.org/elpa/")
     ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
 (package-initialize)
 
@@ -33,6 +32,7 @@
    '(ido-mode t)))
 
 (use-package org
+  :pin orgmode ; maybe the builtin is good enough?
   :ensure t
   :bind
   (("C-c k" . org-capture)
@@ -47,6 +47,8 @@
      '(org-startup-indented t)
      '(org-directory "~/Documents/org")
      '(org-archive-location "archived/%s_archived::")
+     '(org-agenda-diary-file "diary.org")
+     '(org-agenda-include-diary t)
      '(org-agenda-files (list org-directory))
      '(org-agenda-skip-unavailable-files t)
      '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
@@ -58,20 +60,19 @@
      '(org-enforce-todo-dependencies t)
      '(org-default-priority 66)
      '(org-highest-priority 65)
-     '(org-lowest-priority 67)
+     '(org-lowest-priority 70)
      '(org-completion-use-ido t)
      '(org-refile-use-outline-path t)
      '(org-outline-path-complete-in-steps nil)
      '(org-priority-start-cycle-with-default nil)
      '(org-todo-keywords (quote ((sequence "TODO" "|" "DONE" "CANCELED"))))
-     '(org-agenda-diary-file "diary.org")
-;     '(org-agenda-include-diary t)
+     '(org-todo-state-tags-triggers ("CANCELED" ("ARCHIVE" . t)))
      '(org-capture-templates
        (quote
 	(("t" "Task" entry
 	  (file+headline "tasks.org" "INBOX")
 	  "* TODO %?
-SCHEDULE: %t")
+SCHEDULED: %t")
 	 ("m" "Memo" entry
 	  (file+headline "memo.org" "INBOX")
 	  "* %?%T")
@@ -88,14 +89,16 @@ SCHEDULE: %t")
        "/DONE|CANCELLED" 'agenda))))
 
 (use-package magit
+  :pin melpa-stable
   :ensure t
-  :bind ("C-x C-g" . magit-status)
+  :bind ("C-x C-m" . magit-status)
   :config
   (custom-set-variables
    '(magit-repository-directories (quote ("~/Workspace/dev")))
    '(magit-repository-directories-depth 1)))
 
 (use-package undo-tree
+  :pin gnu
   :ensure t
   :bind ("C-x u" . undo-tree-visualize)
   :config
@@ -116,12 +119,14 @@ SCHEDULE: %t")
    '(sr-windows-default-ratio 80)))
 
 (use-package clojure-mode
+  :pin melpa-stable
   :ensure t
   :config
   (customize-set-variable
    'clojure-defun-style-default-indent t))
 
 (use-package cider
+  :pin melpa-stable
   :ensure t
   :bind
   ("C-c C-i" . cider-jack-in)
@@ -129,14 +134,17 @@ SCHEDULE: %t")
   :config
   (progn
     (add-hook 'cider-mode-hook 'eldoc-mode)
+    (add-hook 'cider-mode-hook 'auto-complete-mode)
     (custom-set-variables
       '(cider-lein-command "/opt/bin/lein")
       '(cider-prompt-for-symbol nil))))
 
 (use-package ac-cider
+  :pin melpa-stable
   :ensure t)
 
 (use-package paredit
+  :pin melpa-stable
   :ensure t
   :config
   (progn
@@ -147,22 +155,38 @@ SCHEDULE: %t")
     (add-hook 'clojure-mode-hook 'enable-paredit-mode)
     (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)))
 
+(use-package rainbow-delimiters)
+(use-package rainbow-blocks)
+
 (use-package haskell-mode
+  :pin melpa-stable
   :ensure t)
+
+(use-package scala-mode2)
+(use-package sbt-mode)
 
 (use-package dockerfile-mode
   :ensure t)
 
-(use-package rainbow-delimiters)
-(use-package rainbow-blocks)
+(use-package markdown-mode
+  :ensure t)
 
-(use-package scala-mode2)
-(use-package sbt-mode)
-(use-package haskell-mode)
-(use-package markdown-mode)
-(use-package json-mode)
+(use-package auctex
+  :pin gnu
+  :disabled t
+  :ensure t)
 
-(use-package solarized-theme)
-(use-package zenburn-theme)
+(use-package json-mode
+  :disabled t ; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
+  :ensure t)
+
+(use-package protobuf-mode
+  :pin melpa-stable
+  :disabled t ; causes error "Symbol's function definition is void: set-difference"
+  :ensure t)
+
 (use-package monokai-theme
   :ensure t)
+(use-package solarized-theme)
+(use-package zenburn-theme)
+
