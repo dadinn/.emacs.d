@@ -39,54 +39,53 @@
    ("C-c a" . org-agenda)
    ("C-c C-c e" . org-babel-execute-src-block))
   :config
-  (progn
-    (add-hook 'text-mode-hook 'auto-fill-mode)
-    (custom-set-variables
-     '(org-agenda-span 'day)
-     '(calendar-week-start-day 1)
-     '(org-startup-indented t)
-     '(org-directory "~/Documents/org")
-     '(org-archive-location "archived/%s_archived::")
-     '(org-agenda-diary-file "diary.org")
-     '(org-agenda-include-diary t)
-     '(org-agenda-files (list org-directory))
-     '(org-agenda-skip-unavailable-files t)
-     '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
-     '(org-agenda-skip-scheduled-if-deadline-is-shown t)
-     '(org-agenda-skip-scheduled-if-done t)
-     '(org-agenda-tags-todo-honor-ignore-options t)
-     '(org-agenda-todo-ignore-scheduled 'future)
-     '(org-agenda-window-setup 'current-window)
-     '(org-enforce-todo-dependencies t)
-     '(org-default-priority 66)
-     '(org-highest-priority 65)
-     '(org-lowest-priority 70)
-     '(org-completion-use-ido t)
-     '(org-refile-use-outline-path t)
-     '(org-outline-path-complete-in-steps nil)
-     '(org-priority-start-cycle-with-default nil)
-     '(org-todo-keywords (quote ((sequence "TODO" "|" "DONE" "CANCELED"))))
-     '(org-todo-state-tags-triggers ("CANCELED" ("ARCHIVE" . t)))
-     '(org-capture-templates
-       (quote
-	(("t" "Task" entry
-	  (file+headline "tasks.org" "INBOX")
-	  "* TODO %?
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+  (custom-set-variables
+   '(org-agenda-span 'day)
+   '(calendar-week-start-day 1)
+   '(org-startup-indented t)
+   '(org-directory "~/Documents/org")
+   '(org-archive-location "archived/%s_archived::")
+   '(org-agenda-diary-file "diary.org")
+   '(org-agenda-include-diary t)
+   '(org-agenda-files (list org-directory))
+   '(org-agenda-skip-unavailable-files t)
+   '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
+   '(org-agenda-skip-scheduled-if-deadline-is-shown t)
+   '(org-agenda-skip-scheduled-if-done t)
+   '(org-agenda-tags-todo-honor-ignore-options t)
+   '(org-agenda-todo-ignore-scheduled 'future)
+   '(org-agenda-window-setup 'current-window)
+   '(org-enforce-todo-dependencies t)
+   '(org-default-priority 66)
+   '(org-highest-priority 65)
+   '(org-lowest-priority 70)
+   '(org-completion-use-ido t)
+   '(org-refile-use-outline-path t)
+   '(org-outline-path-complete-in-steps nil)
+   '(org-priority-start-cycle-with-default nil)
+   '(org-todo-keywords (quote ((sequence "TODO" "|" "DONE" "CANCELED"))))
+   '(org-todo-state-tags-triggers ("CANCELED" ("ARCHIVE" . t)))
+   '(org-capture-templates
+     (quote
+      (("t" "Task" entry
+	(file+headline "tasks.org" "INBOX")
+	"* TODO %?
 SCHEDULED: %t")
-	 ("m" "Memo" entry
-	  (file+headline "memo.org" "INBOX")
-	  "* %?%T")
-	 ("e" "Event" entry
-	  (file+headline "events.org" "INBOX")
-	  "* %?
+       ("m" "Memo" entry
+	(file+headline "memo.org" "INBOX")
+	"* %?%T")
+       ("e" "Event" entry
+	(file+headline "events.org" "INBOX")
+	"* %?
 %^T")))))
-    (defun org-archive-done-tasks ()
-      (interactive)
-      (org-map-entries
-       (lambda ()
-	 (org-archive-subtree)
-	 (setq org-map-continue-from (outline-previous-heading)))
-       "/DONE|CANCELLED" 'agenda))))
+  (defun org-archive-done-tasks ()
+    (interactive)
+    (org-map-entries
+     (lambda ()
+       (org-archive-subtree)
+       (setq org-map-continue-from (outline-previous-heading)))
+     "/DONE|CANCELLED" 'agenda)))
 
 (use-package magit
   :pin melpa-stable
@@ -132,12 +131,11 @@ SCHEDULED: %t")
   ("C-c C-i" . cider-jack-in)
   ("C-c C-q" . cider-quit)
   :config
-  (progn
-    (add-hook 'cider-mode-hook 'eldoc-mode)
-    (add-hook 'cider-mode-hook 'auto-complete-mode)
-    (custom-set-variables
-      '(cider-lein-command "/opt/bin/lein")
-      '(cider-prompt-for-symbol nil))))
+  (add-hook 'cider-mode-hook 'eldoc-mode)
+  (add-hook 'cider-mode-hook 'auto-complete-mode)
+  (custom-set-variables
+   '(cider-lein-command "/opt/bin/lein")
+   '(cider-prompt-for-symbol nil)))
 
 (use-package ac-cider
   :pin melpa-stable
@@ -147,13 +145,10 @@ SCHEDULED: %t")
   :pin melpa-stable
   :ensure t
   :config
-  (progn
-    (defun enable-paredit-mode ()
-      (paredit-mode t))
-    (add-hook 'lisp-mode-hook 'enable-paredit-mode)
-    (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-    (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-    (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)))
+  (add-hook 'lisp-mode-hook 'paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+  (add-hook 'clojure-mode-hook 'paredit-mode)
+  (add-hook 'cider-repl-mode-hook 'paredit-mode))
 
 (use-package rainbow-delimiters)
 (use-package rainbow-blocks)
