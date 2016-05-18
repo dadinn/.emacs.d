@@ -4,7 +4,7 @@
   '(("gnu" . "http://elpa.gnu.org/packages/")
     ("melpa" . "http://melpa.org/packages/")
     ("melpa-stable" . "http://stable.melpa.org/packages/")
-;    ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
+    ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
     ("orgmode" . "http://orgmode.org/elpa/")
     ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
 (package-initialize)
