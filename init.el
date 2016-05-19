@@ -67,17 +67,19 @@
    '(org-todo-state-tags-triggers ("CANCELED" ("ARCHIVE" . t)))
    '(org-capture-templates
      (quote
-      (("t" "Task" entry
+      (("t" "Task")
+       ("tt" "Task (Scheduled only)" entry
 	(file+headline "tasks.org" "INBOX")
-	"* TODO %?
-SCHEDULED: %t")
+	"* TODO %?\nSCHEDULED: %t")
+       ("td" "Task (Scheduled, with Deadline)" entry
+	(file+headline "tasks.org" "INBOX")
+	"* TODO %?\nSCHEDULED: %t\nDEADLINE: %^t")
        ("m" "Memo" entry
 	(file+headline "memo.org" "INBOX")
-	"* %?%T")
+	"* %?\n%U")
        ("e" "Event" entry
 	(file+headline "events.org" "INBOX")
-	"* %?
-%^T")))))
+	"* %?\n%^t")))))
   (defun org-archive-done-tasks ()
     (interactive)
     (org-map-entries
