@@ -48,7 +48,6 @@
    '(org-archive-location "archived/%s_archived::")
    '(org-agenda-diary-file (concat org-directory "diary.org"))
    '(org-agenda-include-diary t)
-   '(org-agenda-skip-unavailable-files t)
    '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
    '(org-agenda-skip-scheduled-if-deadline-is-shown t)
    '(org-agenda-skip-scheduled-if-done t)
