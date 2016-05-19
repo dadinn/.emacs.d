@@ -32,7 +32,6 @@
    '(ido-mode t)))
 
 (use-package org
-  :pin orgmode ; maybe the builtin is good enough?
   :ensure t
   :bind
   (("C-c k" . org-capture)
