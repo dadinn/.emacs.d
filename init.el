@@ -12,6 +12,9 @@
 (custom-set-variables
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
+ '(calendar-week-start-day 1)
+ ;; remove all the default holiday entries from calendar
+ '(calendar-holidays nil)
  '(custom-file "~/.emacs.d/custom.el")
  '(menu-bar-mode nil)
  '(tool-bar-mode nil))
@@ -41,7 +44,6 @@
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (custom-set-variables
    '(org-agenda-span 'day)
-   '(calendar-week-start-day 1)
    '(org-startup-indented t)
    '(org-directory "~/Documents/org/")
    '(org-agenda-files (list org-directory))
