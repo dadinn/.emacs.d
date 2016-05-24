@@ -50,22 +50,31 @@
    '(org-archive-location "archived/%s_archived::")
    '(org-agenda-diary-file (concat org-directory "diary.org"))
    '(org-agenda-include-diary t)
-   '(org-agenda-skip-deadline-prewarning-if-scheduled nil)
+   '(org-deadline-warning-days 7)
+   '(org-agenda-skip-deadline-prewarning-if-scheduled 3)
    '(org-agenda-skip-scheduled-if-deadline-is-shown t)
    '(org-agenda-skip-scheduled-if-done t)
-   '(org-agenda-tags-todo-honor-ignore-options t)
    '(org-agenda-todo-ignore-scheduled 'future)
+   '(org-agenda-tags-todo-honor-ignore-options t)
    '(org-agenda-window-setup 'current-window)
    '(org-enforce-todo-dependencies t)
+   '(org-priority-start-cycle-with-default nil)
    '(org-default-priority 66)
    '(org-highest-priority 65)
    '(org-lowest-priority 70)
    '(org-completion-use-ido t)
    '(org-refile-use-outline-path t)
    '(org-outline-path-complete-in-steps nil)
-   '(org-priority-start-cycle-with-default nil)
-   '(org-todo-keywords (quote ((sequence "TODO" "|" "DONE" "CANCELED"))))
-   '(org-todo-state-tags-triggers ("CANCELED" ("ARCHIVE" . t)))
+   ;; set SCHEDULED and DEADLINE leaders in agenda view
+   '(org-agenda-deadline-leaders (quote ("Deadline:  " "In %d days: " "Late %d days: ")))
+   '(org-agenda-scheduled-leaders (quote ("Scheduled: " "Sched. %dx: ")))
+   ;; todo kewords should add extra HOLD and CANCELED states which take extra note when set
+   '(org-todo-keywords (quote ((sequence "TODO(t!)" "HOLD(h@/!)" "|" "DONE(d!)" "CANCELED(c@/!)"))))
+   ;; todo state changes should be logged into drawer
+   '(org-log-into-drawer t)
+   ;; set ARCHIVE tag when todo state is set to CANCELED
+   '(org-todo-state-tags-triggers (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
+						     (cons "CANCELED" (list (cons org-archive-tag t))))))
    '(org-capture-templates
      (quote
       (("t" "Task")
