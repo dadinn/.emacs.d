@@ -45,7 +45,7 @@
   (custom-set-variables
    '(org-agenda-span 'day)
    '(org-startup-indented t)
-   '(org-directory "~/Documents/org/")
+   '(org-directory "~/Workspace/org/")
    '(org-agenda-files (list org-directory))
    '(org-archive-location "archived/%s_archived::")
    '(org-agenda-diary-file (concat org-directory "diary.org"))
