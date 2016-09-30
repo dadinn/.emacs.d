@@ -36,9 +36,19 @@
 
 (use-package org
   :ensure t
+  :init
+  (defun org-archive-done-tasks ()
+    "Archive all DONE and CANCELLED tasks in the subtree of the current entry"
+    (interactive)
+    (org-map-entries
+     (lambda ()
+       (org-archive-subtree)
+       (setq org-map-continue-from (outline-previous-heading)))
+     "/DONE|CANCELLED" 'agenda))
   :bind
   (("C-c k" . org-capture)
    ("C-c a" . org-agenda)
+   ("C-c h" . org-archive-done-tasks)
    ("C-c C-c e" . org-babel-execute-src-block))
   :config
   (add-hook 'text-mode-hook 'auto-fill-mode)
@@ -56,25 +66,32 @@
    '(org-agenda-skip-scheduled-if-done t)
    '(org-agenda-todo-ignore-scheduled 'future)
    '(org-agenda-tags-todo-honor-ignore-options t)
+   ;; set SCHEDULED and DEADLINE leaders in agenda view
+   '(org-agenda-deadline-leaders (quote ("Deadline!  " "In %d days: " "Late %d days: ")))
+   '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
    '(org-agenda-window-setup 'current-window)
+   ;; add extra WAIT and CANCELED todo states and logging with notes
+   '(org-todo-keywords (quote ((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELED(c@/!)"))))
+   ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
+   '(org-todo-state-tags-triggers
+     (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
+			(cons "CANCELED" (list (cons org-archive-tag t))))))
    '(org-enforce-todo-dependencies t)
+   '(org-enforce-todo-checkbox-dependencies t)
+   '(org-agenda-dim-blocked-tasks (quote invisible))
+   ;; REFILE BEHAVIOUR
+   '(org-refile-use-outline-path t)
+   '(org-outline-path-complete-in-steps nil)
+   '(org-completion-use-ido t)
+   '(org-reverse-note-order t)
+   '(org-refile-targets '((nil . (:regexp . "^\*+ [[:upper:] ]+$"))))
+   ;; PRIORITIES
    '(org-priority-start-cycle-with-default nil)
    '(org-default-priority 66)
    '(org-highest-priority 65)
    '(org-lowest-priority 70)
-   '(org-completion-use-ido t)
-   '(org-refile-use-outline-path t)
-   '(org-outline-path-complete-in-steps nil)
-   ;; set SCHEDULED and DEADLINE leaders in agenda view
-   '(org-agenda-deadline-leaders (quote ("Deadline:  " "In %d days: " "Late %d days: ")))
-   '(org-agenda-scheduled-leaders (quote ("Scheduled: " "Sched. %dx: ")))
-   ;; todo kewords should add extra HOLD and CANCELED states which take extra note when set
-   '(org-todo-keywords (quote ((sequence "TODO(t!)" "HOLD(h@/!)" "|" "DONE(d!)" "CANCELED(c@/!)"))))
    ;; todo state changes should be logged into drawer
    '(org-log-into-drawer t)
-   ;; set ARCHIVE tag when todo state is set to CANCELED
-   '(org-todo-state-tags-triggers (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
-						     (cons "CANCELED" (list (cons org-archive-tag t))))))
    '(org-capture-templates
      (quote
       (("t" "Task")
@@ -84,19 +101,16 @@
        ("td" "Task (Scheduled, with Deadline)" entry
 	(file+headline "tasks.org" "INBOX")
 	"* TODO %?\nSCHEDULED: %t\nDEADLINE: %^t")
+       ("e" "Event")
+       ("et" "Event (with single datetime)" entry
+	(file+headline "events.org" "INBOX")
+	"* %?\n%^T")
+       ("ed" "Event (with duration)" entry
+	(file+headline "events.org" "INBOX")
+	"* %?\n%^T--%^T")
        ("m" "Memo" entry
 	(file+headline "memo.org" "INBOX")
-	"* %?\n%U")
-       ("e" "Event" entry
-	(file+headline "events.org" "INBOX")
-	"* %?\n%^t")))))
-  (defun org-archive-done-tasks ()
-    (interactive)
-    (org-map-entries
-     (lambda ()
-       (org-archive-subtree)
-       (setq org-map-continue-from (outline-previous-heading)))
-     "/DONE|CANCELLED" 'agenda)))
+	"* %?\n%U"))))))
 
 (use-package magit
   :pin melpa-stable
@@ -132,8 +146,8 @@
   :pin melpa-stable
   :ensure t
   :config
-  (customize-set-variable
-   'clojure-defun-style-default-indent t))
+  (custom-set-variables
+   '(clojure-defun-style-default-indent t)))
 
 (use-package cider
   :pin melpa-stable
@@ -161,15 +175,15 @@
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'cider-repl-mode-hook 'paredit-mode))
 
-(use-package rainbow-delimiters)
-(use-package rainbow-blocks)
+(use-package rainbow-delimiters :disabled t)
+(use-package rainbow-blocks :disabled t)
 
 (use-package haskell-mode
   :pin melpa-stable
   :ensure t)
 
-(use-package scala-mode2)
-(use-package sbt-mode)
+(use-package scala-mode2 :disabled t)
+(use-package sbt-mode :disabled t)
 
 (use-package dockerfile-mode
   :ensure t)
