@@ -110,7 +110,10 @@
 	"* %?\n%^T--%^T")
        ("m" "Memo" entry
 	(file+headline "memo.org" "INBOX")
-	"* %?\n%U"))))))
+	"* %?\n%U")
+       ("x" "Example" entry
+	(file+headline "example.org" "INBOX")
+	"* %?\n%^t"))))))
 
 (use-package magit
   :pin melpa-stable
