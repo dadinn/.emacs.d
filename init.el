@@ -49,7 +49,8 @@
   (("C-c k" . org-capture)
    ("C-c a" . org-agenda)
    ("C-c h" . org-archive-done-tasks)
-   ("C-c C-c e" . org-babel-execute-src-block))
+   ;("C-c C-v C-e" . org-babel-execute-src-block)
+   )
   :config
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (custom-set-variables
@@ -156,8 +157,8 @@
   :pin melpa-stable
   :ensure t
   :bind
-  ("C-c C-i" . cider-jack-in)
-  ("C-c C-q" . cider-quit)
+  ("C-c c i" . cider-jack-in)
+  ("C-c c q" . cider-quit)
   :config
   (add-hook 'cider-mode-hook 'eldoc-mode)
   (add-hook 'cider-mode-hook 'auto-complete-mode)
