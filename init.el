@@ -103,6 +103,10 @@
    '(org-lowest-priority 70)
    ;; todo state changes should be logged into drawer
    '(org-log-into-drawer t)
+   ;; log when schedule or deadline changes
+   '(org-log-redeadline (quote time))
+   '(org-log-reschedule (quote time))
+   ;;'(org-log-refile (quote time)) ; logs even when refiled during capture
    '(org-capture-templates
      (quote
       (("t" "Task")
