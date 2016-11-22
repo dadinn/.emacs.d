@@ -75,7 +75,7 @@
    '(org-agenda-window-setup 'current-window)
    ;; add extra WAIT and CANCELED todo states and logging with notes
    '(org-todo-keywords (quote ((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELED(c@/!)"))))
-   '(org-tag-alist
+   '(org-tag-persistent-alist
      '(("GROUPING" . ?g)
        ("ARCHIVED" . ?a)))
    '(org-tags-exclude-from-inheritance (quote ("GROUPING")))
