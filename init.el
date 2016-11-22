@@ -42,8 +42,10 @@
     (interactive)
     (org-map-entries
      (lambda ()
-       (org-archive-subtree)
-       (setq org-map-continue-from (outline-previous-heading)))
+       (let ((prev-heading (outline-previous-heading)))
+	 (org-archive-subtree)
+	 ;; Warning! Disgusting imperative state manipulation follows
+	 (setq org-map-continue-from prev-heading)))
      "/DONE|CANCELLED" 'agenda))
   :bind
   (("C-c k" . org-capture)
