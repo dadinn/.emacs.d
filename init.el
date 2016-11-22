@@ -110,25 +110,25 @@
    '(org-capture-templates
      (quote
       (("t" "Task")
-       ("tt" "Task (Scheduled only)" entry
+       ("tt" "Task (Scheduled from today)" entry
 	(file+headline "tasks.org" "INBOX")
-	"* TODO %?\nSCHEDULED: %t")
-       ("td" "Task (Scheduled, with Deadline)" entry
+	"* TODO %?\n\nSCHEDULED: %t\n")
+       ("td" "Task (Scheduled from today, with Deadline date)" entry
 	(file+headline "tasks.org" "INBOX")
-	"* TODO %?\nSCHEDULED: %t\nDEADLINE: %^t")
+	"* TODO %?\nSCHEDULED: %t\nDEADLINE: %^t\n")
        ("e" "Event")
        ("et" "Event (with single datetime)" entry
 	(file+headline "events.org" "INBOX")
-	"* %?\n%^T")
-       ("ed" "Event (with duration)" entry
+	"* %?\n%^T\n")
+       ("ed" "Event (between dates)" entry
 	(file+headline "events.org" "INBOX")
-	"* %?\n%^T--%^T")
+	"* %?\n%^t--%^t\n")
        ("m" "Memo" entry
 	(file+headline "memo.org" "INBOX")
-	"* %?\n%U")
+	"* %?\n%U\n")
        ("x" "Example" entry
 	(file+headline "example.org" "INBOX")
-	"* %?\n%^t"))))))
+	"* %?\n%^t\n"))))))
 
 (use-package magit
   :pin melpa-stable
