@@ -75,6 +75,11 @@
    '(org-agenda-window-setup 'current-window)
    ;; add extra WAIT and CANCELED todo states and logging with notes
    '(org-todo-keywords (quote ((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELED(c@/!)"))))
+   '(org-tag-alist
+     '(("GROUPING" . ?g)
+       ("ARCHIVED" . ?a)))
+   '(org-tags-exclude-from-inheritance (quote ("GROUPING")))
+   '(org-archive-tag "ARCHIVED")
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    '(org-todo-state-tags-triggers
      (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
@@ -84,10 +89,13 @@
    '(org-agenda-dim-blocked-tasks (quote invisible))
    ;; REFILE BEHAVIOUR
    '(org-refile-use-outline-path t)
-   '(org-outline-path-complete-in-steps nil)
-   '(org-completion-use-ido t)
+   '(org-outline-path-complete-in-steps t)
+   ;; prefer in-steps that ido for refile completion
+   ;; '(org-completion-use-ido t)
    '(org-reverse-note-order t)
-   '(org-refile-targets '((nil . (:regexp . "^\*+ [[:upper:] ]+$"))))
+   '(org-refile-targets
+     '((nil . (:level . 1))
+       (nil . (:tag . "GROUPING"))))
    ;; PRIORITIES
    '(org-priority-start-cycle-with-default nil)
    '(org-default-priority 66)
