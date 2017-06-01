@@ -13,6 +13,7 @@
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(calendar-week-start-day 1)
+ '(visual-line-fringe-indicators '(left-curly-arrow right-curly arrow))
  ;; remove all the default holiday entries from calendar
  '(calendar-holidays nil)
  '(custom-file "~/.emacs.d/custom.el")
@@ -54,13 +55,13 @@
    ;("C-c C-v C-e" . org-babel-execute-src-block)
    )
   :config
-  (add-hook 'text-mode-hook 'auto-fill-mode)
+  (add-hook 'text-mode-hook 'visual-line-mode)
   (custom-set-variables
    '(org-agenda-span 'day)
    '(org-startup-indented t)
    '(org-directory "~/Workspace/org/")
    '(org-agenda-files (list org-directory))
-   '(org-archive-location "archived/%s_archived::")
+   '(org-archive-location "archived/%s::")
    '(org-agenda-diary-file (concat org-directory "diary.org"))
    '(org-agenda-include-diary t)
    '(org-deadline-warning-days 7)
@@ -97,10 +98,10 @@
      '((nil . (:level . 1))
        (nil . (:tag . "GROUPING"))))
    ;; PRIORITIES
-   '(org-priority-start-cycle-with-default nil)
-   '(org-default-priority 66)
-   '(org-highest-priority 65)
+   '(org-priority-start-cycle-with-default t)
+   '(org-default-priority 70)
    '(org-lowest-priority 70)
+   '(org-highest-priority 65)
    ;; todo state changes should be logged into drawer
    '(org-log-into-drawer t)
    ;; log when schedule or deadline changes
@@ -188,6 +189,7 @@
   :pin melpa-stable
   :ensure t
   :config
+  (add-hook 'scheme-mode-hook 'paredit-mode)
   (add-hook 'lisp-mode-hook 'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'paredit-mode)
@@ -212,6 +214,9 @@
 (use-package auctex
   :pin gnu
   :disabled t
+  :ensure t)
+
+(use-package csv-mode
   :ensure t)
 
 (use-package json-mode
