@@ -65,7 +65,7 @@
    '(org-agenda-diary-file (concat org-directory "diary.org"))
    '(org-agenda-include-diary t)
    '(org-deadline-warning-days 7)
-   '(org-agenda-skip-deadline-prewarning-if-scheduled 3)
+   '(org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
    '(org-agenda-skip-scheduled-if-deadline-is-shown t)
    '(org-agenda-skip-scheduled-if-done t)
    '(org-agenda-todo-ignore-scheduled 'future)
@@ -77,37 +77,46 @@
    ;; add extra WAIT and CANCELED todo states and logging with notes
    '(org-todo-keywords (quote ((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELED(c@/!)"))))
    '(org-tag-persistent-alist
-     '(("GROUPING" . ?g)
-       ("ARCHIVED" . ?a)))
-   '(org-tags-exclude-from-inheritance (quote ("GROUPING")))
-   '(org-archive-tag "ARCHIVED")
+     '(("TARGET" . ?t)
+       (:startgroup . nil)
+       ("NEXT" . ?n)
+       ("MAYBE" . ?m)
+       (:endgroup . nil)))
+   '(org-tags-exclude-from-inheritance (quote ("TARGET")))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    '(org-todo-state-tags-triggers
      (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
 			(cons "CANCELED" (list (cons org-archive-tag t))))))
-   '(org-enforce-todo-dependencies t)
-   '(org-enforce-todo-checkbox-dependencies t)
-   '(org-agenda-dim-blocked-tasks (quote invisible))
+
    ;; REFILE BEHAVIOUR
+   '(org-refile-targets
+     '((nil . (:level . 1))
+       (nil . (:tag . "TARGET"))))
    '(org-refile-use-outline-path t)
    '(org-outline-path-complete-in-steps t)
    ;; prefer in-steps that ido for refile completion
    ;; '(org-completion-use-ido t)
    '(org-reverse-note-order t)
-   '(org-refile-targets
-     '((nil . (:level . 1))
-       (nil . (:tag . "GROUPING"))))
-   ;; PRIORITIES
-   '(org-priority-start-cycle-with-default t)
-   '(org-default-priority 70)
-   '(org-lowest-priority 70)
-   '(org-highest-priority 65)
+
+   ;; LOGGING
    ;; todo state changes should be logged into drawer
    '(org-log-into-drawer t)
    ;; log when schedule or deadline changes
    '(org-log-redeadline (quote time))
    '(org-log-reschedule (quote time))
    ;;'(org-log-refile (quote time)) ; logs even when refiled during capture
+
+   ;; PRIORITIES
+   '(org-priority-start-cycle-with-default t)
+   '(org-default-priority 67)
+   '(org-lowest-priority 67)
+   '(org-highest-priority 65)
+
+   ;; DEPENDENCIES
+   '(org-enforce-todo-dependencies t)
+   ;;'(org-enforce-todo-checkbox-dependencies t) ; TEST there is an unreported bug with checkbox dependencies
+   '(org-agenda-dim-blocked-tasks (quote invisible))
+
    '(org-capture-templates
      (quote
       (("t" "Task")
