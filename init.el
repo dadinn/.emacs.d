@@ -120,12 +120,15 @@
    '(org-capture-templates
      (quote
       (("t" "Task")
-       ("tt" "Task (Scheduled from today)" entry
+       ("tt" "Task (Scheduled)" entry
 	(file+headline "tasks.org" "INBOX")
-	"* TODO %?\n\nSCHEDULED: %t\n")
-       ("td" "Task (Scheduled from today, with Deadline date)" entry
+	"* TODO %^{Title}\nSCHEDULED: %^{Schedule}t\n%?")
+       ("td" "Task (Scheduled, with Deadline)" entry
 	(file+headline "tasks.org" "INBOX")
-	"* TODO %?\nSCHEDULED: %t\nDEADLINE: %^t\n")
+	"* TODO %^{Title}\nSCHEDULED: %^{Schedule}t\nDEADLINE: %^{Deadline}t\n%?")
+       ("tn" "Task (NEXT)" entry
+	(file+headline "tasks.org" "INBOX")
+	"* TODO %^{Title}\t:NEXT:\nSCHEDULED: %^{Schedule}t\nDEADLINE: %^{Deadline}t\n%?")
        ("e" "Event")
        ("et" "Event (with single datetime)" entry
 	(file+headline "events.org" "INBOX")
