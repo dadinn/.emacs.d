@@ -49,10 +49,10 @@
 	 (setq org-map-continue-from prev-heading)))
      "/DONE|CANCELLED" 'agenda))
   :bind
-  (("C-c k" . org-capture)
-   ("C-c a" . org-agenda)
-   ("C-c h" . org-archive-done-tasks)
-   ;("C-c C-v C-e" . org-babel-execute-src-block)
+  (("C-c a" . org-agenda)
+   ("C-c k" . org-capture)
+   ("C-c v" . org-archive-done-tasks)
+   ("C-c C-E" . org-babel-execute-src-block)
    )
   :config
   (add-hook 'text-mode-hook 'visual-line-mode)
