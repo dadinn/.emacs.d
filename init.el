@@ -130,6 +130,24 @@
    '(org-enforce-todo-dependencies t)
    ;;'(org-enforce-todo-checkbox-dependencies t) ; TEST there is an unreported bug with checkbox dependencies
    '(org-agenda-dim-blocked-tasks (quote invisible))
+   '(org-agenda-custom-commands
+     '(("c" . "Custom commands")
+       ("ca" "Current agenda (ignore MAYBE)"
+	((agenda "")
+	 (todo "WAIT")
+	 (tags-todo "NEXT"))
+	((org-agenda-tag-filter-preset '("-MAYBE"))
+	 (org-agenda-compact-block t)
+	 (org-agenda-time-grid nil)))
+       ("ci" "INBOX tasks"
+	((alltodo "TODO"))
+	((org-agenda-category-filter-preset '("+INBOX"))))
+       ("cn" "NEXT tasks" tags-todo "NEXT")
+       ("cm" "MAYBE tasks" tags-todo "MAYBE")
+       ("cy" "Yearly calendar (events & deadlines)" agenda ""
+	((org-agenda-time-grid nil)
+	 (org-agenda-span 'year)
+	 (org-agenda-entry-types '(:deadline :timestamp))))))
 
    '(org-capture-templates
      (quote
