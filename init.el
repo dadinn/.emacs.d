@@ -56,21 +56,18 @@
   :ensure t
   :init
   (defun org-archive-done-tasks ()
-    "Archive all DONE and CANCELLED tasks in the subtree of the current entry"
+    "Archive all DONE and CANCELED tasks in the subtree of the current entry"
     (interactive)
     (org-map-entries
      (lambda ()
-       (let ((prev-heading (outline-previous-heading)))
-	 (org-archive-subtree)
-	 ;; Warning! Disgusting imperative state manipulation follows
-	 (setq org-map-continue-from prev-heading)))
-     "/DONE|CANCELLED" 'agenda))
+       (org-archive-subtree)
+       (setq org-map-continue-from (outline-previous-heading)))
+     "//DONE|CANCELED" 'agenda))
   :bind
   (("C-c a" . org-agenda)
    ("C-c k" . org-capture)
    ("C-c v" . org-archive-done-tasks)
-   ("C-c C-E" . org-babel-execute-src-block)
-   )
+   ("C-c C-E" . org-babel-execute-src-block))
   :config
   (add-hook 'text-mode-hook 'visual-line-mode)
   (custom-set-variables
@@ -92,7 +89,7 @@
    '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
    '(org-agenda-window-setup 'current-window)
    ;; add extra WAIT and CANCELED todo states and logging with notes
-   '(org-todo-keywords (quote ((sequence "TODO(t!)" "EPIC(E!)" "WAIT(w@/!)" "|" "DONE(d@)" "FAILED(f@/!)" "CANCELED(c@/!)"))))
+   '(org-todo-keywords (quote ((sequence "TODO(t!)" "EPIC(E!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELED(c@/!)"))))
    '(org-tag-persistent-alist
      '(("TARGET" . ?t)
        (:startgroup . nil)
@@ -104,7 +101,7 @@
    '(org-todo-state-tags-triggers
      (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
 			(cons "CANCELED" (list (cons org-archive-tag t)))
-			(list "EPIC" (list "TARGET" t)))))
+			(cons "EPIC" (list (cons "TARGET" t))))))
    ;; REFILE BEHAVIOUR
    '(org-refile-targets
      '((nil . (:level . 1))
