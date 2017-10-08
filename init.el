@@ -122,8 +122,8 @@
 
    ;; PRIORITIES
    '(org-priority-start-cycle-with-default t)
-   '(org-default-priority 67)
-   '(org-lowest-priority 67)
+   '(org-default-priority 70)
+   '(org-lowest-priority 70)
    '(org-highest-priority 65)
 
    ;; DEPENDENCIES
