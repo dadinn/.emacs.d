@@ -14,6 +14,7 @@
  '(make-backup-files nil)
  '(calendar-week-start-day 1)
  '(visual-line-fringe-indicators '(left-curly-arrow right-curly arrow))
+ '(visible-bell t)
  ;; remove all the default holiday entries from calendar
  '(calendar-holidays nil)
  '(custom-file "~/.emacs.d/custom.el")
@@ -34,6 +35,22 @@
    '(ido-enable-flex-matching t)
    '(ido-everywhere t)
    '(ido-mode t)))
+
+(use-package ido-vertical-mode
+  :ensure t
+  :config
+  (custom-set-variables
+   '(ido-vertical-mode t)
+   '(ido-vertical-show-count t)
+   '(ido-vertical-pad-list nil)
+   '(ido-vertical-define-keys 'C-n-and-C-p-only)))
+
+(use-package flx-ido
+  :ensure t
+  :config
+  (custom-set-variables
+   '(ido-enable-flex-matching t)
+   '(ido-use-faces nil)))
 
 (use-package org
   :ensure t
