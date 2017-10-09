@@ -247,6 +247,17 @@
   :pin melpa-stable
   :ensure t)
 
+(use-package cider-profile
+  :ensure t)
+
+(use-package sayid
+  :pin melpa-stable
+  :ensure t
+  :config
+  (custom-set-variables
+   '(clojure-mode-hook 'sayid-setup-package)
+   '(cider-repl-mode-hook 'sayid-setup-package)))
+
 (use-package paredit
   :pin melpa-stable
   :ensure t
