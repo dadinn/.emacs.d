@@ -217,6 +217,7 @@
   (custom-set-variables
    '(sr-cursor-follows-mouse nil)
    '(sr-listing-switches "-lA --group-directories-first")
+   '(sr-listing-switches "-la")
    '(sr-show-file-attributes t)
    '(sr-show-hidden-files t)
    '(sr-window-split-style (quote horizontal))
@@ -239,7 +240,7 @@
   (add-hook 'cider-mode-hook 'eldoc-mode)
   (add-hook 'cider-mode-hook 'auto-complete-mode)
   (custom-set-variables
-   '(cider-lein-command "/opt/bin/lein")
+   '(cider-lein-command "lein")
    '(cider-prompt-for-symbol nil)))
 
 (use-package ac-cider
