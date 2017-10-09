@@ -192,6 +192,23 @@
   (custom-set-variables
    '(global-undo-tree-mode)))
 
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode))
+
+(use-package bm
+  :ensure t
+  :bind
+  ((("C-c b n" . bm-next)
+    ("C-c b p" . bm-previous)
+    ("C-c b m" . bm-toggle)))
+  :config
+  (custom-set-variables
+   '(bm-cycle-all-buffers t)
+   '(bm-buffer-persistence t)
+   '(bm-repository-file "bm.el")))
+
 (use-package sunrise-commander
   :ensure t
   :bind (("C-x d" . sunrise)
