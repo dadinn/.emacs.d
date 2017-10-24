@@ -190,7 +190,7 @@
   :bind ("C-x u" . undo-tree-visualize)
   :config
   (custom-set-variables
-   '(global-undo-tree-mode)))
+   '(global-undo-tree-mode t)))
 
 (use-package projectile
   :ensure t
