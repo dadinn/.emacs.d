@@ -254,9 +254,7 @@
   :pin melpa-stable
   :ensure t
   :config
-  (custom-set-variables
-   '(clojure-mode-hook 'sayid-setup-package)
-   '(cider-repl-mode-hook 'sayid-setup-package)))
+  (add-hook 'clojure-mode-hook 'sayid-setup-package))
 
 (use-package paredit
   :pin melpa-stable
