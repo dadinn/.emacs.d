@@ -175,6 +175,19 @@
 	(file+headline "example.org" "INBOX")
 	"* %?\n%^t\n"))))))
 
+(use-package ediff
+  :ensure t
+  :bind
+  (("C-c e f" . ediff-files)
+   ("C-c e b" . ediff-buffers))
+  :init
+  (load-library "ediff")
+  :config
+  (custom-set-variables
+   ;; due to bug with mixup of horizontally/vertically
+   '(ediff-split-window-function 'split-window-horizontally)
+   '(ediff-window-setup-function 'ediff-setup-windows-plain)))
+
 (use-package magit
   :pin melpa-stable
   :ensure t
