@@ -234,14 +234,17 @@
   :pin melpa-stable
   :ensure t
   :bind
-  ("C-c c i" . cider-jack-in)
-  ("C-c c q" . cider-quit)
+  (("C-c c i" . cider-jack-in)
+   ("C-c c q" . cider-quit))
   :config
   (add-hook 'cider-mode-hook 'eldoc-mode)
   (add-hook 'cider-mode-hook 'auto-complete-mode)
   (custom-set-variables
    '(cider-lein-command "lein")
-   '(cider-prompt-for-symbol nil)))
+   '(cider-prompt-for-symbol nil)
+   '(cider-repl-use-pretty-printing t)
+   ;; font-lock results in terrible performance
+   '(cider-repl-use-clojure-font-lock nil)))
 
 (use-package ac-cider
   :pin melpa-stable
