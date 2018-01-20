@@ -129,7 +129,7 @@
    ;; DEPENDENCIES
    '(org-enforce-todo-dependencies t)
    ;;'(org-enforce-todo-checkbox-dependencies t) ; TEST there is an unreported bug with checkbox dependencies
-   '(org-agenda-dim-blocked-tasks (quote invisible))
+   '(org-agenda-dim-blocked-tasks t)
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
        ("ca" "Current agenda (ignore MAYBE)"
