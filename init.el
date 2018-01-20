@@ -66,8 +66,8 @@
   :bind
   (("C-c a" . org-agenda)
    ("C-c k" . org-capture)
-   ("C-c v" . org-archive-done-tasks)
-   ("C-c C-E" . org-babel-execute-src-block))
+   ("C-c C-h" . org-archive-done-tasks)
+   ("C-c C-e" . org-babel-execute-src-block))
   :config
   (add-hook 'text-mode-hook 'visual-line-mode)
   (custom-set-variables
