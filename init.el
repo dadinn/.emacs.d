@@ -140,6 +140,15 @@
 	((org-agenda-tag-filter-preset '("-MAYBE"))
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
+       ("cw" "Weekly agenda (ignore MAYBE)"
+	((agenda "")
+	 (tags-todo "NEXT")
+	 (todo "WAIT")
+	 (todo "EPIC"))
+	((org-agenda-tag-filter-preset '("-MAYBE"))
+	 (org-agenda-span 'week)
+	 (org-agenda-compact-block t)
+	 (org-agenda-time-grid nil)))
        ("ci" "INBOX tasks"
 	((alltodo "TODO"))
 	((org-agenda-category-filter-preset '("+INBOX"))))
