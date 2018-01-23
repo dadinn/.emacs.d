@@ -96,7 +96,7 @@
        ("NEXT" . ?n)
        ("MAYBE" . ?m)
        (:endgroup . nil)))
-   '(org-tags-exclude-from-inheritance (quote ("TARGET" "NEXT")))
+   '(org-tags-exclude-from-inheritance (quote ("TARGET")))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    '(org-todo-state-tags-triggers
      (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
