@@ -163,19 +163,16 @@
        ("td" "Task (Scheduled, with Deadline)" entry
 	(file+headline "tasks.org" "INBOX")
 	"* TODO %^{Title}\nSCHEDULED: %^{Schedule}t\nDEADLINE: %^{Deadline}t\n%?")
-       ("tn" "Task (NEXT)" entry
-	(file+headline "tasks.org" "INBOX")
-	"* TODO %^{Title}\t:NEXT:\nSCHEDULED: %^{Schedule}t\nDEADLINE: %^{Deadline}t\n%?")
        ("e" "Event")
        ("et" "Event (with single datetime)" entry
 	(file+headline "events.org" "INBOX")
-	"* %?\n%^T\n")
+	"* %^{Title}\n%^T\n%?")
        ("ed" "Event (between dates)" entry
 	(file+headline "events.org" "INBOX")
-	"* %?\n%^t--%^t\n")
+	"* %^{Title}\n%^t--%^t\n%?")
        ("m" "Memo" entry
 	(file+headline "memo.org" "INBOX")
-	"* %?\n%U\n")
+	"* %?\n%T\n")
        ("x" "Example" entry
 	(file+headline "example.org" "INBOX")
 	"* %?\n%^t\n"))))))
