@@ -132,10 +132,11 @@
    '(org-agenda-dim-blocked-tasks t)
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
-       ("ca" "Current agenda (ignore MAYBE)"
+       ("cd" "Daily agenda (ignore MAYBE)"
 	((agenda "")
+	 (tags-todo "NEXT")
 	 (todo "WAIT")
-	 (tags-todo "NEXT"))
+	 (todo "EPIC"))
 	((org-agenda-tag-filter-preset '("-MAYBE"))
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
