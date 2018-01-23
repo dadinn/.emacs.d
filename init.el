@@ -149,15 +149,10 @@
 	 (org-agenda-span 'week)
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
-       ("ci" "INBOX tasks"
-	((alltodo "TODO"))
+       ("ci" "INBOX tasks" todo "TODO"
 	((org-agenda-category-filter-preset '("+INBOX"))))
        ("cn" "NEXT tasks" tags-todo "NEXT")
-       ("cm" "MAYBE tasks" tags-todo "MAYBE")
-       ("cy" "Yearly calendar (events & deadlines)" agenda ""
-	((org-agenda-time-grid nil)
-	 (org-agenda-span 'year)
-	 (org-agenda-entry-types '(:deadline :timestamp))))))
+       ("cm" "MAYBE tasks" tags-todo "MAYBE")))
 
    '(org-capture-templates
      (quote
