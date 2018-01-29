@@ -130,6 +130,8 @@
    '(org-enforce-todo-dependencies t)
    ;;'(org-enforce-todo-checkbox-dependencies t) ; TEST there is an unreported bug with checkbox dependencies
    '(org-agenda-dim-blocked-tasks t)
+
+   ;; CUSTOM COMMANDS
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
        ("cd" "Daily agenda (ignore MAYBE)"
@@ -154,6 +156,7 @@
        ("cn" "NEXT tasks" tags-todo "NEXT")
        ("cm" "MAYBE tasks" tags-todo "MAYBE")))
 
+   ;; CAPTURE TEMPLATES
    '(org-capture-templates
      (quote
       (("t" "Task")
