@@ -94,7 +94,7 @@
      '(("TARGET" . ?t)
        (:startgroup . nil)
        ("NEXT" . ?n)
-       ("MAYBE" . ?m)
+       ("SOMEDAY" . ?s)
        (:endgroup . nil)))
    '(org-tags-exclude-from-inheritance (quote ("TARGET")))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
@@ -134,27 +134,27 @@
    ;; CUSTOM COMMANDS
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
-       ("cd" "Daily agenda (ignore MAYBE)"
+       ("cd" "Daily agenda (ignore SOMEDAY)"
 	((agenda "")
 	 (tags-todo "NEXT")
 	 (todo "WAIT")
 	 (todo "EPIC"))
-	((org-agenda-tag-filter-preset '("-MAYBE"))
+	((org-agenda-tag-filter-preset '("-SOMEDAY"))
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
-       ("cw" "Weekly agenda (ignore MAYBE)"
+       ("cw" "Weekly agenda (ignore SOMEDAY)"
 	((agenda "")
 	 (tags-todo "NEXT")
 	 (todo "WAIT")
 	 (todo "EPIC"))
-	((org-agenda-tag-filter-preset '("-MAYBE"))
+	((org-agenda-tag-filter-preset '("-SOMEDAY"))
 	 (org-agenda-span 'week)
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
        ("ci" "INBOX tasks" todo "TODO"
 	((org-agenda-category-filter-preset '("+INBOX"))))
        ("cn" "NEXT tasks" tags-todo "NEXT")
-       ("cm" "MAYBE tasks" tags-todo "MAYBE")))
+       ("cs" "SOMEDAY tasks" tags-todo "SOMEDAY")))
 
    ;; CAPTURE TEMPLATES
    '(org-capture-templates
