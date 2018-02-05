@@ -134,7 +134,8 @@
    ;; CUSTOM COMMANDS
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
-       ("cd" "Daily agenda (ignore SOMEDAY)"
+       ("ca" . "Agenda commands")
+       ("cad" "Daily agenda (ignore SOMEDAY)"
 	((agenda "")
 	 (tags-todo "NEXT")
 	 (todo "WAIT")
@@ -142,7 +143,7 @@
 	((org-agenda-tag-filter-preset '("-SOMEDAY"))
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
-       ("cw" "Weekly agenda (ignore SOMEDAY)"
+       ("caw" "Weekly agenda (ignore SOMEDAY)"
 	((agenda "")
 	 (tags-todo "NEXT")
 	 (todo "WAIT")
@@ -151,10 +152,21 @@
 	 (org-agenda-span 'week)
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
-       ("ci" "INBOX tasks" todo "TODO"
+       ("ct" . "Task commands")
+       ("ctc" . "Filter tasks by CATEGORY")
+       ("ctci" "INBOX tasks"
+	((alltodo ""))
 	((org-agenda-category-filter-preset '("+INBOX"))))
-       ("cn" "NEXT tasks" tags-todo "NEXT")
-       ("cs" "SOMEDAY tasks" tags-todo "SOMEDAY")))
+       ("ctcf" "INFRA tasks"
+	((alltodo ""))
+	((org-agenda-category-filter-preset '("+INFRA"))))
+       ("ctcr" "ROLES tasks"
+	((alltodo ""))
+	((org-agenda-category-filter-preset '("+ROLES"))))
+       ("ctw" "Tasks in WAIT state" todo "WAIT")
+       ("cte" "Tasks in EPIC state" todo "EPIC")
+       ("ctn" "NEXT tasks" tags-todo "NEXT")
+       ("cts" "SOMEDAY tasks" tags-todo "SOMEDAY")))
 
    ;; CAPTURE TEMPLATES
    '(org-capture-templates
@@ -170,7 +182,7 @@
        ("et" "Event (with single datetime)" entry
 	(file+headline "events.org" "INBOX")
 	"* %^{Title}\n%^T\n%?")
-       ("ed" "Event (between dates)" entry
+       ("er" "Event (with date range)" entry
 	(file+headline "events.org" "INBOX")
 	"* %^{Title}\n%^t--%^t\n%?")
        ("m" "Memo" entry
