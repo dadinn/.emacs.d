@@ -265,6 +265,7 @@
   :ensure t
   :bind
   (("C-c c i" . cider-jack-in)
+   ("C-c c c" . cider-connect)
    ("C-c c q" . cider-quit))
   :config
   (add-hook 'cider-mode-hook 'eldoc-mode)
