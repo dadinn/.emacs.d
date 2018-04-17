@@ -176,10 +176,10 @@
       (("t" "Task")
        ("tt" "Task (Scheduled)" entry
 	(file+headline "tasks.org" "INBOX")
-	"* TODO %^{Title}\nSCHEDULED: %^{Schedule}t\n%?")
+	"* TODO %^{Title}\nSCHEDULED: %t\n%?")
        ("td" "Task (Scheduled, with Deadline)" entry
 	(file+headline "tasks.org" "INBOX")
-	"* TODO %^{Title}\nSCHEDULED: %^{Schedule}t\nDEADLINE: %^{Deadline}t\n%?")
+	"* TODO %^{Title}\nSCHEDULED: %t\nDEADLINE: %^{Deadline}t\n%?")
        ("e" "Event")
        ("et" "Event (with single datetime)" entry
 	(file+headline "events.org" "INBOX")
