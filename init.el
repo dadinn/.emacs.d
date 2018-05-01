@@ -227,6 +227,10 @@
 (use-package projectile
   :ensure t
   :config
+  (custom-set-variables
+   '(projectile-grep-finished-hook
+     '((lambda ()
+	 (pop-to-buffer next-error-last-buffer)))))
   (projectile-mode))
 
 (use-package bm
