@@ -294,7 +294,7 @@
   :pin melpa-stable
   :ensure t
   :config
-  (add-hook 'clojure-mode-hook 'sayid-setup-package))
+  (eval-after-load 'clojure-mode '(sayid-setup-package)))
 
 (use-package paredit
   :pin melpa-stable
