@@ -35,6 +35,7 @@
   :config
   (custom-set-variables
    '(ido-enable-flex-matching t)
+   '(ido-auto-merge-work-directories-length -1)
    '(ido-everywhere t)
    '(ido-mode t)))
 
