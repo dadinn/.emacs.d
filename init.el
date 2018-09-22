@@ -4,16 +4,14 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(customize-set-variable
-  'package-archives
-  '(("gnu" . "http://elpa.gnu.org/packages/")
-    ("melpa" . "http://melpa.org/packages/")
-    ("melpa-stable" . "http://stable.melpa.org/packages/")
-    ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
-    ("orgmode" . "http://orgmode.org/elpa/")
-    ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
-
 (custom-set-variables
+ '(package-archives
+   '(("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/")
+     ("melpa-stable" . "http://stable.melpa.org/packages/")
+     ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
+     ("orgmode" . "http://orgmode.org/elpa/")
+     ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(calendar-week-start-day 1)
