@@ -1,10 +1,17 @@
+# BUILT-INS
 auto-save-list/
-elpa/
 eshell/
+elpa/
 url/
+tramp
+session.*
 *~
+# PACKAGE SPECIFIC
 ido.last
 bookmarks
+projectile-bookmarks.eld
+ac-comphist.dat
+# CUSTOM FILES
 custom.el
-session.*
+*.swp
 *.bak
