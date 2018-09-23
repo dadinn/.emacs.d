@@ -1,4 +1,9 @@
-(require 'package)
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (customize-set-variable
   'package-archives
   '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -7,7 +12,6 @@
     ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
     ("orgmode" . "http://orgmode.org/elpa/")
     ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
-(package-initialize)
 
 (custom-set-variables
  '(inhibit-startup-screen t)
