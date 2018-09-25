@@ -287,9 +287,6 @@
   :pin melpa-stable
   :ensure t)
 
-(use-package cider-profile
-  :ensure t)
-
 (use-package sayid
   :pin melpa-stable
   :ensure t
