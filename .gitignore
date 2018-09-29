@@ -1,6 +1,7 @@
 # BUILT-INS
 auto-save-list/
 eshell/
+el-get/
 elpa/
 url/
 tramp

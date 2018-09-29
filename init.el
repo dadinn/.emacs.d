@@ -10,8 +10,7 @@
      ("melpa" . "http://melpa.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/")
      ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
-     ("orgmode" . "http://orgmode.org/elpa/")
-     ("SC" . "http://joseito.republika.pl/sunrise-commander/")))
+     ("orgmode" . "http://orgmode.org/elpa/")))
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(calendar-week-start-day 1)
@@ -31,6 +30,18 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
+
+(use-package el-get
+  :ensure t
+  :config
+  (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
+  ;;TODO: https://github.com/dimitri/el-get/issues/2649
+  (if (not (file-directory-p el-get-dir))
+      (make-directory el-get-dir)))
+
+(use-package use-package-el-get
+  :ensure t
+  :config (use-package-el-get-setup))
 
 (use-package ido
   :ensure t
@@ -249,7 +260,8 @@
    '(bm-repository-file "bm.el")))
 
 (use-package sunrise-commander
-  :ensure t
+  :ensure nil
+  :el-get t
   :bind (("C-x d" . sunrise)
 	 ("C-x C-d" . sunrise-cd))
   :config
