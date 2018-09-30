@@ -83,8 +83,9 @@
    ("C-c k" . org-capture)
    ("C-c C-h" . org-archive-done-tasks)
    ("C-c C-e" . org-babel-execute-src-block))
+  :hook
+  (text-mode . visual-line-mode)
   :config
-  (add-hook 'text-mode-hook 'visual-line-mode)
   (custom-set-variables
    '(org-agenda-span 'day)
    '(org-startup-indented t)
@@ -277,9 +278,10 @@
   (("C-c c i" . cider-jack-in)
    ("C-c c c" . cider-connect)
    ("C-c c q" . cider-quit))
+  :hook
+  (cider-mode . eldoc-mode)
+  (cider-mode . auto-complete-mode)
   :config
-  (add-hook 'cider-mode-hook 'eldoc-mode)
-  (add-hook 'cider-mode-hook 'auto-complete-mode)
   (custom-set-variables
    '(cider-lein-command "lein")
    '(cider-prompt-for-symbol nil)
@@ -294,12 +296,12 @@
   (eval-after-load 'clojure-mode '(sayid-setup-package)))
 
 (use-package paredit
-  :config
-  (add-hook 'scheme-mode-hook 'paredit-mode)
-  (add-hook 'lisp-mode-hook 'paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-  (add-hook 'clojure-mode-hook 'paredit-mode)
-  (add-hook 'cider-repl-mode-hook 'paredit-mode))
+  :hook
+  (scheme-mode . paredit-mode)
+  (lisp-mode . paredit-mode)
+  (emacs-lisp-mode . paredit-mode)
+  (clojure-mode . paredit-mode)
+  (cider-repl-mode . paredit-mode))
 
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
