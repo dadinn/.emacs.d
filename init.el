@@ -47,26 +47,23 @@
   :config (use-package-el-get-setup))
 
 (use-package ido
-  :config
-  (custom-set-variables
-   '(ido-enable-flex-matching t)
-   '(ido-auto-merge-work-directories-length -1)
-   '(ido-everywhere t)
-   '(ido-mode t)))
+  :custom
+  (ido-enable-flex-matching t)
+  (ido-auto-merge-work-directories-length -1)
+  (ido-everywhere t)
+  (ido-mode t))
 
 (use-package ido-vertical-mode
-  :config
-  (custom-set-variables
-   '(ido-vertical-mode t)
-   '(ido-vertical-show-count t)
-   '(ido-vertical-pad-list nil)
-   '(ido-vertical-define-keys 'C-n-and-C-p-only)))
+  :custom
+  (ido-vertical-mode t)
+  (ido-vertical-show-count t)
+  (ido-vertical-pad-list nil)
+  (ido-vertical-define-keys 'C-n-and-C-p-only))
 
 (use-package flx-ido
-  :config
-  (custom-set-variables
-   '(ido-enable-flex-matching t)
-   '(ido-use-faces nil)))
+  :custom
+  (ido-enable-flex-matching t)
+  (ido-use-faces nil))
 
 (use-package org
   :init
@@ -214,32 +211,29 @@
    ("C-c e b" . ediff-buffers))
   :init
   (load-library "ediff")
-  :config
-  (custom-set-variables
-   ;; due to bug with mixup of horizontally/vertically
-   '(ediff-split-window-function 'split-window-horizontally)
-   '(ediff-window-setup-function 'ediff-setup-windows-plain)))
+  :custom
+  ;; due to bug with mixup of horizontally/vertically
+  (ediff-split-window-function 'split-window-horizontally)
+  (ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package magit
   :bind ("C-x C-m" . magit-status)
-  :config
-  (custom-set-variables
-   '(magit-repository-directories (quote ("~/Workspace/dev")))
-   '(magit-repository-directories-depth 1)))
+  :custom
+  (magit-repository-directories (quote ("~/Workspace/dev")))
+  (magit-repository-directories-depth 1))
 
 (use-package undo-tree
   :pin "gnu"
   :bind ("C-x u" . undo-tree-visualize)
-  :config
-  (custom-set-variables
-   '(global-undo-tree-mode t)))
+  :custom
+  (global-undo-tree-mode t))
 
 (use-package projectile
+  :custom
+  (projectile-grep-finished-hook
+   '((lambda ()
+       (pop-to-buffer next-error-last-buffer))))
   :config
-  (custom-set-variables
-   '(projectile-grep-finished-hook
-     '((lambda ()
-	 (pop-to-buffer next-error-last-buffer)))))
   (projectile-mode))
 
 (use-package bm
@@ -247,31 +241,28 @@
   ((("C-c b n" . bm-next)
     ("C-c b p" . bm-previous)
     ("C-c b m" . bm-toggle)))
-  :config
-  (custom-set-variables
-   '(bm-cycle-all-buffers t)
-   '(bm-buffer-persistence t)
-   '(bm-repository-file "bm.el")))
+  :custom
+  (bm-cycle-all-buffers t)
+  (bm-buffer-persistence t)
+  (bm-repository-file "bm.el"))
 
 (use-package sunrise-commander
   :ensure nil
   :el-get t
   :bind (("C-x d" . sunrise)
 	 ("C-x C-d" . sunrise-cd))
-  :config
-  (custom-set-variables
-   '(sr-cursor-follows-mouse nil)
-   '(sr-listing-switches "-lA --group-directories-first")
-   '(sr-show-file-attributes t)
-   '(sr-show-hidden-files t)
-   '(sr-start-hook nil)
-   '(sr-window-split-style (quote horizontal))
-   '(sr-windows-default-ratio 80)))
+  :custom
+  (sr-cursor-follows-mouse nil)
+  (sr-listing-switches "-lA --group-directories-first")
+  (sr-show-file-attributes t)
+  (sr-show-hidden-files t)
+  (sr-start-hook nil)
+  (sr-window-split-style (quote horizontal))
+  (sr-windows-default-ratio 80))
 
 (use-package clojure-mode
-  :config
-  (custom-set-variables
-   '(clojure-defun-style-default-indent t)))
+  :custom
+  (clojure-defun-style-default-indent t))
 
 (use-package cider
   :bind
@@ -281,13 +272,12 @@
   :hook
   (cider-mode . eldoc-mode)
   (cider-mode . auto-complete-mode)
-  :config
-  (custom-set-variables
-   '(cider-lein-command "lein")
-   '(cider-prompt-for-symbol nil)
-   '(cider-repl-use-pretty-printing t)
-   ;; font-lock results in terrible performance
-   '(cider-repl-use-clojure-font-lock nil)))
+  :custom
+  (cider-lein-command "lein")
+  (cider-prompt-for-symbol nil)
+  (cider-repl-use-pretty-printing t)
+  ;; font-lock results in terrible performance
+  (cider-repl-use-clojure-font-lock nil))
 
 (use-package ac-cider)
 
