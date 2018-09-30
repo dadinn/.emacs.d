@@ -334,10 +334,10 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package auctex
-  :pin gnu
-  :disabled t
-  :ensure t)
+;;TODO: https://www.emacswiki.org/emacs/AUCTeX
+(use-package tex
+  :ensure auctex
+  :pin "gnu")
 
 (use-package csv-mode
   :ensure t)
