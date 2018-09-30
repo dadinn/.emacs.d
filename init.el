@@ -360,6 +360,8 @@
 
 (use-package monokai-theme
   :ensure t)
-(use-package solarized-theme)
-(use-package zenburn-theme)
+(use-package solarized-theme
+  :disabled t)
+(use-package zenburn-theme
+  :disabled t)
 
