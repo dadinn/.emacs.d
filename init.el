@@ -25,6 +25,7 @@
 (define-key global-map "\C-x\C-b" 'bs-show)
 (define-key global-map "\C-x\C-o" 'other-window)
 (define-key global-map "\C-x\C-i" 'other-window)
+(define-key global-map "\C-c\C-w" 'whitespace-mode)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
