@@ -268,9 +268,9 @@
   (custom-set-variables
    '(sr-cursor-follows-mouse nil)
    '(sr-listing-switches "-lA --group-directories-first")
-   '(sr-listing-switches "-la")
    '(sr-show-file-attributes t)
    '(sr-show-hidden-files t)
+   '(sr-start-hook nil)
    '(sr-window-split-style (quote horizontal))
    '(sr-windows-default-ratio 80)))
 
