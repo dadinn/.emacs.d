@@ -350,6 +350,9 @@
   :disabled t ; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
   :ensure t)
 
+(use-package yaml-mode
+  :ensure t)
+
 (use-package protobuf-mode
   :pin melpa-stable
   :disabled t ; causes error "Symbol's function definition is void: set-difference"
