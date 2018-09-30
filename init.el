@@ -342,6 +342,10 @@
 (use-package csv-mode
   :ensure t)
 
+(use-package nhexl-mode
+  :ensure t
+  :pin "gnu")
+
 (use-package json-mode
   :disabled t ; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
   :ensure t)
