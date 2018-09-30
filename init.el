@@ -31,8 +31,12 @@
   (package-install 'use-package))
 (require 'use-package)
 
+(use-package use-package
+  :custom
+  (use-package-always-ensure t)
+  (use-package-always-pin "melpa-stable"))
+
 (use-package el-get
-  :ensure t
   :config
   (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
   ;;TODO: https://github.com/dimitri/el-get/issues/2649
@@ -40,11 +44,9 @@
       (make-directory el-get-dir)))
 
 (use-package use-package-el-get
-  :ensure t
   :config (use-package-el-get-setup))
 
 (use-package ido
-  :ensure t
   :config
   (custom-set-variables
    '(ido-enable-flex-matching t)
@@ -53,7 +55,6 @@
    '(ido-mode t)))
 
 (use-package ido-vertical-mode
-  :ensure t
   :config
   (custom-set-variables
    '(ido-vertical-mode t)
@@ -62,14 +63,12 @@
    '(ido-vertical-define-keys 'C-n-and-C-p-only)))
 
 (use-package flx-ido
-  :ensure t
   :config
   (custom-set-variables
    '(ido-enable-flex-matching t)
    '(ido-use-faces nil)))
 
 (use-package org
-  :ensure t
   :init
   (defun org-archive-done-tasks ()
     "Archive all DONE and CANCELED tasks in the subtree of the current entry"
@@ -209,7 +208,6 @@
 	"* %?\n%^t\n"))))))
 
 (use-package ediff
-  :ensure t
   :bind
   (("C-c e f" . ediff-files)
    ("C-c e b" . ediff-buffers))
@@ -222,8 +220,6 @@
    '(ediff-window-setup-function 'ediff-setup-windows-plain)))
 
 (use-package magit
-  :pin melpa-stable
-  :ensure t
   :bind ("C-x C-m" . magit-status)
   :config
   (custom-set-variables
@@ -231,15 +227,13 @@
    '(magit-repository-directories-depth 1)))
 
 (use-package undo-tree
-  :pin gnu
-  :ensure t
+  :pin "gnu"
   :bind ("C-x u" . undo-tree-visualize)
   :config
   (custom-set-variables
    '(global-undo-tree-mode t)))
 
 (use-package projectile
-  :ensure t
   :config
   (custom-set-variables
    '(projectile-grep-finished-hook
@@ -248,7 +242,6 @@
   (projectile-mode))
 
 (use-package bm
-  :ensure t
   :bind
   ((("C-c b n" . bm-next)
     ("C-c b p" . bm-previous)
@@ -275,15 +268,11 @@
    '(sr-windows-default-ratio 80)))
 
 (use-package clojure-mode
-  :pin melpa-stable
-  :ensure t
   :config
   (custom-set-variables
    '(clojure-defun-style-default-indent t)))
 
 (use-package cider
-  :pin melpa-stable
-  :ensure t
   :bind
   (("C-c c i" . cider-jack-in)
    ("C-c c c" . cider-connect)
@@ -298,19 +287,13 @@
    ;; font-lock results in terrible performance
    '(cider-repl-use-clojure-font-lock nil)))
 
-(use-package ac-cider
-  :pin melpa-stable
-  :ensure t)
+(use-package ac-cider)
 
 (use-package sayid
-  :pin melpa-stable
-  :ensure t
   :config
   (eval-after-load 'clojure-mode '(sayid-setup-package)))
 
 (use-package paredit
-  :pin melpa-stable
-  :ensure t
   :config
   (add-hook 'scheme-mode-hook 'paredit-mode)
   (add-hook 'lisp-mode-hook 'paredit-mode)
@@ -321,18 +304,14 @@
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
 
-(use-package haskell-mode
-  :pin melpa-stable
-  :ensure t)
+(use-package haskell-mode)
 
 (use-package scala-mode2 :disabled t)
 (use-package sbt-mode :disabled t)
 
-(use-package dockerfile-mode
-  :ensure t)
+(use-package dockerfile-mode)
 
-(use-package markdown-mode
-  :ensure t)
+(use-package markdown-mode)
 
 ;;TODO: https://www.emacswiki.org/emacs/AUCTeX
 (use-package tex
@@ -340,26 +319,22 @@
   :pin "gnu")
 
 (use-package csv-mode
-  :ensure t)
+  :pin "gnu")
 
 (use-package nhexl-mode
-  :ensure t
   :pin "gnu")
 
 (use-package json-mode
-  :disabled t ; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
-  :ensure t)
+  ;; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
+  :disabled t)
 
-(use-package yaml-mode
-  :ensure t)
+(use-package yaml-mode)
 
 (use-package protobuf-mode
-  :pin melpa-stable
-  :disabled t ; causes error "Symbol's function definition is void: set-difference"
-  :ensure t)
+  ;; causes error "Symbol's function definition is void: set-difference"
+  :disabled t)
 
-(use-package monokai-theme
-  :ensure t)
+(use-package monokai-theme)
 (use-package solarized-theme
   :disabled t)
 (use-package zenburn-theme
