@@ -275,8 +275,8 @@
 
 (use-package cider
   :bind
-  (("C-c c i" . cider-jack-in)
-   ("C-c c c" . cider-connect)
+  (("C-c c c" . cider-connect)
+   ("C-c c j" . cider-jack-in)
    ("C-c c q" . cider-quit))
   :hook
   (cider-mode . eldoc-mode)
