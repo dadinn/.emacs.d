@@ -66,6 +66,10 @@
   (ido-enable-flex-matching t)
   (ido-use-faces nil))
 
+(use-package ido-completing-read+
+  :config
+  (ido-ubiquitous-mode))
+
 (use-package org
   :init
   (defun org-archive-done-tasks ()
