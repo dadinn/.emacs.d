@@ -268,9 +268,11 @@
   (sr-listing-switches "-lA --group-directories-first")
   (sr-show-file-attributes t)
   (sr-show-hidden-files t)
-  (sr-start-hook nil)
   (sr-window-split-style (quote horizontal))
-  (sr-windows-default-ratio 80))
+  (sr-start-hook nil)
+  :config
+  (require 'sunrise-x-popviewer)
+  (sr-popviewer-mode))
 
 (use-package clojure-mode
   :custom
