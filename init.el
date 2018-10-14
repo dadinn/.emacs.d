@@ -317,7 +317,14 @@
 ;;TODO: https://www.emacswiki.org/emacs/AUCTeX
 (use-package tex
   :ensure auctex
-  :pin "gnu")
+  :pin "gnu"
+  :hook
+  (LaTeX-mode . LaTeX-math-mode)
+  (LaTeX-mode . TeX-fold-mode)
+  (LaTeX-mode . TeX-PDF-mode)
+  :custom
+  (TeX-auto-save t)
+  (TeX-parse-self t))
 
 (use-package csv-mode
   :pin "gnu"
