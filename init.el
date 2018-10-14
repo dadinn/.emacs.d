@@ -79,7 +79,6 @@
   :bind
   (("C-c a" . org-agenda)
    ("C-c k" . org-capture)
-   :map org-mode-map
    ("C-c C-h" . org-archive-done-tasks)
    ("C-c C-e" . org-babel-execute-src-block))
   :hook
