@@ -299,7 +299,8 @@
   (lisp-mode . paredit-mode)
   (emacs-lisp-mode . paredit-mode)
   (clojure-mode . paredit-mode)
-  (cider-repl-mode . paredit-mode))
+  (cider-repl-mode . paredit-mode)
+  :init (show-paren-mode))
 
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
