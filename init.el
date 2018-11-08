@@ -276,7 +276,7 @@
 
 (use-package clojure-mode
   :custom
-  (clojure-defun-style-default-indent t))
+  (clojure-indent-style :always-indent))
 
 (use-package cider
   :bind
