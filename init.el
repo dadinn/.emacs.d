@@ -234,11 +234,14 @@
   (global-undo-tree-mode t))
 
 (use-package projectile
+  :bind
+  (:map projectile-mode-map
+   ("C-c p" . projectile-command-map))
   :custom
   (projectile-grep-finished-hook
    '((lambda ()
        (pop-to-buffer next-error-last-buffer))))
-  :config
+  :init
   (projectile-mode))
 
 (use-package bm
