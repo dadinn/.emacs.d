@@ -296,6 +296,11 @@
   (("C-c c c" . cider-connect)
    ("C-c c j" . cider-jack-in)
    :map cider-mode-map
+   ("C-c c e" . cider-pprint-eval-last-sexp)
+   ("C-c c b n" . cider-browse-ns-all)
+   ("C-c c b s" . cider-browse-spec-all)
+   ("C-c c q" . cider-quit)
+   :map cider-repl-mode-map
    ("C-c c q" . cider-quit))
   :hook
   (cider-mode . eldoc-mode)
