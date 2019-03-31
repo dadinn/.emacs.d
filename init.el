@@ -295,6 +295,7 @@
   :bind
   (("C-c c c" . cider-connect)
    ("C-c c j" . cider-jack-in)
+   :map cider-mode-map
    ("C-c c q" . cider-quit))
   :hook
   (cider-mode . eldoc-mode)
