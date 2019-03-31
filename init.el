@@ -234,6 +234,13 @@
   :custom
   (global-undo-tree-mode t))
 
+(use-package paredit
+  :hook
+  (lisp-mode . paredit-mode)
+  (scheme-mode . paredit-mode)
+  (emacs-lisp-mode . paredit-mode)
+  :init (show-paren-mode))
+
 (use-package projectile
   :bind
   (:map projectile-mode-map
@@ -279,6 +286,8 @@
   (sr-popviewer-mode))
 
 (use-package clojure-mode
+  :hook
+  (clojure-mode . paredit-mode)
   :custom
   (clojure-indent-style :always-indent))
 
@@ -290,6 +299,7 @@
   :hook
   (cider-mode . eldoc-mode)
   (cider-mode . auto-complete-mode)
+  (cider-repl-mode . paredit-mode)
   :custom
   (cider-lein-command "lein")
   (cider-prompt-for-symbol nil)
@@ -302,15 +312,6 @@
 (use-package sayid
   :config
   (eval-after-load 'clojure-mode '(sayid-setup-package)))
-
-(use-package paredit
-  :hook
-  (scheme-mode . paredit-mode)
-  (lisp-mode . paredit-mode)
-  (emacs-lisp-mode . paredit-mode)
-  (clojure-mode . paredit-mode)
-  (cider-repl-mode . paredit-mode)
-  :init (show-paren-mode))
 
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
