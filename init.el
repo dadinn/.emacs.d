@@ -70,6 +70,10 @@
   :config
   (ido-ubiquitous-mode))
 
+(use-package company
+  :bind
+  (("TAB" . company-indent-or-complete-common)))
+
 (use-package org
   :init
   (defun org-archive-done-tasks ()
@@ -299,12 +303,16 @@
    ("C-c c e" . cider-pprint-eval-last-sexp)
    ("C-c c b n" . cider-browse-ns-all)
    ("C-c c b s" . cider-browse-spec-all)
+   ("C-c c f" . cider-completion-flush-caches)
    ("C-c c q" . cider-quit)
    :map cider-repl-mode-map
    ("C-c c q" . cider-quit))
   :hook
   (cider-mode . eldoc-mode)
   (cider-mode . auto-complete-mode)
+  (cider-mode . company-mode)
+  (cider-mode . cider-company-enable-fuzzy-completion)
+  (cider-repl-mode . cider-company-enable-fuzzy-completion)
   (cider-repl-mode . paredit-mode)
   :custom
   (cider-lein-command "lein")
@@ -312,8 +320,6 @@
   (cider-repl-use-pretty-printing t)
   ;; font-lock results in terrible performance
   (cider-repl-use-clojure-font-lock nil))
-
-(use-package ac-cider)
 
 (use-package sayid
   :config
