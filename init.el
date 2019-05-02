@@ -341,6 +341,51 @@
 (use-package scala-mode2 :disabled t)
 (use-package sbt-mode :disabled t)
 
+(use-package js2-refactor
+  :after js2-mode
+  :bind
+  (:map js2-mode-map
+   ("C-k" . js2r-kill))
+  :hook
+  (js2-mode . js2-refactor-mode)
+  :config
+  (js2r-add-keybindings-with-prefix "C-c C-r"))
+
+(use-package js2-mode
+  :mode
+  ("\\.js\\'" . js2-mode)
+  :hook
+  (js2-mode . js2-imenu-extras-mode)
+  :config
+  (define-key js2-mode-map (kbd "M-.") nil))
+
+(use-package xref-js2
+  :after js2-mode
+  :init
+  (defun init-js2-xref-backend ()
+    "Initialises JS2 Xref backend via hook"
+    (if (not (executable-find "ag"))
+      (message "Necessary executable `ag' is not found on `exec-path'")
+      (message "Registered JS2 Xref backend")
+      (add-hook 'xref-backend-functions 'xref-js2-xref-backend)))
+  :hook
+  (js2-mode . init-js2-xref-backend))
+
+(use-package company-tern
+  :after (company js2-mode)
+  :init
+  (defun init-company-tern ()
+    (if (not (executable-find "tern"))
+      (message "Necessary executable `tern' is not found on `exec-path'")
+      (message "Turning on company-mode using Tern")
+      (tern-mode) (company-mode)))
+  :hook
+  (js2-mode . init-company-tern)
+  :config
+  (add-to-list 'company-backends 'company-tern)
+  (define-key tern-mode-keymap (kbd "M-.") nil)
+  (define-key tern-mode-keymap (kbd "M-,") nil))
+
 (use-package dockerfile-mode)
 
 (use-package markdown-mode)
