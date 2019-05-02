@@ -27,6 +27,9 @@
 (define-key global-map "\C-x\C-i" 'other-window)
 (define-key global-map "\C-c\C-w" 'whitespace-mode)
 
+;; enable colum-number-mode
+(column-number-mode)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
