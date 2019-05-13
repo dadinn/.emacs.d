@@ -254,15 +254,15 @@
   :init (show-paren-mode))
 
 (use-package projectile
+  :init
+  (projectile-mode)
+  (defun pop-grep-buffer ()
+    (pop-to-buffer next-error-last-buffer))
+  :hook
+  (projectile-grep-finished . pop-grep-buffer)
   :bind
   (:map projectile-mode-map
-   ("C-c p" . projectile-command-map))
-  :custom
-  (projectile-grep-finished-hook
-   '((lambda ()
-       (pop-to-buffer next-error-last-buffer))))
-  :init
-  (projectile-mode))
+   ("C-c p" . projectile-command-map)))
 
 (use-package bm
   :bind
