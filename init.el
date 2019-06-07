@@ -295,8 +295,9 @@
   (sr-window-split-style (quote horizontal))
   (sr-start-hook nil)
   :config
-  (require 'sunrise-x-popviewer)
-  (sr-popviewer-mode))
+  ;; run C(opy) and R(ename) operations in background
+  ;; when using C-u prefix
+  (require 'sunrise-x-loop))
 
 (use-package clojure-mode
   :hook
