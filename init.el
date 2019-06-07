@@ -104,6 +104,7 @@
   (custom-set-variables
    '(org-agenda-span 'day)
    '(org-startup-indented t)
+   '(org-startup-folded nil)
    '(org-directory "~/Workspace/org/")
    '(org-agenda-files (list org-directory))
    '(org-archive-location "archives/datetree.org::datetree/* %s")
