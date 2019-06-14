@@ -358,6 +358,8 @@
   ("\\.js\\'" . js2-mode)
   :hook
   (js2-mode . js2-imenu-extras-mode)
+  :custom
+  (js-indent-level 2)
   :config
   (define-key js2-mode-map (kbd "M-.") nil))
 
