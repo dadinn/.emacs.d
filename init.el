@@ -390,6 +390,23 @@
   (define-key tern-mode-keymap (kbd "M-.") nil)
   (define-key tern-mode-keymap (kbd "M-,") nil))
 
+(use-package indium
+  :after js2-mode
+  :hook
+  (js2-mode . indium-interaction-mode)
+  (indium-repl-mode . indium-switch-to-repl-buffer)
+  :bind
+  (("C-c C-l" . indium-launch)
+   ("C-c C-c" . indium-connect)
+   ("C-c C-s" . indium-scratch)
+   (:map indium-interaction-mode-map)
+   ("C-c C-q" . indium-maybe-quit)
+   ("C-c C-k" . indium-eval-buffer)
+   ("C-c C-e" . indium-eval-region))
+  :custom
+  ;; this is default anyway
+  (indium-chrome-use-temporary-profile t))
+
 (use-package dockerfile-mode)
 
 (use-package markdown-mode)
