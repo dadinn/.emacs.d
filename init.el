@@ -263,7 +263,9 @@
   (projectile-grep-finished . pop-grep-buffer)
   :bind
   (:map projectile-mode-map
-   ("C-c p" . projectile-command-map)))
+   ("C-c p" . projectile-command-map))
+  :config
+  (add-to-list 'projectile-globally-ignored-directories "node_modules"))
 
 (use-package bm
   :bind
