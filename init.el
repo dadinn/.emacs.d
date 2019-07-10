@@ -321,7 +321,6 @@
    ("C-c c q" . cider-quit))
   :hook
   (cider-mode . eldoc-mode)
-  (cider-mode . auto-complete-mode)
   (cider-mode . company-mode)
   (cider-mode . cider-company-enable-fuzzy-completion)
   (cider-repl-mode . cider-company-enable-fuzzy-completion)
