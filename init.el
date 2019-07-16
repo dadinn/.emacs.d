@@ -23,6 +23,7 @@
  '(tool-bar-mode nil))
 
 (define-key global-map "\C-x\C-b" 'bs-show)
+(define-key global-map "\C-x\C-p" 'list-processes)
 (define-key global-map "\C-x\C-o" 'other-window)
 (define-key global-map "\C-x\C-i" 'other-window)
 (define-key global-map "\C-c\C-w" 'whitespace-mode)
