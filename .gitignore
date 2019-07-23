@@ -9,7 +9,7 @@ session.*
 *~
 # PACKAGE SPECIFIC
 ido.last
-bookmarks
+bookmarks.el
 projectile-bookmarks.eld
 ac-comphist.dat
 # CUSTOM FILES
