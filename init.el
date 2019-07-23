@@ -34,12 +34,11 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(require 'use-package)
 
-(use-package use-package
-  :custom
-  (use-package-always-ensure t)
-  (use-package-always-pin "melpa-stable"))
+(require 'use-package)
+(custom-set-variables
+ '(use-package-always-ensure t)
+ '(use-package-always-pin "melpa-stable"))
 
 (use-package el-get
   :config
