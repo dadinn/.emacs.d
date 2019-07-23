@@ -312,7 +312,13 @@
   :pin "gnu")
 
 (use-package csv-mode
-  :pin "gnu")
+  :pin "gnu"
+  :bind
+  (:map csv-mode-map
+   ("C-c a" . csv-align-fields)
+   ("C-c u" . csv-unalign-fields))
+  :custom
+  (csv-align-style (quote auto)))
 
 (use-package nhexl-mode
   :pin "gnu")
