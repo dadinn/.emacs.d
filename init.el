@@ -236,7 +236,9 @@
   (ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package magit
-  :bind ("C-x C-m" . magit-status)
+  :bind
+  (("C-x C-m" . magit-status)
+   ("C-x M-b" . magit-blame))
   :custom
   (magit-repository-directories (quote ("~/Workspace/dev")))
   (magit-repository-directories-depth 1))
