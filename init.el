@@ -238,6 +238,7 @@
 (use-package magit
   :bind
   (("C-x C-m" . magit-status)
+   ("C-x M-f" . magit-log-buffer-file)
    ("C-x M-b" . magit-blame))
   :custom
   (magit-repository-directories (quote ("~/Workspace/dev")))
