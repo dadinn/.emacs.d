@@ -122,6 +122,10 @@
    '(org-agenda-window-setup 'current-window)
    '(org-todo-keywords
      (quote ((sequence "TODO(t!)" "ONGOING(o!)" "WAITING(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
+   '(org-todo-keyword-faces
+     (quote (("WAITING" . "purple")
+	     ("ONGOING" . "orange")
+	     ("CANCELED" . "firebrick"))))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    `(org-todo-state-tags-triggers
      (quote
