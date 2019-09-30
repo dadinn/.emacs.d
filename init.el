@@ -158,6 +158,11 @@
    '(org-default-priority 70)
    '(org-lowest-priority 70)
    '(org-highest-priority 65)
+   '(org-agenda-sorting-strategy
+     '((agenda time-up deadline-down priority-down)
+       (todo category-up priority-down)
+       (tags category-up priority-down)
+       (search category-up)))
 
    ;; DEPENDENCIES
    '(org-enforce-todo-dependencies t)
