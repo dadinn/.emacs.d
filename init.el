@@ -122,6 +122,12 @@
    '(org-agenda-window-setup 'current-window)
    ;; add extra WAIT and CANCELED todo states and logging with notes
    '(org-todo-keywords (quote ((sequence "TODO(t!)" "EPIC(E!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELED(c@/!)"))))
+   ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
+   `(org-todo-state-tags-triggers
+     (quote
+      ((todo . ((,org-archive-tag . nil)))
+       ("CANCELED" . ((,org-archive-tag . t)))
+       ("EPIC" . (("TARGET" . t))))))
    '(org-tag-persistent-alist
      '(("TARGET" . ?t)
        (:startgroup . nil)
@@ -129,11 +135,6 @@
        ("MAYBE" . ?m)
        (:endgroup . nil)))
    '(org-tags-exclude-from-inheritance (quote ("TARGET")))
-   ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
-   '(org-todo-state-tags-triggers
-     (cons 'quote (list (cons 'todo (list (cons org-archive-tag nil)))
-			(cons "CANCELED" (list (cons org-archive-tag t)))
-			(cons "EPIC" (list (cons "TARGET" t))))))
    ;; REFILE BEHAVIOUR
    '(org-refile-targets
      '((nil . (:level . 1))
