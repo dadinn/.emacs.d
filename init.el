@@ -107,7 +107,7 @@
    '(org-startup-folded nil)
    '(org-directory "~/Workspace/org/")
    '(org-agenda-files (list org-directory))
-   '(org-archive-location "archives/datetree.org::datetree/* %s")
+   '(org-archive-location "archives.org::datetree/* %s")
    '(org-agenda-diary-file (concat org-directory "diary.org"))
    '(org-agenda-include-diary t)
    '(org-deadline-warning-days 7)
