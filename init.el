@@ -190,6 +190,9 @@
 	 (org-agenda-span 'week)
 	 (org-agenda-compact-block t)
 	 (org-agenda-time-grid nil)))
+       ("cb" "Backlog (tasks not scheduled)" todo "TODO"
+	((org-agenda-skip-function
+	  '(org-agenda-skip-entry-if 'scheduled))))
        ("ct" . "Task commands")
        ("ctc" . "Filter tasks by CATEGORY")
        ("ctci" "INBOX tasks"
