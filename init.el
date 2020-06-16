@@ -348,6 +348,15 @@
   :config
   (eval-after-load 'clojure-mode '(sayid-setup-package)))
 
+(use-package geiser
+  :after (paredit company)
+  :bind
+  (("C-c g r" . run-geiser)
+   ("C-c g c" . geiser-connect))
+  :hook
+  (geiser-mode . company-mode)
+  (geiser-repl-mode . paredit-mode))
+
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
 
