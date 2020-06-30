@@ -310,6 +310,7 @@
   (clojure-indent-style :always-indent))
 
 (use-package cider
+  :after (paredit company)
   :bind
   (("C-c c c" . cider-connect)
    ("C-c c j" . cider-jack-in)
