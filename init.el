@@ -89,7 +89,17 @@
 
 (use-package company
   :bind
-  (("TAB" . company-indent-or-complete-common)))
+  (("TAB" . company-indent-or-complete-common))
+  ;; :demand is needed to counteract delayment due to :bind,
+  ;; otherwise :after dependencies on company will not work:
+  ;; https://github.com/jwiegley/use-package/issues/852
+  :demand t
+  :custom
+  (company-idle-delay 0)
+  (company-minimum-prefix-length 1)
+  (company-selection-wrap-around t)
+  :config
+  (company-tng-configure-default))
 
 (use-package org
   :init
