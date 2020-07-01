@@ -89,7 +89,16 @@
 
 (use-package company
   :bind
-  (("TAB" . company-indent-or-complete-common)))
+  (:map company-mode-map
+   ("TAB" . company-indent-or-complete-common))
+  :demand t
+  :hook
+  (emacs-elisp-mode . company-mode)
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-selection-wrap-around t)
+  :config
+  (company-tng-configure-default))
 
 (use-package org
   :init
