@@ -121,7 +121,7 @@
    '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
    '(org-agenda-window-setup 'current-window)
    '(org-todo-keywords
-     (quote ((sequence "TODO(t!)" "WAIT(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
+     (quote ((sequence "TODO(t!)" "ONGOING(o!)" "WAIT(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    `(org-todo-state-tags-triggers
      (quote
