@@ -121,13 +121,12 @@
    '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
    '(org-agenda-window-setup 'current-window)
    '(org-todo-keywords
-     (quote ((sequence "TODO(t!)" "EPIC(E!)" "WAIT(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
+     (quote ((sequence "TODO(t!)" "WAIT(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    `(org-todo-state-tags-triggers
      (quote
       ((todo . ((,org-archive-tag . nil)))
-       ("CANCELED" . ((,org-archive-tag . t)))
-       ("EPIC" . (("TARGET" . t))))))
+       ("CANCELED" . ((,org-archive-tag . t))))))
    '(org-tag-persistent-alist
      '(("TARGET" . ?t)))
    '(org-tags-exclude-from-inheritance (quote ("TARGET")))
