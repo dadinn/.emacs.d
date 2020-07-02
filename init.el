@@ -129,11 +129,7 @@
        ("CANCELED" . ((,org-archive-tag . t)))
        ("EPIC" . (("TARGET" . t))))))
    '(org-tag-persistent-alist
-     '(("TARGET" . ?t)
-       (:startgroup . nil)
-       ("NEXT" . ?n)
-       ("MAYBE" . ?m)
-       (:endgroup . nil)))
+     '(("TARGET" . ?t)))
    '(org-tags-exclude-from-inheritance (quote ("TARGET")))
    ;; REFILE BEHAVIOUR
    '(org-refile-targets
