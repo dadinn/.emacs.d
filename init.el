@@ -173,42 +173,19 @@
    ;; CUSTOM COMMANDS
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
-       ("ca" . "Agenda commands")
-       ("cad" "Daily agenda (ignore MAYBE)"
-	((agenda "")
-	 (tags-todo "NEXT")
-	 (todo "WAIT")
-	 (todo "EPIC"))
-	((org-agenda-tag-filter-preset '("-MAYBE"))
-	 (org-agenda-compact-block t)
-	 (org-agenda-time-grid nil)))
-       ("caw" "Weekly agenda (ignore MAYBE)"
-	((agenda "")
-	 (tags-todo "NEXT")
-	 (todo "WAIT")
-	 (todo "EPIC"))
-	((org-agenda-tag-filter-preset '("-MAYBE"))
-	 (org-agenda-span 'week)
-	 (org-agenda-compact-block t)
-	 (org-agenda-time-grid nil)))
        ("cb" "Backlog (tasks not scheduled)" todo "TODO"
 	((org-agenda-skip-function
 	  '(org-agenda-skip-entry-if 'scheduled))))
-       ("ct" . "Task commands")
-       ("ctc" . "Filter tasks by CATEGORY")
-       ("ctci" "INBOX tasks"
+       ("cc" . "Filter tasks by CATEGORY")
+       ("cci" "INBOX tasks"
 	((alltodo ""))
 	((org-agenda-category-filter-preset '("+INBOX"))))
-       ("ctcf" "INFRA tasks"
+       ("ccf" "INFRA tasks"
 	((alltodo ""))
 	((org-agenda-category-filter-preset '("+INFRA"))))
-       ("ctcr" "ROLES tasks"
+       ("ccr" "ROLES tasks"
 	((alltodo ""))
-	((org-agenda-category-filter-preset '("+ROLES"))))
-       ("ctw" "Tasks in WAIT state" todo "WAIT")
-       ("cte" "Tasks in EPIC state" todo "EPIC")
-       ("ctn" "NEXT tasks" tags-todo "NEXT")
-       ("cts" "MAYBE tasks" tags-todo "MAYBE")))
+	((org-agenda-category-filter-preset '("+ROLES"))))))
 
    ;; CAPTURE TEMPLATES
    '(org-capture-templates
