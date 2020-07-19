@@ -12,15 +12,15 @@
      ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
      ("orgmode" . "http://orgmode.org/elpa/")))
  '(inhibit-startup-screen t)
- '(make-backup-files nil)
- '(calendar-week-start-day 1)
- '(visual-line-fringe-indicators '(left-curly-arrow right-curly arrow))
- '(visible-bell t)
- ;; remove all the default holiday entries from calendar
- '(calendar-holidays nil)
- '(custom-file "~/.emacs.d/custom.el")
  '(menu-bar-mode nil)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(calendar-week-start-day 1)
+ '(calendar-holidays nil) ; remove default holiday entries from calendar
+ '(visible-bell t)
+ '(visual-line-fringe-indicators
+   '(left-curly-arrow right-curly arrow))
+ '(make-backup-files nil)
+ '(custom-file "~/.emacs.d/custom.el"))
 
 (define-key global-map "\C-x\C-b" 'bs-show)
 (define-key global-map "\C-x\C-p" 'list-processes)
