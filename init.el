@@ -347,7 +347,7 @@
 (use-package sbt-mode :disabled t)
 
 (use-package js2-refactor
-  :after js2-mode
+  :after (js2-mode)
   :bind
   (:map js2-mode-map
    ("C-k" . js2r-kill))
@@ -367,7 +367,7 @@
   (define-key js2-mode-map (kbd "M-.") nil))
 
 (use-package xref-js2
-  :after js2-mode
+  :after (js2-mode)
   :init
   (defun init-js2-xref-backend ()
     "Initialises JS2 Xref backend via hook"
@@ -395,7 +395,7 @@
   (define-key tern-mode-keymap (kbd "M-,") nil))
 
 (use-package indium
-  :after js2-mode
+  :after (js2-mode)
   :hook
   (js2-mode . indium-interaction-mode)
   (indium-repl-mode . indium-switch-to-repl-buffer)
