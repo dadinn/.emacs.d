@@ -119,7 +119,7 @@
    ;; set SCHEDULED and DEADLINE leaders in agenda view
    '(org-agenda-deadline-leaders (quote ("Deadline!  " "In %d days: " "Late %d days: ")))
    '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
-   '(org-agenda-window-setup 'current-window)
+   '(org-agenda-window-setup 'only-window)
    '(org-todo-keywords
      (quote ((sequence "TODO(t!)" "ONGOING(o!)" "WAITING(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
    '(org-todo-keyword-faces
