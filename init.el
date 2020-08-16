@@ -26,7 +26,7 @@
 (define-key global-map "\C-x\C-p" 'list-processes)
 (define-key global-map "\C-x\C-o" 'other-window)
 (define-key global-map "\C-x\C-i" 'other-window)
-(define-key global-map "\C-c\C-w" 'whitespace-mode)
+(define-key global-map "\C-x\C-w" 'whitespace-mode)
 
 ;; enable colum-number-mode
 (column-number-mode)
