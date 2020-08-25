@@ -97,7 +97,7 @@
    ("C-c k" . org-capture)
    :map org-mode-map
    ("C-c H" . org-archive-done-tasks)
-   ("C-c e" . org-babel-execute-src-block))
+   ("C-c C-e" . org-babel-execute-src-block))
   :hook
   (text-mode . visual-line-mode)
   :config
