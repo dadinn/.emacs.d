@@ -236,8 +236,8 @@
 (use-package undo-tree
   :pin "gnu"
   :bind ("C-x u" . undo-tree-visualize)
-  :custom
-  (global-undo-tree-mode t))
+  :config
+  (global-undo-tree-mode))
 
 (use-package paredit
   :hook
