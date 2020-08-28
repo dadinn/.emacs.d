@@ -40,6 +40,10 @@
  '(use-package-always-ensure t)
  '(use-package-always-pin "melpa-stable"))
 
+(use-package gnu-elpa-keyring-update
+  :unless (<= 27 emacs-major-version)
+  :pin "gnu")
+
 (use-package el-get
   :pin "melpa"
   :config
