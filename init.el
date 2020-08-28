@@ -41,6 +41,7 @@
  '(use-package-always-pin "melpa-stable"))
 
 (use-package el-get
+  :pin "melpa"
   :config
   (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
   ;;TODO: https://github.com/dimitri/el-get/issues/2649
