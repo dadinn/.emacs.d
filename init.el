@@ -64,10 +64,11 @@
 
 (use-package ido-vertical-mode
   :custom
-  (ido-vertical-mode t)
   (ido-vertical-show-count t)
   (ido-vertical-pad-list nil)
-  (ido-vertical-define-keys 'C-n-and-C-p-only))
+  (ido-vertical-define-keys 'C-n-and-C-p-only)
+  :config
+  (ido-vertical-mode))
 
 (use-package flx-ido
   :custom
