@@ -226,6 +226,7 @@
   (ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package magit
+  :pin "melpa"
   :bind
   (("C-x C-m" . magit-status)
    ("C-x M-f" . magit-log-buffer-file)
