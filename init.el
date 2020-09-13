@@ -65,7 +65,6 @@
 (use-package ido-vertical-mode
   :custom
   (ido-vertical-show-count t)
-  (ido-vertical-pad-list nil)
   (ido-vertical-define-keys 'C-n-and-C-p-only)
   :config
   (ido-vertical-mode))
