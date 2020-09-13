@@ -12,6 +12,11 @@
    ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
    ("orgmode" . "http://orgmode.org/elpa/")))
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
+
 (custom-set-variables
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
@@ -22,7 +27,10 @@
  '(visual-line-fringe-indicators
    '(left-curly-arrow right-curly arrow))
  '(make-backup-files nil)
- '(custom-file "~/.emacs.d/custom.el"))
+ '(custom-file "~/.emacs.d/custom.el")
+ ;; use-package customizations
+ '(use-package-always-ensure t)
+ '(use-package-always-pin "melpa-stable"))
 
 (define-key global-map "\C-x\C-b" 'bs-show)
 (define-key global-map "\C-x\C-p" 'list-processes)
@@ -32,15 +40,6 @@
 
 ;; enable colum-number-mode
 (column-number-mode)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(require 'use-package)
-(custom-set-variables
- '(use-package-always-ensure t)
- '(use-package-always-pin "melpa-stable"))
 
 (use-package gnu-elpa-keyring-update
   :unless (<= 27 emacs-major-version)
