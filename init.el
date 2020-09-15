@@ -143,7 +143,7 @@
    '(org-outline-path-complete-in-steps t)
    ;; prefer in-steps that ido for refile completion
    ;; '(org-completion-use-ido t)
-   '(org-reverse-note-order t)
+   ;; '(org-reverse-note-order t)
 
    ;; LOGGING
    ;; todo state changes should be logged into drawer
