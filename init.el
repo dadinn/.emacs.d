@@ -175,6 +175,9 @@
        ("cb" "Backlog (tasks not scheduled)" todo "TODO"
 	((org-agenda-skip-function
 	  '(org-agenda-skip-entry-if 'scheduled))))
+       ("cf" "Focussed tasks"
+	((todo "ONGOING")
+	 (todo "WAITING")))
        ("cc" . "Filter tasks by CATEGORY")
        ("cci" "INBOX tasks"
 	((alltodo ""))
