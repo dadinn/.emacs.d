@@ -56,9 +56,12 @@
 (use-package use-package-el-get
   :config (use-package-el-get-setup))
 
-(when (memq window-system '(mac ns x))
-  (use-package exec-path-from-shell
-    :config
+(use-package exec-path-from-shell
+  :custom
+  (exec-path-from-shell-variables
+   '("PATH" "MANPATH" "NVM_DIR"))
+  :config
+  (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
 (use-package ido
