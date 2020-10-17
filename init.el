@@ -234,7 +234,6 @@
   (ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package magit
-  :pin "melpa"
   :bind
   (("C-x C-m" . magit-status)
    ("C-x M-f" . magit-log-buffer-file)
@@ -244,7 +243,6 @@
   (magit-repository-directories-depth 1))
 
 (use-package undo-tree
-  :pin "gnu"
   :bind ("C-x u" . undo-tree-visualize)
   :config
   (global-undo-tree-mode))
@@ -271,7 +269,6 @@
 
 (use-package sunrise-commander
   :ensure nil
-  :el-get t
   :bind (("C-x d" . sunrise)
 	 ("C-x C-d" . sunrise-cd))
   :custom
@@ -411,7 +408,6 @@
 ;;TODO: https://www.emacswiki.org/emacs/AUCTeX
 (use-package tex
   :ensure auctex
-  :pin "gnu"
   :hook
   (LaTeX-mode . LaTeX-math-mode)
   (LaTeX-mode . TeX-fold-mode)
@@ -421,7 +417,6 @@
   (TeX-parse-self t))
 
 (use-package csv-mode
-  :pin "gnu"
   :bind
   (:map csv-mode-map
    ("C-c a" . csv-align-fields)
@@ -429,8 +424,7 @@
   :custom
   (csv-align-style (quote auto)))
 
-(use-package nhexl-mode
-  :pin "gnu")
+(use-package nhexl-mode)
 
 (use-package json-mode
   ;; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
