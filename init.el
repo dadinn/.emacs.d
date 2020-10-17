@@ -1,21 +1,3 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
-(customize-set-variable
- 'package-archives
- '(("gnu" . "http://elpa.gnu.org/packages/")
-   ("melpa" . "http://melpa.org/packages/")
-   ("melpa-stable" . "http://stable.melpa.org/packages/")
-   ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
-   ("orgmode" . "http://orgmode.org/elpa/")))
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package)
 
 ;; Bootstrapping straight.el
 (defvar bootstrap-version)
