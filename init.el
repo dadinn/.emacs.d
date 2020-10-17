@@ -26,6 +26,7 @@
  '(visible-bell t)
  '(visual-line-fringe-indicators
    '(left-curly-arrow right-curly arrow))
+ '(require-final-newline t)
  '(make-backup-files nil)
  '(custom-file "~/.emacs.d/custom.el")
  ;; use-package customizations
