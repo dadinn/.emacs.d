@@ -45,21 +45,6 @@
 (column-number-mode)
 (global-auto-revert-mode)
 
-(use-package gnu-elpa-keyring-update
-  :unless (<= 27 emacs-major-version)
-  :pin "gnu")
-
-(use-package el-get
-  :pin "melpa"
-  :config
-  (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
-  ;;TODO: https://github.com/dimitri/el-get/issues/2649
-  (if (not (file-directory-p el-get-dir))
-      (make-directory el-get-dir)))
-
-(use-package use-package-el-get
-  :config (use-package-el-get-setup))
-
 (use-package exec-path-from-shell
   :custom
   (exec-path-from-shell-variables
