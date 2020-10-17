@@ -31,6 +31,9 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; install use-package
+(straight-use-package 'use-package)
+
 (custom-set-variables
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
@@ -43,9 +46,9 @@
  '(require-final-newline t)
  '(make-backup-files nil)
  '(custom-file "~/.emacs.d/custom.el")
- ;; use-package customizations
- '(use-package-always-ensure t)
- '(use-package-always-pin "melpa-stable"))
+ ;; straight.el customizations
+ '(straight-use-package-by-default t)
+ '(straight-vc-git-default-protocol (quote ssh)))
 
 (define-key global-map "\C-x\C-b" 'bs-show)
 (define-key global-map "\C-x\C-p" 'list-processes)
