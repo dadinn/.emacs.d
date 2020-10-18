@@ -318,6 +318,7 @@
   (eval-after-load 'clojure-mode '(sayid-setup-package)))
 
 (use-package geiser
+  :straight (:type git :host github :repo "emacsmirror/geiser")
   :after (paredit company)
   :bind
   (("C-c g r" . run-geiser)
@@ -404,8 +405,8 @@
 (use-package markdown-mode)
 
 ;;TODO: https://www.emacswiki.org/emacs/AUCTeX
-(use-package tex
-  :ensure auctex
+(use-package tex-site
+  :straight auctex
   :hook
   (LaTeX-mode . LaTeX-math-mode)
   (LaTeX-mode . TeX-fold-mode)
