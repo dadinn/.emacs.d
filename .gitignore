@@ -1,5 +1,6 @@
 # BUILT-INS
 auto-save-list/
+transient/
 eshell/
 url/
 tramp
