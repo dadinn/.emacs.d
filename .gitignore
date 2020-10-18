@@ -1,14 +1,14 @@
 # BUILT-INS
 auto-save-list/
 eshell/
-el-get/
-elpa/
 url/
 tramp
 bookmarks
 session.*
 *~
 # PACKAGE SPECIFIC
+straight/*
+!straight/versions
 ido.last
 bbdb
 projectile-bookmarks.eld
