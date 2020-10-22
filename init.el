@@ -38,8 +38,11 @@
 (define-key global-map "\C-x\C-o" 'other-window)
 (define-key global-map "\C-x\C-i" 'other-window)
 (define-key global-map "\C-x\C-w" 'whitespace-mode)
+(define-key global-map "\C-x\C-n"
+ (if (version<= "26.0.50" emacs-version)
+   'display-line-numbers-mode
+   'linum-mode))
 
-;; enable colum-number-mode
 (column-number-mode)
 (global-auto-revert-mode)
 
