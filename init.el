@@ -39,7 +39,11 @@
 (define-key global-map "\C-x\C-i" 'other-window)
 (define-key global-map "\C-x\C-w" 'whitespace-mode)
 
-;; enable colum-number-mode
+(cond
+ ((version<= "26.0.50" emacs-version)
+  (define-key global-map "\C-x\C-n" 'display-line-numbers-mode))
+ (t (define-key global-map "\C-x\C-n" 'linum-mode)))
+
 (column-number-mode)
 (global-auto-revert-mode)
 
