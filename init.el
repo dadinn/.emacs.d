@@ -368,7 +368,6 @@
   (js2-mode . init-js2-xref-backend))
 
 (use-package company-tern
-  :disabled t ; https://www.reddit.com/r/emacs/comments/g8i10n/companytern_on_melpa_pulled/
   :after (company js2-mode)
   :init
   (defun init-company-tern ()
