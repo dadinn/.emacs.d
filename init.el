@@ -360,23 +360,27 @@
   :init
   (defun init-js2-xref-backend ()
     "Initialises JS2 Xref backend via hook"
-    (if (not (executable-find "ag"))
-      (message "Necessary executable `ag' is not found on `exec-path'")
-      (message "Registered JS2 Xref backend")
-      (add-hook 'xref-backend-functions 'xref-js2-xref-backend)))
+    (cond
+     ((not (executable-find "ag"))
+      (message "Necessary executable `ag' is not found on `exec-path'"))
+     (t (message "Registered JS2 Xref backend")
+      (add-hook 'xref-backend-functions 'xref-js2-xref-backend))))
   :hook
   (js2-mode . init-js2-xref-backend))
 
 (use-package company-tern
   :after (company js2-mode)
   :init
-  (defun init-company-tern ()
-    (if (not (executable-find "tern"))
-      (message "Necessary executable `tern' is not found on `exec-path'")
-      (message "Turning on company-mode using Tern")
-      (tern-mode) (company-mode)))
+  (defun enable-company-tern ()
+    "Initialises Tern company backend"
+    (cond
+     ((not (executable-find "tern"))
+      (message "Necessary executable `tern' is not found on `exec-path'"))
+     (t (message "Turning on company-mode using Tern")
+	(company-mode)
+	(tern-mode))))
   :hook
-  (js2-mode . init-company-tern)
+  (js2-mode . enable-company-tern)
   :config
   (add-to-list 'company-backends 'company-tern)
   (define-key tern-mode-keymap (kbd "M-.") nil)
