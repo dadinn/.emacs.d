@@ -41,6 +41,7 @@
 
 ;; enable colum-number-mode
 (column-number-mode)
+(global-auto-revert-mode)
 
 (use-package gnu-elpa-keyring-update
   :unless (<= 27 emacs-major-version)
