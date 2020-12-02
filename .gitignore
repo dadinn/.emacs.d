@@ -5,11 +5,11 @@ el-get/
 elpa/
 url/
 tramp
+bookmarks
 session.*
 *~
 # PACKAGE SPECIFIC
 ido.last
-bookmarks.el
 bbdb
 projectile-bookmarks.eld
 ac-comphist.dat

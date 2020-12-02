@@ -278,23 +278,6 @@
   :config
   (add-to-list 'projectile-globally-ignored-directories "node_modules"))
 
-(use-package bm
-  :bind
-  (("C-c b t" . bm-toggle)
-   ("C-c b n" . bm-next)
-   ("C-c b p" . bm-previous)
-   ("C-c b s" . bm-show-all)
-   ("C-c b x" . bm-remove-all-all-buffers)
-   :map bm-show-mode-map
-   ("n" . bm-show-next)
-   ("p" . bm-show-prev))
-  :custom
-  (bm-annotate-on-create t)
-  (bm-show-buffer-name "*Bookmarks*")
-  (bm-cycle-all-buffers t)
-  (bm-buffer-persistence t)
-  (bm-repository-file "bookmarks.el"))
-
 (use-package sunrise-commander
   :ensure nil
   :el-get t
