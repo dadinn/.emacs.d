@@ -20,6 +20,7 @@
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
  '(tool-bar-mode nil)
+ '(scroll-bar-mode nil)
  '(calendar-week-start-day 1)
  '(calendar-holidays nil) ; remove default holiday entries from calendar
  '(visible-bell t)
