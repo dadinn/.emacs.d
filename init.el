@@ -48,12 +48,14 @@
 (global-auto-revert-mode)
 
 (use-package exec-path-from-shell
-  :custom
-  (exec-path-from-shell-variables
-   '("PATH" "MANPATH" "NVM_DIR"))
+  :if (memq window-system '(mac ns x))
+  :init
+  (defvar exec-path-from-shell-additional-variables
+    (list "NVM_DIR" "JAVA_HOME"))
   :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+  (dolist (var exec-path-from-shell-additional-variables)
+    (add-to-list (quote exec-path-from-shell-variables) var))
+  (exec-path-from-shell-initialize))
 
 (use-package ido
   :custom
