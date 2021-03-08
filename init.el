@@ -255,17 +255,14 @@
   :init (show-paren-mode))
 
 (use-package projectile
-  :init
-  (projectile-mode)
-  (defun pop-grep-buffer ()
-    (pop-to-buffer next-error-last-buffer))
   :hook
-  (projectile-grep-finished . pop-grep-buffer)
-  :bind
-  (:map projectile-mode-map
-   ("C-c p" . projectile-command-map))
+  (projectile-grep-finished . (lambda () (pop-to-buffer next-error-last-buffer)))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
   :config
-  (add-to-list 'projectile-globally-ignored-directories "node_modules"))
+  (dolist (dir (list "node_modules" "target"))
+    (add-to-list 'projectile-globally-ignored-directories dir))
+  (projectile-mode))
 
 (use-package sunrise-commander
   :ensure nil
