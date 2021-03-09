@@ -1,21 +1,20 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
 
-(customize-set-variable
- 'package-archives
- '(("gnu" . "http://elpa.gnu.org/packages/")
-   ("melpa" . "http://melpa.org/packages/")
-   ("melpa-stable" . "http://stable.melpa.org/packages/")
-   ;; ("marmalade" . "https://marmalade-repo.org/packages/") ; Errors with TLS connection
-   ("orgmode" . "http://orgmode.org/elpa/")))
+;; Bootstrapping straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package)
+;; install use-package
+(straight-use-package 'use-package)
 
 (custom-set-variables
  '(inhibit-startup-screen t)
@@ -29,9 +28,9 @@
  '(require-final-newline t)
  '(make-backup-files nil)
  '(custom-file "~/.emacs.d/custom.el")
- ;; use-package customizations
- '(use-package-always-ensure t)
- '(use-package-always-pin "melpa-stable"))
+ ;; straight.el customizations
+ '(straight-use-package-by-default t)
+ '(straight-vc-git-default-protocol (quote ssh)))
 
 (define-key global-map "\C-x\C-b" 'bs-show)
 (define-key global-map "\C-x\C-p" 'list-processes)
@@ -45,21 +44,6 @@
 
 (column-number-mode)
 (global-auto-revert-mode)
-
-(use-package gnu-elpa-keyring-update
-  :unless (<= 27 emacs-major-version)
-  :pin "gnu")
-
-(use-package el-get
-  :pin "melpa"
-  :config
-  (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
-  ;;TODO: https://github.com/dimitri/el-get/issues/2649
-  (if (not (file-directory-p el-get-dir))
-      (make-directory el-get-dir)))
-
-(use-package use-package-el-get
-  :config (use-package-el-get-setup))
 
 (use-package exec-path-from-shell
   :custom
@@ -248,7 +232,6 @@
   (ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package magit
-  :pin "melpa"
   :bind
   (("C-x C-m" . magit-status)
    ("C-x M-f" . magit-log-buffer-file)
@@ -258,7 +241,6 @@
   (magit-repository-directories-depth 1))
 
 (use-package undo-tree
-  :pin "gnu"
   :bind ("C-x u" . undo-tree-visualize)
   :config
   (global-undo-tree-mode))
@@ -285,7 +267,6 @@
 
 (use-package sunrise-commander
   :ensure nil
-  :el-get t
   :bind (("C-x d" . sunrise)
 	 ("C-x C-d" . sunrise-cd))
   :custom
@@ -337,6 +318,7 @@
   (eval-after-load 'clojure-mode '(sayid-setup-package)))
 
 (use-package geiser
+  :straight (:type git :host github :repo "emacsmirror/geiser")
   :after (paredit company)
   :bind
   (("C-c g r" . run-geiser)
@@ -423,9 +405,8 @@
 (use-package markdown-mode)
 
 ;;TODO: https://www.emacswiki.org/emacs/AUCTeX
-(use-package tex
-  :ensure auctex
-  :pin "gnu"
+(use-package tex-site
+  :straight auctex
   :hook
   (LaTeX-mode . LaTeX-math-mode)
   (LaTeX-mode . TeX-fold-mode)
@@ -435,7 +416,6 @@
   (TeX-parse-self t))
 
 (use-package csv-mode
-  :pin "gnu"
   :bind
   (:map csv-mode-map
    ("C-c a" . csv-align-fields)
@@ -443,8 +423,7 @@
   :custom
   (csv-align-style (quote auto)))
 
-(use-package nhexl-mode
-  :pin "gnu")
+(use-package nhexl-mode)
 
 (use-package json-mode
   ;; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
