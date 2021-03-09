@@ -315,8 +315,9 @@
   (cider-repl-use-clojure-font-lock nil))
 
 (use-package sayid
+  :after (clojure-mode)
   :config
-  (eval-after-load 'clojure-mode '(sayid-setup-package)))
+  (sayid-setup-package))
 
 (use-package geiser
   :straight (:type git :host github :repo "emacsmirror/geiser")
