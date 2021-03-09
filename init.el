@@ -28,6 +28,7 @@
    '(left-curly-arrow right-curly arrow))
  '(require-final-newline t)
  '(make-backup-files nil)
+ '(create-lockfiles nil)
  '(custom-file "~/.emacs.d/custom.el")
  ;; straight.el customizations
  '(straight-use-package-by-default t)
