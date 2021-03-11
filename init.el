@@ -100,8 +100,9 @@
     (interactive)
     (org-map-entries
      (lambda ()
-       (org-archive-subtree)
-       (setq org-map-continue-from (outline-previous-heading)))
+       (let ((prev-heading (outline-previous-heading)))
+	 (org-archive-subtree)
+	 (setq org-map-continue-from prev-heading)))
      "//DONE|CANCELED" 'agenda))
   :bind
   (("C-c a" . org-agenda)
