@@ -286,15 +286,30 @@
    ("C-p" . dired-previous-line))
   :custom
   (sr-cursor-follows-mouse nil)
-  (sr-listing-switches "-lA --group-directories-first")
+  (sr-listing-switches
+   (if (string-equal system-type "gnu/linux")
+      "-lAD --time-style=long-iso --group-directories-first"
+      "-lA"))
   (sr-show-file-attributes t)
   (sr-show-hidden-files t)
+  (sr-confirm-kill-viewer nil)
   (sr-window-split-style (quote horizontal))
-  (sr-start-hook nil)
+  (sr-start-hook nil))
+
+(use-package sunrise-x-loop
+  :straight sunrise-commander
   :config
-  ;; run C(opy) and R(ename) operations in background
-  ;; when using C-u prefix
-  (require 'sunrise-x-loop))
+  (unbind-key "C-n" sr-tabs-mode-map)
+  (unbind-key "C-p" sr-tabs-mode-map))
+
+(use-package sunrise-x-popviewer
+  :straight sunrise-commander
+  :config
+  (sr-popviewer-mode)
+  (unbind-key "v" sr-mode-map)
+  (unbind-key "o" sr-mode-map)
+  (unbind-key "C-c TAB" sr-mode-map)
+  (unbind-key "<C-tab>" sr-mode-map))
 
 (use-package clojure-mode
   :hook
