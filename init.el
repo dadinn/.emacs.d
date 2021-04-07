@@ -440,7 +440,9 @@
   ;; causes error "Symbol's function definition is void: set-difference"
   :disabled t)
 
-(use-package monokai-theme)
+(use-package monokai-theme
+  :config (load-theme (quote monokai) t))
+
 (use-package solarized-theme
   :disabled t)
 (use-package zenburn-theme
