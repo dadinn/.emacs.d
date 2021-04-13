@@ -144,7 +144,7 @@
    '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
    '(org-agenda-window-setup 'only-window)
    '(org-todo-keywords
-     (quote ((sequence "TODO(t!)" "ONGOING(o!)" "WAITING(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
+     (quote ((sequence "TODO(t!)" "WAITING(w@)" "ONGOING(o!)" "|" "DONE(d@)" "CANCELED(c@)"))))
    '(org-todo-keyword-faces
      (quote (("WAITING" . "purple")
              ("ONGOING" . "orange")
@@ -180,7 +180,7 @@
    '(org-lowest-priority 70)
    '(org-highest-priority 65)
    '(org-agenda-sorting-strategy
-     '((agenda time-up deadline-down priority-down)
+     '((agenda time-up todo-state-down deadline-down priority-down)
        (todo category-up priority-down)
        (tags category-up priority-down)
        (search category-up)))
