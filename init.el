@@ -83,7 +83,8 @@
 
 (use-package company
   :bind
-  (("TAB" . company-indent-or-complete-common))
+  (:map company-mode-map
+   ("TAB" . company-indent-or-complete-common))
   ;; :demand is needed to counteract delayment due to :bind,
   ;; otherwise :after dependencies on company will not work:
   ;; https://github.com/jwiegley/use-package/issues/852
