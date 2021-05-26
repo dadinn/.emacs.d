@@ -324,7 +324,7 @@
   (sayid-setup-package))
 
 (use-package geiser
-  :straight (:type git :host github :repo "emacsmirror/geiser")
+  :straight (:protocol https)
   :after (paredit company)
   :bind
   (("C-c g r" . run-geiser)
