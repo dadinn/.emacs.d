@@ -333,6 +333,14 @@
   (geiser-mode . company-mode)
   (geiser-repl-mode . paredit-mode))
 
+(use-package geiser-guile
+  :straight
+  (:protocol https
+   :local-repo "geiser-guile")
+  :after (geiser)
+  :custom
+  (geiser-guile-load-init-file t))
+
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
 

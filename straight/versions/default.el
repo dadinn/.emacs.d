@@ -14,6 +14,7 @@
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")
  ("exec-path-from-shell" . "18cad603c45c5544e8a9666be64d0c51bbc1af90")
  ("geiser" . "d5cdad7f3eb44cec434610846cf78f2ad272089b")
+ ("geiser-guile" . "8dda28f4f1758221f84f5cb5dc5b5ca5fd56caa9")
  ("gnu-elpa-mirror" . "1109d1b777feb63650436934ecc1cca8ad0f1078")
  ("haskell-mode" . "e72677668f5fc7cc148008e885a0f256e245dd43")
  ("js2-mode" . "f9564769e81c612b43f99802d6a2c5e6b1f8fca4")
