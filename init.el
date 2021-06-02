@@ -266,6 +266,9 @@
   (emacs-lisp-mode . paredit-mode)
   :init (show-paren-mode))
 
+(use-package rainbow-delimiters :disabled t)
+(use-package rainbow-blocks :disabled t)
+
 (use-package projectile
   :hook
   (projectile-grep-finished . (lambda () (pop-to-buffer next-error-last-buffer)))
@@ -327,9 +330,6 @@
   :after (geiser)
   :custom
   (geiser-guile-load-init-file t))
-
-(use-package rainbow-delimiters :disabled t)
-(use-package rainbow-blocks :disabled t)
 
 (use-package haskell-mode)
 
