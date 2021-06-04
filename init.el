@@ -452,6 +452,15 @@
   ;; causes error "Symbol's function definition is void: set-difference"
   :disabled t)
 
+(use-package restclient
+  :mode ("\\.http\\'" . restclient-mode))
+
+(use-package company-restclient
+  :after (restclient company)
+  :hook (restclient-mode . company-mode)
+  :init
+  (add-to-list 'company-backends 'company-restclient))
+
 (use-package monokai-theme
   :config (load-theme (quote monokai) t))
 
