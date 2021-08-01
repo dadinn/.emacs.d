@@ -288,7 +288,34 @@
 
 (use-package dockerfile-mode)
 
-(use-package markdown-mode)
+(use-package markdown-mode
+  :init
+  (when (not (executable-find "markdown"))
+    (message "Necessary executable `markdown' is not found on `exec-path'"))
+  :hook
+  (markdown-mode . markdown-live-preview-mode)
+  (markdown-mode . visual-line-mode)
+  :custom
+  (markdown-live-preview-delete-export 'delete-on-export)
+  :config
+  (defalias 'markdown-add-xhtml-header-and-footer
+    (lambda (title)
+      "Wrap HTML5 header and footer with given TITLE around current buffer."
+      (goto-char (point-min))
+      (insert "<!DOCTYPE html5>\n"
+	      "<html>\n"
+	      "<head>\n<title>")
+      (insert title)
+      (insert "</title>\n")
+      (insert "<meta charset=\"utf-8\" />\n")
+      (when (> (length markdown-css-paths) 0)
+	(insert (mapconcat 'markdown-stylesheet-link-string markdown-css-paths "\n")))
+      (insert "\n</head>\n\n"
+	      "<body>\n\n")
+      (goto-char (point-max))
+      (insert "\n"
+	      "</body>\n"
+	      "</html>\n"))))
 
 ;;TODO: https://www.emacswiki.org/emacs/AUCTeX
 (use-package tex-site
