@@ -15,6 +15,7 @@ bbdb
 prescient-save.el
 projectile-bookmarks.eld
 ac-comphist.dat
+.geiser_history.*
 # CUSTOM FILES
 custom.el
 *.swp
