@@ -116,7 +116,7 @@
    ("C-c H" . org-archive-done-tasks)
    ("C-c C-e" . org-babel-execute-src-block))
   :hook
-  (text-mode . visual-line-mode)
+  (outline-mode . visual-line-mode)
   :config
   (custom-set-variables
    '(org-agenda-span 'day)
