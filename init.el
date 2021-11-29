@@ -91,6 +91,13 @@
   :config
   (company-tng-configure-default))
 
+(use-package company-prescient
+  :after (prescient company)
+  :init
+  (company-prescient-mode)
+  :custom
+  (company-prescient-sort-length-enable nil))
+
 (use-package org
   :init
   (defun org-archive-done-tasks ()
