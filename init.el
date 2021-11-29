@@ -57,28 +57,18 @@
     (add-to-list (quote exec-path-from-shell-variables) var))
   (exec-path-from-shell-initialize))
 
-(use-package ido
-  :custom
-  (ido-enable-flex-matching t)
-  (ido-auto-merge-work-directories-length -1)
-  (ido-everywhere t)
-  (ido-mode t))
+(use-package selectrum
+  :init
+  (selectrum-mode))
 
-(use-package ido-vertical-mode
-  :custom
-  (ido-vertical-show-count t)
-  (ido-vertical-define-keys 'C-n-and-C-p-only)
+(use-package prescient
   :config
-  (ido-vertical-mode))
+  (add-to-list 'prescient-filter-method 'fuzzy))
 
-(use-package flx-ido
-  :custom
-  (ido-enable-flex-matching t)
-  (ido-use-faces nil))
-
-(use-package ido-completing-read+
-  :config
-  (ido-ubiquitous-mode))
+(use-package selectrum-prescient
+  :after (prescient selectrum)
+  :init
+  (selectrum-prescient-mode))
 
 (use-package company
   :bind
