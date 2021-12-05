@@ -157,9 +157,7 @@
        (nil . (:tag . "TARGET"))))
    '(org-refile-use-outline-path t)
    '(org-goto-interface 'outline-path-completion)
-   '(org-outline-path-complete-in-steps t)
-   ;; prefer in-steps that ido for refile completion
-   ;; '(org-completion-use-ido t)
+   '(org-outline-path-complete-in-steps nil)
    ;; '(org-reverse-note-order t)
 
    ;; LOGGING
