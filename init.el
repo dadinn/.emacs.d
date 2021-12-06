@@ -58,6 +58,10 @@
   (exec-path-from-shell-initialize))
 
 (use-package selectrum
+  :custom
+  (completion-ignore-case t)
+  (read-file-name-completion-ignore-case t)
+  (read-buffer-completion-ignore-case t)
   :init
   (selectrum-mode))
 
