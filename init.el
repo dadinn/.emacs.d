@@ -295,16 +295,12 @@
 (use-package cider
   :after (paredit company)
   :bind
-  (("C-c c c" . cider-connect)
-   ("C-c c j" . cider-jack-in)
-   :map cider-mode-map
-   ("C-c c e" . cider-pprint-eval-last-sexp)
-   ("C-c c b n" . cider-browse-ns-all)
-   ("C-c c b s" . cider-browse-spec-all)
-   ("C-c c f" . cider-completion-flush-caches)
-   ("C-c c q" . cider-quit)
-   :map cider-repl-mode-map
-   ("C-c c q" . cider-quit))
+  ("C-c c c" . cider-connect)
+  ("C-c c j" . cider-jack-in)
+  (:map cider-mode-map
+   ("C-c b n" . cider-browse-ns-all)
+   ("C-c b s" . cider-browse-spec-all)
+   ("C-c c f" . cider-completion-flush-caches))
   :hook
   (cider-mode . eldoc-mode)
   (cider-mode . company-mode)
