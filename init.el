@@ -310,6 +310,7 @@
   :custom
   (cider-lein-command "lein")
   (cider-prompt-for-symbol nil)
+  (cider-debug-prompt 'minibuffer)
   (cider-repl-use-pretty-printing t)
   ;; font-lock results in terrible performance
   (cider-repl-use-clojure-font-lock nil))
