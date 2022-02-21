@@ -236,8 +236,8 @@
 
 (use-package ediff
   :bind
-  (("C-c d f" . ediff-files)
-   ("C-c d b" . ediff-buffers))
+  (("C-c C-d f" . ediff-files)
+   ("C-c C-d b" . ediff-buffers))
   :init
   (load-library "ediff")
   :custom
