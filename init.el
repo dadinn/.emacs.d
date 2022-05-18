@@ -26,6 +26,7 @@
  '(visible-bell t)
  '(visual-line-fringe-indicators
    '(left-curly-arrow right-curly arrow))
+ '(indent-tabs-mode nil)
  '(require-final-newline t)
  '(make-backup-files nil)
  '(create-lockfiles nil)
