@@ -107,8 +107,8 @@
     (org-map-entries
      (lambda ()
        (let ((prev-heading (outline-previous-heading)))
-	 (org-archive-subtree)
-	 (setq org-map-continue-from prev-heading)))
+         (org-archive-subtree)
+         (setq org-map-continue-from prev-heading)))
      "//DONE|CANCELED" 'agenda))
   :bind
   (("C-c a" . org-agenda)
@@ -142,8 +142,8 @@
      (quote ((sequence "TODO(t!)" "ONGOING(o!)" "WAITING(w@)" "|" "DONE(d@)" "CANCELED(c@)"))))
    '(org-todo-keyword-faces
      (quote (("WAITING" . "purple")
-	     ("ONGOING" . "orange")
-	     ("CANCELED" . "firebrick"))))
+             ("ONGOING" . "orange")
+             ("CANCELED" . "firebrick"))))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    `(org-todo-state-tags-triggers
      (quote
@@ -189,45 +189,45 @@
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
        ("cb" "Backlog (tasks not scheduled)" todo "TODO"
-	((org-agenda-skip-function
-	  '(org-agenda-skip-entry-if 'scheduled))))
+        ((org-agenda-skip-function
+          '(org-agenda-skip-entry-if 'scheduled))))
        ("cf" "Focussed tasks"
-	((todo "ONGOING")
-	 (todo "WAITING")))
+        ((todo "ONGOING")
+         (todo "WAITING")))
        ("cc" . "Filter tasks by CATEGORY")
        ("cci" "INBOX tasks"
-	((alltodo ""))
-	((org-agenda-category-filter-preset '("+INBOX"))))
+        ((alltodo ""))
+        ((org-agenda-category-filter-preset '("+INBOX"))))
        ("ccf" "INFRA tasks"
-	((alltodo ""))
-	((org-agenda-category-filter-preset '("+INFRA"))))
+        ((alltodo ""))
+        ((org-agenda-category-filter-preset '("+INFRA"))))
        ("ccr" "ROLES tasks"
-	((alltodo ""))
-	((org-agenda-category-filter-preset '("+ROLES"))))))
+        ((alltodo ""))
+        ((org-agenda-category-filter-preset '("+ROLES"))))))
 
    ;; CAPTURE TEMPLATES
    '(org-capture-templates
      (quote
       (("t" "Task")
        ("tt" "Task (Scheduled)" entry
-	(file+headline "tasks.org" "INBOX")
-	"* TODO %^{Title}\nSCHEDULED: %t\n%?")
+        (file+headline "tasks.org" "INBOX")
+        "* TODO %^{Title}\nSCHEDULED: %t\n%?")
        ("td" "Task (Scheduled, with Deadline)" entry
-	(file+headline "tasks.org" "INBOX")
-	"* TODO %^{Title}\nSCHEDULED: %^{Schedule}t DEADLINE: %^{Deadline}t\n%?")
+        (file+headline "tasks.org" "INBOX")
+        "* TODO %^{Title}\nSCHEDULED: %^{Schedule}t DEADLINE: %^{Deadline}t\n%?")
        ("e" "Event")
        ("et" "Event (with single datetime)" entry
-	(file+headline "events.org" "INBOX")
-	"* %^{Title}\n%^T\n%?")
+        (file+headline "events.org" "INBOX")
+        "* %^{Title}\n%^T\n%?")
        ("er" "Event (with date range)" entry
-	(file+headline "events.org" "INBOX")
-	"* %^{Title}\n%^t--%^t\n%?")
+        (file+headline "events.org" "INBOX")
+        "* %^{Title}\n%^t--%^t\n%?")
        ("m" "Memo" entry
-	(file+headline "memo.org" "INBOX")
-	"* %?\n%T\n")
+        (file+headline "memo.org" "INBOX")
+        "* %?\n%T\n")
        ("x" "Example" entry
-	(file+headline "example.org" "INBOX")
-	"* %?\n%^t\n"))))))
+        (file+headline "example.org" "INBOX")
+        "* %?\n%^t\n"))))))
 
 (use-package ediff
   :bind
@@ -274,7 +274,7 @@
 (use-package sunrise-commander
   :ensure nil
   :bind (("C-x d" . sunrise)
-	 ("C-x C-d" . sunrise-cd))
+         ("C-x C-d" . sunrise-cd))
   :custom
   (sr-cursor-follows-mouse nil)
   (sr-listing-switches "-lA --group-directories-first")
@@ -389,8 +389,8 @@
      ((not (executable-find "tern"))
       (message "Necessary executable `tern' is not found on `exec-path'"))
      (t (message "Turning on company-mode using Tern")
-	(company-mode)
-	(tern-mode))))
+        (company-mode)
+        (tern-mode))))
   :hook
   (js2-mode . enable-company-tern)
   :config
