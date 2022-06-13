@@ -358,13 +358,20 @@
   (unbind-key "C-c TAB" sr-mode-map)
   (unbind-key "<C-tab>" sr-mode-map))
 
-(use-package monokai-theme
-  :config (load-theme (quote monokai) t))
-
-(use-package solarized-theme
-  :disabled t)
-(use-package zenburn-theme
-  :disabled t)
+(use-package modus-themes
+  :custom
+  (modus-themes-bold-constructs t)
+  (modus-themes-italic-constructs t)
+  (modus-themes-mode-line
+   (quote (borderless accented)))
+  (modus-themes-region
+   (quote (bg-only)))
+  (modus-themes-paren-match
+   (quote (bold intense)))
+  (modus-themes-org-blocks
+   (quote gray-background))
+  :config
+  (load-theme (quote modus-vivendi) t))
 
 (use-package org
   :init

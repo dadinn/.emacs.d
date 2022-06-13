@@ -25,7 +25,7 @@
  ("magit" . "f44f6c14500476d918e9c01de8449edb20af4113")
  ("markdown-mode" . "cf6403186119cd3d25adc702845f969071060e20")
  ("melpa" . "f5f22149f13c361f6657d41f4a22ede651eaaa25")
- ("monokai-emacs" . "791baae69b02ee007cde779a80abc1a6b5962cf7")
+ ("modus-themes" . "9efab2619e39d2110c8e981a07583d7f7d63eafd")
  ("multiple-cursors.el" . "7763f4f9d7b9d2a4eb08a1f94699edaeb4f433ed")
  ("nhexl-mode" . "c69461b41a5776e1507ac092274b3c60c90b542e")
  ("nongnu-elpa" . "6d76d3c04b1f36a778b78433571c4646c9c229ac")
