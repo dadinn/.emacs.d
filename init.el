@@ -66,8 +66,12 @@
   (selectrum-mode))
 
 (use-package prescient
+  :custom
+  (prescient-save-file
+   (locate-user-emacs-file "prescient-save.el"))
   :config
-  (add-to-list 'prescient-filter-method 'fuzzy))
+  (add-to-list 'prescient-filter-method 'fuzzy)
+  (prescient-persist-mode))
 
 (use-package selectrum-prescient
   :after (prescient selectrum)

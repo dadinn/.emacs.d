@@ -12,6 +12,7 @@ straight/*
 !straight/versions
 ido.last
 bbdb
+prescient-save.el
 projectile-bookmarks.eld
 ac-comphist.dat
 # CUSTOM FILES
