@@ -85,6 +85,9 @@
   :bind
   (:map company-mode-map
    ("TAB" . company-indent-or-complete-common))
+  (:map company-active-map
+   ("C-n" . company-select-next)
+   ("C-p" . company-select-previous))
   :demand t
   :hook
   (emacs-elisp-mode . company-mode)
