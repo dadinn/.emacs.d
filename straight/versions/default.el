@@ -8,7 +8,7 @@
  ("company-restclient" . "e5a3ec54edb44776738c13e13e34c85b3085277b")
  ("company-tern" . "9a2cb8427a1a93c9c5021c01df1b47c69d79e176")
  ("compat" . "056e3ccffc716990dcb7b33273453d5fce0402de")
- ("csv-mode" . "b28ce51fb530439110bfd2749a0ecab172609a7a")
+ ("csv-mode" . "53beddc207864b0c3f81da85b59245dff8eea5ce")
  ("dash.el" . "b92ab5a39b987e4fe69317b9d9fda452300baf20")
  ("dockerfile-mode" . "d31f7685ebc5832d957e25070a930aa42984327d")
  ("doom-modeline" . "936bfbcbbb2b1ab1e13904ee1f53fe0ea28acee1")
