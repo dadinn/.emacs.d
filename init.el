@@ -278,8 +278,12 @@
 
 (use-package sunrise-commander
   :ensure nil
-  :bind (("C-x d" . sunrise)
-         ("C-x C-d" . sunrise-cd))
+  :bind
+  (("C-x d" . sunrise)
+   ("C-x C-d" . sunrise-cd)
+   :map sr-mode-map
+   ("C-n" . dired-next-line)
+   ("C-p" . dired-previous-line))
   :custom
   (sr-cursor-follows-mouse nil)
   (sr-listing-switches "-lA --group-directories-first")
