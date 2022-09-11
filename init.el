@@ -336,6 +336,19 @@
 (use-package nhexl-mode
   :bind ("C-x M-x" . nhexl-mode))
 
+(use-package nxml-mode
+  :straight (:type built-in)
+  :init
+  (defvar nxml-extensions
+    (list "xml" "xsd" "sch" "rng" "xslt" "svg" "rss"))
+  (add-to-list 'auto-mode-alist
+   (cons
+    ;; Generate efficient regex to match all extensions
+    (concat "\\." (regexp-opt nxml-extensions t) "\\'")
+    'nxml-mode))
+  :magic-fallback
+  ("<\\?xml " . nxml-mode))
+
 (use-package json-mode
   ;; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
   :disabled t)
