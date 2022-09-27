@@ -235,6 +235,7 @@
         "* %?\n%^t\n"))))))
 
 (use-package ediff
+  :straight (:type built-in)
   :bind
   (("C-c C-d f" . ediff-files)
    ("C-c C-d b" . ediff-buffers))
