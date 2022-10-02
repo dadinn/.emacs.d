@@ -336,16 +336,6 @@
 (use-package scala-mode2 :disabled t)
 (use-package sbt-mode :disabled t)
 
-(use-package js2-refactor
-  :after (js2-mode)
-  :bind
-  (:map js2-mode-map
-   ("C-k" . js2r-kill))
-  :hook
-  (js2-mode . js2-refactor-mode)
-  :config
-  (js2r-add-keybindings-with-prefix "C-c C-r"))
-
 (use-package js2-mode
   :mode
   ("\\.js\\'" . js2-mode)
@@ -355,6 +345,16 @@
   (js-indent-level 2)
   :config
   (unbind-key "M-." js2-mode-map))
+
+(use-package js2-refactor
+  :after (js2-mode)
+  :bind
+  (:map js2-mode-map
+   ("C-k" . js2r-kill))
+  :hook
+  (js2-mode . js2-refactor-mode)
+  :config
+  (js2r-add-keybindings-with-prefix "C-c C-r"))
 
 (use-package xref-js2
   :after (js2-mode)
