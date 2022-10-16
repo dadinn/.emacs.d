@@ -266,6 +266,11 @@
   (unbind-key "M-." tern-mode-keymap)
   (unbind-key "M-," tern-mode-keymap))
 
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :custom
+  (typescript-indent-level 2))
+
 (use-package indium
   :after (js2-mode)
   :hook

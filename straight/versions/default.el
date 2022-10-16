@@ -54,6 +54,7 @@
  ("systemd-mode" . "b6ae63a236605b1c5e1069f7d3afe06ae32a7bae")
  ("tern" . "ef50c6f0269a6fd9ce742d0a87647d60a0ef850f")
  ("transient" . "aaac13bb9d8014ba3e91a481edb7181249cc5d30")
+ ("typescript.el" . "d79551c67ff5f2bd5f651eb411cdc66ceeb787e3")
  ("undo-tree" . "7523823ca3709e0327f3e9f38ddfec71a58084be")
  ("use-package" . "caa92f1d64fc25480551757d854b4b49981dfa6b")
  ("with-editor" . "c4768f51c7415119519b4626d8643d60e584098c")
