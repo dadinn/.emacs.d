@@ -37,7 +37,7 @@
  ("parseclj" . "eff941126859bc9e949eae5cd6c2592e731629f2")
  ("parseedn" . "90cfe3df51b96f85e346f336c0a0ee6bf7fee508")
  ("prescient.el" . "292ac9fe351d469f44765d487f6b9a1c1a68ad1e")
- ("project" . "401e4aa68e5f46fe72ca6f9a1cb07cd84f5ee981")
+ ("project" . "2ea82bf6ffb0e00991352996507c19948eb28474")
  ("projectile" . "a2a1aba8aa12d0ff0e044c4336a5c2598c259720")
  ("queue" . "52206c0f78afc0dfb9a287cb928c1e725103336d")
  ("restclient.el" . "f59a7f5abf366145a2c9c1e9f0a2184139d2adce")
