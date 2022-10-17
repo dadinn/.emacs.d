@@ -14,6 +14,8 @@
  ("doom-modeline" . "936bfbcbbb2b1ab1e13904ee1f53fe0ea28acee1")
  ("el-get" . "0a9d5684089bb1be9bd2ff670358006add4c6aff")
  ("emacs-async" . "14f48de586b0977e3470f053b810d77b07ea427a")
+ ("emacs-sbt-mode" . "9fe1e8807c22cc1dc56a6233e000969518907f4d")
+ ("emacs-scala-mode" . "598cb680f321d9609295aa9b4679040cc703b602")
  ("emacsmirror-mirror" . "39e5d16a4343180b0fda3139df5c51638c3a7dfc")
  ("exec-path-from-shell" . "18cad603c45c5544e8a9666be64d0c51bbc1af90")
  ("f.el" . "d50dca48929575642912bb5bbb2585709ba38f82")

@@ -212,8 +212,8 @@
 
 (use-package haskell-mode)
 
-(use-package scala-mode2 :disabled t)
-(use-package sbt-mode :disabled t)
+(use-package scala-mode)
+(use-package sbt-mode)
 
 (use-package js2-mode
   :mode
