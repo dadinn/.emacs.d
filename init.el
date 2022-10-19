@@ -276,41 +276,6 @@
     (add-to-list 'projectile-globally-ignored-directories dir))
   (projectile-mode))
 
-(use-package sunrise-commander
-  :ensure nil
-  :bind
-  (("C-x d" . sunrise)
-   ("C-x C-d" . sunrise-cd)
-   :map sr-mode-map
-   ("C-n" . dired-next-line)
-   ("C-p" . dired-previous-line))
-  :custom
-  (sr-cursor-follows-mouse nil)
-  (sr-listing-switches
-   (if (string-equal system-type "gnu/linux")
-      "-lAD --time-style=long-iso --group-directories-first"
-      "-lA"))
-  (sr-show-file-attributes t)
-  (sr-show-hidden-files t)
-  (sr-confirm-kill-viewer nil)
-  (sr-window-split-style (quote horizontal))
-  (sr-start-hook nil))
-
-(use-package sunrise-x-loop
-  :straight sunrise-commander
-  :config
-  (unbind-key "C-n" sr-tabs-mode-map)
-  (unbind-key "C-p" sr-tabs-mode-map))
-
-(use-package sunrise-x-popviewer
-  :straight sunrise-commander
-  :config
-  (sr-popviewer-mode)
-  (unbind-key "v" sr-mode-map)
-  (unbind-key "o" sr-mode-map)
-  (unbind-key "C-c TAB" sr-mode-map)
-  (unbind-key "<C-tab>" sr-mode-map))
-
 (use-package clojure-mode
   :hook
   (clojure-mode . paredit-mode)
@@ -483,6 +448,41 @@
   :hook (restclient-mode . company-mode)
   :init
   (add-to-list 'company-backends 'company-restclient))
+
+(use-package sunrise-commander
+  :ensure nil
+  :bind
+  (("C-x d" . sunrise)
+   ("C-x C-d" . sunrise-cd)
+   :map sr-mode-map
+   ("C-n" . dired-next-line)
+   ("C-p" . dired-previous-line))
+  :custom
+  (sr-cursor-follows-mouse nil)
+  (sr-listing-switches
+   (if (string-equal system-type "gnu/linux")
+      "-lAD --time-style=long-iso --group-directories-first"
+      "-lA"))
+  (sr-show-file-attributes t)
+  (sr-show-hidden-files t)
+  (sr-confirm-kill-viewer nil)
+  (sr-window-split-style (quote horizontal))
+  (sr-start-hook nil))
+
+(use-package sunrise-x-loop
+  :straight sunrise-commander
+  :config
+  (unbind-key "C-n" sr-tabs-mode-map)
+  (unbind-key "C-p" sr-tabs-mode-map))
+
+(use-package sunrise-x-popviewer
+  :straight sunrise-commander
+  :config
+  (sr-popviewer-mode)
+  (unbind-key "v" sr-mode-map)
+  (unbind-key "o" sr-mode-map)
+  (unbind-key "C-c TAB" sr-mode-map)
+  (unbind-key "<C-tab>" sr-mode-map))
 
 (use-package monokai-theme
   :config (load-theme (quote monokai) t))
