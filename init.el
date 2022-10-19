@@ -351,6 +351,11 @@
   :custom
   (add-to-list 'company-backends 'company-lsp))
 
+(use-package lsp-treemacs
+  :after (lsp-mode)
+  :config
+  (lsp-treemacs-sync-mode))
+
 (use-package clojure-mode
   :hook
   (clojure-mode . paredit-mode)
