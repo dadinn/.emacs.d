@@ -343,6 +343,19 @@
   (lsp-file-watch-threshold nil)
   (lsp-headerline-breadcrump-enable t))
 
+(use-package lsp-ui
+  :after (lsp-mode)
+  :bind
+  (:map lsp-ui-mode-map
+   ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+   ([remap xref-find-references] . lsp-ui-peek-find-references))
+  :custom
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-peek-enable t)
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-show-with-cursor nil)
+  (lsp-ui-doc-show-with-mouse t))
+
 (use-package company-lsp
   :after (company lsp-mode)
   :bind

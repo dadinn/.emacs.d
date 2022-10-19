@@ -44,6 +44,7 @@
  ("let-alist" . "592553db5929b54db40af0df90c5add0aaca045b")
  ("lsp-mode" . "5e0524cc9a4e21c4fe5b35153ad33e7b8a4f9117")
  ("lsp-treemacs" . "2894e6dec583eaa77037627e9d8c3bc89cf7273d")
+ ("lsp-ui" . "3cd7cc61273341023b863dcf45906ac9142fd1aa")
  ("magit" . "f44f6c14500476d918e9c01de8449edb20af4113")
  ("markdown-mode" . "cf6403186119cd3d25adc702845f969071060e20")
  ("melpa" . "5b7f066af55d8d6869b855cb04bcc004519b8223")
