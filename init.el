@@ -318,6 +318,8 @@
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
 
+(use-package flycheck)
+
 (use-package clojure-mode
   :hook
   (clojure-mode . paredit-mode)
