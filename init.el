@@ -373,6 +373,17 @@
   :config
   (load-theme (quote modus-vivendi) t))
 
+(use-package doom-modeline
+  :hook
+  (after-init . doom-modeline-mode)
+  :custom
+  (doom-modeline-height 20)
+  (doom-modeline-bar-width 1)
+  :config
+  ;; https://github.com/seagle0128/doom-modeline/issues/115
+  (set-face-background 'doom-modeline-bar-inactive (face-background 'mode-line-inactive))
+  (set-face-background 'doom-modeline-bar (face-background 'mode-line)))
+
 (use-package org
   :init
   (defun org-archive-done-tasks ()
