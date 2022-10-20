@@ -1,5 +1,6 @@
 (("Indium" . "59f12cb1bc73bb399e00b2c6c69d21bdcb9c0955")
  ("a.el" . "18966975db7110d0aac726be95b593e2fc3d44ed")
+ ("all-the-icons.el" . "51bf77da1ebc3c199dfc11f54c0dce67559f5f40")
  ("auctex" . "3b0a080ae596c26c17b15ba9c71fc5542eae238b")
  ("cider" . "8b3dabeefa8a3352d7a30a9fd9027c05a4c4f6e2")
  ("clojure-mode" . "75c28897c7e91aa130c71c076aa2a6ce2e02da8f")

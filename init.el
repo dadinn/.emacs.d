@@ -373,7 +373,20 @@
   :config
   (load-theme (quote modus-vivendi) t))
 
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :custom
+  ;; https://github.com/domtronn/all-the-icons.el/issues/28
+  (inhibit-compacting-font-caches t)
+  :config
+  (let ((families ;; install fonts automatically if missing
+         (list "all-the-icons" "FontAwesome" "file-icons"
+               "github-octicons" "Weather Icons")))
+    (unless (cl-every (lambda (f) (find-font (font-spec :family f))) families)
+      (all-the-icons-install-fonts t))))
+
 (use-package doom-modeline
+  :after (all-the-icons)
   :hook
   (after-init . doom-modeline-mode)
   :custom
