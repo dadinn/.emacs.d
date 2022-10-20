@@ -369,6 +369,11 @@
   :config
   (lsp-treemacs-sync-mode))
 
+(use-package dap-mode
+  :after (lsp-mode)
+  :config
+  (dap-auto-configure-mode))
+
 (use-package clojure-mode
   :hook
   (clojure-mode . paredit-mode)
