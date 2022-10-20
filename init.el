@@ -376,6 +376,12 @@
   :config
   (dap-auto-configure-mode))
 
+(use-package lsp-java
+  :after (lsp-mode)
+  :hook
+  (java-mode . lsp-deferred)
+  (java-mode . lsp-java-boot-lens-mode))
+
 (use-package clojure-mode
   :after (lsp-mode)
   :hook
