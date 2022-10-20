@@ -343,6 +343,14 @@
   (lsp-file-watch-threshold nil)
   (lsp-headerline-breadcrump-enable t))
 
+(use-package company-lsp
+  :after (company lsp-mode)
+  :bind
+  (:map lsp-mode-map
+   ("TAB" . company-indent-or-complete-common))
+  :custom
+  (add-to-list 'company-backends 'company-lsp))
+
 (use-package clojure-mode
   :hook
   (clojure-mode . paredit-mode)

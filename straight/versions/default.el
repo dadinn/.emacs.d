@@ -7,6 +7,7 @@
  ("cfrs" . "f3a21f237b2a54e6b9f8a420a9da42b4f0a63121")
  ("cider" . "11156e7b0cab470f4aab39d3af5ee3cb1e0b09d0")
  ("clojure-mode" . "75c28897c7e91aa130c71c076aa2a6ce2e02da8f")
+ ("company-lsp" . "f921ffa0cdc542c21dc3dd85f2c93df4288e83bd")
  ("company-mode" . "656ad10670512e135a0a5881f127bb7a789ef8ca")
  ("company-restclient" . "e5a3ec54edb44776738c13e13e34c85b3085277b")
  ("company-tern" . "9a2cb8427a1a93c9c5021c01df1b47c69d79e176")
