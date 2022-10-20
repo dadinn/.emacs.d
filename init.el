@@ -382,6 +382,12 @@
   (java-mode . lsp-deferred)
   (java-mode . lsp-java-boot-lens-mode))
 
+(use-package lsp-metals
+  :after (lsp-mode scala-mode sbt-mode)
+  :hook
+  (scala-mode . lsp-deferred)
+  (sbt-mode . lsp-deferred))
+
 (use-package clojure-mode
   :after (lsp-mode)
   :hook
