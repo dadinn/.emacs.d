@@ -336,6 +336,8 @@
 (use-package lsp-mode
   :demand t
   :hook
+  (c-mode . lsp-deferred)
+  (sh-mode . lsp-deferred)
   (lsp-mode . flycheck-mode)
   (lsp-mode . lsp-enable-which-key-integration)
   :custom
@@ -375,8 +377,10 @@
   (dap-auto-configure-mode))
 
 (use-package clojure-mode
+  :after (lsp-mode)
   :hook
   (clojure-mode . paredit-mode)
+  (clojure-mode . lsp-deferred)
   :custom
   (clojure-indent-style :always-indent))
 
@@ -428,9 +432,11 @@
 (use-package sbt-mode)
 
 (use-package js2-mode
+  :after (lsp-mode)
   :mode
   ("\\.js\\'" . js2-mode)
   :hook
+  (js2-mode . lsp-deferred)
   (js2-mode . js2-imenu-extras-mode)
   :custom
   (js-indent-level 2)
@@ -466,7 +472,10 @@
   (unbind-key "M-," tern-mode-keymap))
 
 (use-package typescript-mode
+  :after (lsp-mode)
   :mode "\\.ts\\'"
+  :hook
+  (typescript-mode . lsp-deferred)
   :custom
   (typescript-indent-level 2))
 
@@ -499,6 +508,7 @@
   :hook
   (markdown-mode . markdown-live-preview-mode)
   (markdown-mode . visual-line-mode)
+  (markdown-mode . lsp-deferred)
   :custom
   (markdown-live-preview-delete-export 'delete-on-export)
   :config
@@ -547,6 +557,9 @@
 (use-package nxml-mode
   :after (hydra)
   :straight (:type built-in)
+  :after (lsp-mode)
+  :hook
+  (nxml-mode . lsp-deferred)
   :init
   (defvar nxml-extensions
     (list "xml" "xsd" "sch" "rng" "xslt" "svg" "rss"))
