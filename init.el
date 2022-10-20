@@ -209,6 +209,16 @@
   :custom
   (company-prescient-sort-length-enable nil))
 
+(use-package which-key
+  :custom
+  (which-key-idle-delay 30)
+  ;; Allow C-h to trigger which-key before idle-delay
+  (which-key-show-early-on-C-h t)
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-bottom)
+  (which-key-enable-god-mode-support))
+
 (use-package projectile
   :hook
   (projectile-grep-finished . (lambda () (pop-to-buffer next-error-last-buffer)))

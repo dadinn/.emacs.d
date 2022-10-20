@@ -16,6 +16,7 @@
  ("emacs-async" . "14f48de586b0977e3470f053b810d77b07ea427a")
  ("emacs-sbt-mode" . "9fe1e8807c22cc1dc56a6233e000969518907f4d")
  ("emacs-scala-mode" . "598cb680f321d9609295aa9b4679040cc703b602")
+ ("emacs-which-key" . "8093644032854b1cdf3245ce4e3c7b6673f741bf")
  ("emacsmirror-mirror" . "4ca499066e4663bb606b2651c7655d3da09bacbb")
  ("exec-path-from-shell" . "18cad603c45c5544e8a9666be64d0c51bbc1af90")
  ("f.el" . "d50dca48929575642912bb5bbb2585709ba38f82")
