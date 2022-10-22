@@ -21,16 +21,23 @@
  '(menu-bar-mode nil)
  '(tool-bar-mode nil)
  '(scroll-bar-mode nil)
+ '(use-dialog-box nil)
  '(calendar-week-start-day 1)
  '(calendar-holidays nil) ; remove default holiday entries from calendar
  '(visible-bell t)
+ '(show-paren-mode t)
+ '(column-number-mode t)
  '(visual-line-fringe-indicators
    '(left-curly-arrow right-curly arrow))
+ '(bs-default-sort-name "by mode")
  '(indent-tabs-mode nil)
  '(require-final-newline t)
+ '(global-auto-revert-mode t)
+ '(global-auto-revert-non-file-buffers t)
  '(make-backup-files nil)
  '(create-lockfiles nil)
- '(custom-file "~/.emacs.d/custom.el")
+ '(save-place-mode t)
+ '(custom-file (locate-user-emacs-file "custom.el"))
  ;; straight.el customizations
  '(straight-use-package-by-default t)
  '(straight-vc-git-default-protocol (quote ssh)))
@@ -47,9 +54,6 @@
  (if (version<= "26.0.50" emacs-version)
    'display-line-numbers-mode
    'linum-mode))
-
-(column-number-mode)
-(global-auto-revert-mode)
 
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
@@ -153,8 +157,7 @@
   :hook
   (lisp-mode . paredit-mode)
   (scheme-mode . paredit-mode)
-  (emacs-lisp-mode . paredit-mode)
-  :init (show-paren-mode))
+  (emacs-lisp-mode . paredit-mode))
 
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)

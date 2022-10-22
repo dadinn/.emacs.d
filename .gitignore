@@ -1,3 +1,4 @@
+
 # BUILT-INS
 auto-save-list/
 transient/
@@ -7,9 +8,13 @@ tramp
 bookmarks
 session.*
 *~
+
 # PACKAGE SPECIFIC
+elpa
 straight/*
 !straight/versions
+projects
+places
 ido.last
 bbdb
 prescient-save.el
@@ -17,6 +22,7 @@ projectile-bookmarks.eld
 projectile.cache
 ac-comphist.dat
 .geiser_history.*
+
 # CUSTOM FILES
 custom.el
 *.swp
