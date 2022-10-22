@@ -117,7 +117,10 @@
     (add-to-list 'projectile-globally-ignored-directories dir))
   (projectile-mode))
 
+(use-package project)
+
 (use-package magit
+  :after (project)
   :bind
   (("C-x C-m" . magit-status)
    ("C-x M-f" . magit-log-buffer-file)
