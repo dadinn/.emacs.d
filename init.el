@@ -333,6 +333,16 @@
 
 (use-package flycheck)
 
+(use-package lsp-mode
+  :demand t
+  :hook
+  (lsp-mode . flycheck-mode)
+  (lsp-mode . lsp-enable-which-key-integration)
+  :custom
+  (lsp-keymap-prefix "C-c l")
+  (lsp-file-watch-threshold nil)
+  (lsp-headerline-breadcrump-enable t))
+
 (use-package clojure-mode
   :hook
   (clojure-mode . paredit-mode)
