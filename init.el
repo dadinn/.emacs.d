@@ -104,139 +104,6 @@
   :custom
   (company-prescient-sort-length-enable nil))
 
-(use-package org
-  :init
-  (defun org-archive-done-tasks ()
-    "Archive all DONE and CANCELED tasks in the subtree of the current entry"
-    (interactive)
-    (org-map-entries
-     (lambda ()
-       (let ((prev-heading (outline-previous-heading)))
-         (org-archive-subtree)
-         (setq org-map-continue-from prev-heading)))
-     "//DONE|CANCELED" 'agenda))
-  :bind
-  (("C-c a" . org-agenda)
-   ("C-c k" . org-capture)
-   :map org-mode-map
-   ("C-c H" . org-archive-done-tasks)
-   ("C-c C-e" . org-babel-execute-src-block))
-  :hook
-  (outline-mode . visual-line-mode)
-  :config
-  (custom-set-variables
-   '(org-agenda-span 'day)
-   '(org-startup-indented t)
-   '(org-startup-folded nil)
-   '(org-directory "~/Workspace/org/")
-   '(org-agenda-files (list org-directory))
-   '(org-archive-location "archives.org::datetree/* %s")
-   '(org-agenda-diary-file (concat org-directory "diary.org"))
-   '(org-agenda-include-diary t)
-   '(org-deadline-warning-days 7)
-   '(org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
-   '(org-agenda-skip-scheduled-if-deadline-is-shown t)
-   '(org-agenda-skip-scheduled-if-done t)
-   '(org-agenda-todo-ignore-scheduled 'future)
-   '(org-agenda-tags-todo-honor-ignore-options t)
-   ;; set SCHEDULED and DEADLINE leaders in agenda view
-   '(org-agenda-deadline-leaders (quote ("Deadline!  " "In %d days: " "Late %d days: ")))
-   '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
-   '(org-agenda-window-setup 'only-window)
-   '(org-todo-keywords
-     (quote ((sequence "TODO(t!)" "WAITING(w@)" "ONGOING(o!)" "|" "DONE(d@)" "CANCELED(c@)"))))
-   '(org-todo-keyword-faces
-     (quote (("WAITING" . "purple")
-             ("ONGOING" . "orange")
-             ("CANCELED" . "firebrick"))))
-   ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
-   `(org-todo-state-tags-triggers
-     (quote
-      ((todo . ((,org-archive-tag . nil)))
-       ("CANCELED" . ((,org-archive-tag . t))))))
-   '(org-tag-persistent-alist
-     '(("TARGET" . ?t)))
-   '(org-tags-exclude-from-inheritance (quote ("TARGET")))
-   ;; REFILE BEHAVIOUR
-   '(org-refile-targets
-     '((nil . (:level . 1))
-       (nil . (:tag . "TARGET"))))
-   '(org-refile-use-outline-path t)
-   '(org-goto-interface 'outline-path-completion)
-   '(org-outline-path-complete-in-steps nil)
-   ;; '(org-reverse-note-order t)
-
-   ;; LOGGING
-   ;; todo state changes should be logged into drawer
-   '(org-log-into-drawer t)
-   ;; log when schedule or deadline changes
-   '(org-log-redeadline (quote time))
-   '(org-log-reschedule (quote time))
-   ;;'(org-log-refile (quote time)) ; logs even when refiled during capture
-
-   ;; PRIORITIES
-   '(org-priority-start-cycle-with-default t)
-   '(org-default-priority 70)
-   '(org-lowest-priority 70)
-   '(org-highest-priority 65)
-   '(org-agenda-sorting-strategy
-     '((agenda time-up todo-state-down deadline-down priority-down)
-       (todo category-up priority-down)
-       (tags category-up priority-down)
-       (search category-up)))
-
-   ;; DEPENDENCIES
-   '(org-enforce-todo-dependencies t)
-   ;;'(org-enforce-todo-checkbox-dependencies t)
-   '(org-agenda-dim-blocked-tasks (quote invisible))
-
-   ;; CUSTOM COMMANDS
-   '(org-agenda-custom-commands
-     '(("c" . "Custom commands")
-       ("cb" "Backlog (tasks not scheduled)" todo "TODO"
-        ((org-agenda-skip-function
-          '(org-agenda-skip-entry-if 'scheduled))))
-       ("cf" "Focussed tasks"
-        ((todo "ONGOING")
-         (todo "WAITING")))
-       ("cc" . "Filter tasks by CATEGORY")
-       ("cci" "INBOX tasks"
-        ((alltodo ""))
-        ((org-agenda-category-filter-preset '("+INBOX"))))
-       ("ccf" "INFRA tasks"
-        ((alltodo ""))
-        ((org-agenda-category-filter-preset '("+INFRA"))))
-       ("ccr" "ROLES tasks"
-        ((alltodo ""))
-        ((org-agenda-category-filter-preset '("+ROLES"))))))
-
-   ;; CAPTURE TEMPLATES
-   '(org-capture-templates
-     (quote
-      (("t" "Task")
-       ("tt" "Task (Unscheduled)" entry
-        (file+headline "tasks.org" "INBOX")
-        "* TODO %?")
-       ("ts" "Task (Scheduled from today)" entry
-        (file+headline "tasks.org" "INBOX")
-        "* TODO %?\nSCHEDULED: %t\n")
-       ("td" "Task (Scheduled, with Deadline)" entry
-        (file+headline "tasks.org" "INBOX")
-        "* TODO %?\nSCHEDULED: %^{Schedule}t DEADLINE: %^{Deadline}t\n")
-       ("e" "Event")
-       ("et" "Event (with single datetime)" entry
-        (file+headline "events.org" "INBOX")
-        "* %?\n%^T\n")
-       ("er" "Event (with date range)" entry
-        (file+headline "events.org" "INBOX")
-        "* %?\n%^{Start}t--%^{End}t\n")
-       ("m" "Memo" entry
-        (file+headline "memo.org" "INBOX")
-        "* %?\n%T\n")
-       ("x" "Example" entry
-        (file+headline "example.org" "INBOX")
-        "* %?\n%^t\n"))))))
-
 (use-package projectile
   :hook
   (projectile-grep-finished . (lambda () (pop-to-buffer next-error-last-buffer)))
@@ -495,3 +362,136 @@
   :disabled t)
 (use-package zenburn-theme
   :disabled t)
+
+(use-package org
+  :init
+  (defun org-archive-done-tasks ()
+    "Archive all DONE and CANCELED tasks in the subtree of the current entry"
+    (interactive)
+    (org-map-entries
+     (lambda ()
+       (let ((prev-heading (outline-previous-heading)))
+         (org-archive-subtree)
+         (setq org-map-continue-from prev-heading)))
+     "//DONE|CANCELED" 'agenda))
+  :bind
+  (("C-c a" . org-agenda)
+   ("C-c k" . org-capture)
+   :map org-mode-map
+   ("C-c H" . org-archive-done-tasks)
+   ("C-c C-e" . org-babel-execute-src-block))
+  :hook
+  (outline-mode . visual-line-mode)
+  :config
+  (custom-set-variables
+   '(org-agenda-span 'day)
+   '(org-startup-indented t)
+   '(org-startup-folded nil)
+   '(org-directory "~/Workspace/org/")
+   '(org-agenda-files (list org-directory))
+   '(org-archive-location "archives.org::datetree/* %s")
+   '(org-agenda-diary-file (concat org-directory "diary.org"))
+   '(org-agenda-include-diary t)
+   '(org-deadline-warning-days 7)
+   '(org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
+   '(org-agenda-skip-scheduled-if-deadline-is-shown t)
+   '(org-agenda-skip-scheduled-if-done t)
+   '(org-agenda-todo-ignore-scheduled 'future)
+   '(org-agenda-tags-todo-honor-ignore-options t)
+   ;; set SCHEDULED and DEADLINE leaders in agenda view
+   '(org-agenda-deadline-leaders (quote ("Deadline!  " "In %d days: " "Late %d days: ")))
+   '(org-agenda-scheduled-leaders (quote ("Scheduled! " "For %d days: ")))
+   '(org-agenda-window-setup 'only-window)
+   '(org-todo-keywords
+     (quote ((sequence "TODO(t!)" "WAITING(w@)" "ONGOING(o!)" "|" "DONE(d@)" "CANCELED(c@)"))))
+   '(org-todo-keyword-faces
+     (quote (("WAITING" . "purple")
+             ("ONGOING" . "orange")
+             ("CANCELED" . "firebrick"))))
+   ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
+   `(org-todo-state-tags-triggers
+     (quote
+      ((todo . ((,org-archive-tag . nil)))
+       ("CANCELED" . ((,org-archive-tag . t))))))
+   '(org-tag-persistent-alist
+     '(("TARGET" . ?t)))
+   '(org-tags-exclude-from-inheritance (quote ("TARGET")))
+   ;; REFILE BEHAVIOUR
+   '(org-refile-targets
+     '((nil . (:level . 1))
+       (nil . (:tag . "TARGET"))))
+   '(org-refile-use-outline-path t)
+   '(org-goto-interface 'outline-path-completion)
+   '(org-outline-path-complete-in-steps nil)
+   ;; '(org-reverse-note-order t)
+
+   ;; LOGGING
+   ;; todo state changes should be logged into drawer
+   '(org-log-into-drawer t)
+   ;; log when schedule or deadline changes
+   '(org-log-redeadline (quote time))
+   '(org-log-reschedule (quote time))
+   ;;'(org-log-refile (quote time)) ; logs even when refiled during capture
+
+   ;; PRIORITIES
+   '(org-priority-start-cycle-with-default t)
+   '(org-default-priority 70)
+   '(org-lowest-priority 70)
+   '(org-highest-priority 65)
+   '(org-agenda-sorting-strategy
+     '((agenda time-up todo-state-down deadline-down priority-down)
+       (todo category-up priority-down)
+       (tags category-up priority-down)
+       (search category-up)))
+
+   ;; DEPENDENCIES
+   '(org-enforce-todo-dependencies t)
+   ;;'(org-enforce-todo-checkbox-dependencies t)
+   '(org-agenda-dim-blocked-tasks (quote invisible))
+
+   ;; CUSTOM COMMANDS
+   '(org-agenda-custom-commands
+     '(("c" . "Custom commands")
+       ("cb" "Backlog (tasks not scheduled)" todo "TODO"
+        ((org-agenda-skip-function
+          '(org-agenda-skip-entry-if 'scheduled))))
+       ("cf" "Focussed tasks"
+        ((todo "ONGOING")
+         (todo "WAITING")))
+       ("cc" . "Filter tasks by CATEGORY")
+       ("cci" "INBOX tasks"
+        ((alltodo ""))
+        ((org-agenda-category-filter-preset '("+INBOX"))))
+       ("ccf" "INFRA tasks"
+        ((alltodo ""))
+        ((org-agenda-category-filter-preset '("+INFRA"))))
+       ("ccr" "ROLES tasks"
+        ((alltodo ""))
+        ((org-agenda-category-filter-preset '("+ROLES"))))))
+
+   ;; CAPTURE TEMPLATES
+   '(org-capture-templates
+     (quote
+      (("t" "Task")
+       ("tt" "Task (Unscheduled)" entry
+        (file+headline "tasks.org" "INBOX")
+        "* TODO %?")
+       ("ts" "Task (Scheduled from today)" entry
+        (file+headline "tasks.org" "INBOX")
+        "* TODO %?\nSCHEDULED: %t\n")
+       ("td" "Task (Scheduled, with Deadline)" entry
+        (file+headline "tasks.org" "INBOX")
+        "* TODO %?\nSCHEDULED: %^{Schedule}t DEADLINE: %^{Deadline}t\n")
+       ("e" "Event")
+       ("et" "Event (with single datetime)" entry
+        (file+headline "events.org" "INBOX")
+        "* %?\n%^T\n")
+       ("er" "Event (with date range)" entry
+        (file+headline "events.org" "INBOX")
+        "* %?\n%^{Start}t--%^{End}t\n")
+       ("m" "Memo" entry
+        (file+headline "memo.org" "INBOX")
+        "* %?\n%T\n")
+       ("x" "Example" entry
+        (file+headline "example.org" "INBOX")
+        "* %?\n%^t\n"))))))
