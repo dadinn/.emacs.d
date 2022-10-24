@@ -35,12 +35,12 @@
  '(straight-use-package-by-default t)
  '(straight-vc-git-default-protocol (quote ssh)))
 
-(define-key global-map "\C-x\C-b" 'bs-show)
-(define-key global-map "\C-x\C-p" 'list-processes)
-(define-key global-map "\C-x\C-o" 'other-window)
-(define-key global-map "\C-x\C-i" 'other-window)
-(define-key global-map "\C-x\C-w" 'whitespace-mode)
-(define-key global-map "\C-x\C-n"
+(bind-key "C-x C-b" 'bs-show)
+(bind-key "C-x C-p" 'list-processes)
+(bind-key "C-x C-o" 'other-window)
+(bind-key "C-x C-i" 'other-window)
+(bind-key "C-x C-w" 'whitespace-mode)
+(bind-key "C-x C-n"
  (if (version<= "26.0.50" emacs-version)
    'display-line-numbers-mode
    'linum-mode))
@@ -365,7 +365,7 @@
   :custom
   (js-indent-level 2)
   :config
-  (define-key js2-mode-map (kbd "M-.") nil))
+  (unbind-key "M-." js2-mode-map))
 
 (use-package xref-js2
   :after (js2-mode)
@@ -395,8 +395,8 @@
   (js2-mode . enable-company-tern)
   :config
   (add-to-list 'company-backends 'company-tern)
-  (define-key tern-mode-keymap (kbd "M-.") nil)
-  (define-key tern-mode-keymap (kbd "M-,") nil))
+  (unbind-key "M-." tern-mode-keymap)
+  (unbind-key "M-," tern-mode-keymap))
 
 (use-package indium
   :after (js2-mode)
