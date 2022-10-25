@@ -406,13 +406,13 @@
   (js2-mode . indium-interaction-mode)
   (indium-repl-mode . indium-switch-to-repl-buffer)
   :bind
-  (("C-c i l" . indium-launch)
-   ("C-c i c" . indium-connect)
-   ("C-c i s" . indium-scratch)
-   (:map indium-interaction-mode-map)
-   ("C-c i q" . indium-maybe-quit)
-   ("C-c i k" . indium-eval-buffer)
-   ("C-c i e" . indium-eval-region))
+  ("C-c i l" . indium-launch)
+  ("C-c i c" . indium-connect)
+  ("C-c i s" . indium-scratch)
+  (:map indium-interaction-mode-map
+   ("C-c C-q" . indium-maybe-quit)
+   ("C-c C-k" . indium-eval-buffer)
+   ("C-c C-e" . indium-eval-region))
   :custom
   ;; this is default anyway
   (indium-chrome-use-temporary-profile t))
