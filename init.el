@@ -234,6 +234,15 @@
         (file+headline "example.org" "INBOX")
         "* %?\n%^t\n"))))))
 
+(use-package magit
+  :bind
+  (("C-x C-m" . magit-status)
+   ("C-x M-f" . magit-log-buffer-file)
+   ("C-x M-b" . magit-blame-addition))
+  :custom
+  (magit-repository-directories (quote ("~/Workspace/dev")))
+  (magit-repository-directories-depth 1))
+
 (use-package ediff
   :straight (:type built-in)
   :bind
@@ -245,15 +254,6 @@
   ;; due to bug with mixup of horizontally/vertically
   (ediff-split-window-function 'split-window-horizontally)
   (ediff-window-setup-function 'ediff-setup-windows-plain))
-
-(use-package magit
-  :bind
-  (("C-x C-m" . magit-status)
-   ("C-x M-f" . magit-log-buffer-file)
-   ("C-x M-b" . magit-blame-addition))
-  :custom
-  (magit-repository-directories (quote ("~/Workspace/dev")))
-  (magit-repository-directories-depth 1))
 
 (use-package undo-tree
   :bind ("C-x u" . undo-tree-visualize)
