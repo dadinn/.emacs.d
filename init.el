@@ -234,6 +234,16 @@
         (file+headline "example.org" "INBOX")
         "* %?\n%^t\n"))))))
 
+(use-package projectile
+  :hook
+  (projectile-grep-finished . (lambda () (pop-to-buffer next-error-last-buffer)))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :config
+  (dolist (dir (list "node_modules" "target"))
+    (add-to-list 'projectile-globally-ignored-directories dir))
+  (projectile-mode))
+
 (use-package magit
   :bind
   (("C-x C-m" . magit-status)
@@ -269,16 +279,6 @@
 
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
-
-(use-package projectile
-  :hook
-  (projectile-grep-finished . (lambda () (pop-to-buffer next-error-last-buffer)))
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :config
-  (dolist (dir (list "node_modules" "target"))
-    (add-to-list 'projectile-globally-ignored-directories dir))
-  (projectile-mode))
 
 (use-package clojure-mode
   :hook
