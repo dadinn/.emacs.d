@@ -440,7 +440,8 @@
   :custom
   (csv-align-style (quote auto)))
 
-(use-package nhexl-mode)
+(use-package nhexl-mode
+  :bind ("C-x M-x" . nhexl-mode))
 
 (use-package json-mode
   ;; causes errors with compiling json-reformat saying: "attempt to inline hash-table-keys before it was defined"
