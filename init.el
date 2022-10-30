@@ -13,8 +13,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; install use-package
-(straight-use-package 'use-package)
+(when (version<= "27.0.0" emacs-version)
+  (setq package-enable-at-startup nil))
 
 (custom-set-variables
  '(inhibit-startup-screen t)
@@ -34,6 +34,9 @@
  ;; straight.el customizations
  '(straight-use-package-by-default t)
  '(straight-vc-git-default-protocol (quote ssh)))
+
+;; install use-package
+(straight-use-package 'use-package)
 
 (bind-key "C-x C-b" 'bs-show)
 (bind-key "C-x C-p" 'list-processes)
