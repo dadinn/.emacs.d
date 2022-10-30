@@ -157,7 +157,10 @@
   :hook
   (lisp-mode . paredit-mode)
   (scheme-mode . paredit-mode)
-  (emacs-lisp-mode . paredit-mode))
+  (emacs-lisp-mode . paredit-mode)
+  :config
+  ;; intereferes with xref-find-references binding
+  (unbind-key "M-?" paredit-mode-map))
 
 (use-package rainbow-delimiters :disabled t)
 (use-package rainbow-blocks :disabled t)
