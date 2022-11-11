@@ -49,6 +49,7 @@
  ("spinner" . "2daa167bec1c7566d662d48613a94453536b524a")
  ("straight.el" . "f21103d97d180fba0b6e2e86ebb0b6269219ef2c")
  ("sunrise-commander" . "cf8305a149a321d028858057e7a7c92f0038a06a")
+ ("systemd-mode" . "b6ae63a236605b1c5e1069f7d3afe06ae32a7bae")
  ("tern" . "ef50c6f0269a6fd9ce742d0a87647d60a0ef850f")
  ("transient" . "aaac13bb9d8014ba3e91a481edb7181249cc5d30")
  ("undo-tree" . "7523823ca3709e0327f3e9f38ddfec71a58084be")

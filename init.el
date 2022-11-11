@@ -285,6 +285,8 @@
 
 (use-package dockerfile-mode)
 
+(use-package systemd)
+
 (use-package markdown-mode
   :init
   (when (not (executable-find "markdown"))
