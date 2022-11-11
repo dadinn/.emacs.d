@@ -283,6 +283,8 @@
   ;; this is default anyway
   (indium-chrome-use-temporary-profile t))
 
+(use-package jenkinsfile-mode)
+
 (use-package dockerfile-mode)
 
 (use-package systemd)
