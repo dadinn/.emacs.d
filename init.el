@@ -57,28 +57,26 @@
     (add-to-list (quote exec-path-from-shell-variables) var))
   (exec-path-from-shell-initialize))
 
-(use-package ido
+(use-package selectrum
   :custom
-  (ido-enable-flex-matching t)
-  (ido-auto-merge-work-directories-length -1)
-  (ido-everywhere t)
-  (ido-mode t))
+  (completion-ignore-case t)
+  (read-file-name-completion-ignore-case t)
+  (read-buffer-completion-ignore-case t)
+  :init
+  (selectrum-mode))
 
-(use-package ido-vertical-mode
+(use-package prescient
   :custom
-  (ido-vertical-show-count t)
-  (ido-vertical-define-keys 'C-n-and-C-p-only)
+  (prescient-save-file
+   (locate-user-emacs-file "prescient-save.el"))
   :config
-  (ido-vertical-mode))
+  (add-to-list 'prescient-filter-method 'fuzzy)
+  (prescient-persist-mode))
 
-(use-package flx-ido
-  :custom
-  (ido-enable-flex-matching t)
-  (ido-use-faces nil))
-
-(use-package ido-completing-read+
-  :config
-  (ido-ubiquitous-mode))
+(use-package selectrum-prescient
+  :after (prescient selectrum)
+  :init
+  (selectrum-prescient-mode))
 
 (use-package company
   :bind
@@ -92,6 +90,13 @@
   (company-selection-wrap-around t)
   :config
   (company-tng-configure-default))
+
+(use-package company-prescient
+  :after (prescient company)
+  :init
+  (company-prescient-mode)
+  :custom
+  (company-prescient-sort-length-enable nil))
 
 (use-package org
   :init
@@ -152,9 +157,7 @@
        (nil . (:tag . "TARGET"))))
    '(org-refile-use-outline-path t)
    '(org-goto-interface 'outline-path-completion)
-   '(org-outline-path-complete-in-steps t)
-   ;; prefer in-steps that ido for refile completion
-   ;; '(org-completion-use-ido t)
+   '(org-outline-path-complete-in-steps nil)
    ;; '(org-reverse-note-order t)
 
    ;; LOGGING
