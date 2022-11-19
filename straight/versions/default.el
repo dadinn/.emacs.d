@@ -17,7 +17,7 @@
  ("emacsmirror-mirror" . "39e5d16a4343180b0fda3139df5c51638c3a7dfc")
  ("exec-path-from-shell" . "18cad603c45c5544e8a9666be64d0c51bbc1af90")
  ("f.el" . "d50dca48929575642912bb5bbb2585709ba38f82")
- ("geiser" . "bc0dde310492de733f9ec528d7aeddd57093d05e")
+ ("geiser" . "04dbdacfeca0190856abad859360da4bb873f9dd")
  ("geiser-guile" . "c641fcc50b6b86ca95743122b5206cdcd475f96e")
  ("gnu-elpa-mirror" . "579b9cec3869e4de12cd59a976481158ec54300f")
  ("haskell-mode" . "e72677668f5fc7cc148008e885a0f256e245dd43")
