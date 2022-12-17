@@ -37,7 +37,7 @@
  ("multiple-cursors.el" . "7763f4f9d7b9d2a4eb08a1f94699edaeb4f433ed")
  ("nhexl-mode" . "c69461b41a5776e1507ac092274b3c60c90b542e")
  ("nongnu-elpa" . "6d76d3c04b1f36a778b78433571c4646c9c229ac")
- ("org" . "8ef6205a560cd3a92f8c5f8fe34953b80121c2cb")
+ ("org" . "b3da427ebb1c401355aa4cba9baeaa92f87ccb2f")
  ("paredit" . "8330a41e8188fe18d3fa805bb9aa529f015318e8")
  ("parseclj" . "eff941126859bc9e949eae5cd6c2592e731629f2")
  ("parseedn" . "90cfe3df51b96f85e346f336c0a0ee6bf7fee508")
