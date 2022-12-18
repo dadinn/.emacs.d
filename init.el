@@ -95,8 +95,11 @@
   :hook
   (emacs-elisp-mode . company-mode)
   :custom
-  (company-minimum-prefix-length 1)
+  (company-idle-delay 1)
+  (company-minimum-prefix-length 2)
   (company-selection-wrap-around t)
+  :hook
+  (emacs-lisp-mode . company-mode)
   :config
   (company-tng-configure-default))
 
