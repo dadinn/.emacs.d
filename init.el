@@ -591,3 +591,9 @@
        ("x" "Example" entry
         (file+headline "example.org" "INBOX")
         "* %?\n%^t\n"))))))
+
+(use-package ox-confluence
+  :straight org-contrib
+  :bind
+  (:map org-mode-map
+   ("C-c x J" . org-confluence-export-as-confluence)))
