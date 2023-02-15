@@ -245,6 +245,19 @@
   (magit-repository-directories-depth 1)
   (magit-diff-refine-hunk 'all))
 
+(use-package treemacs
+  :bind
+  (("C-x C-t" . treemacs)))
+
+(use-package treemacs-all-the-icons
+  :after (treemacs all-the-icons))
+
+(use-package treemacs-magit
+  :after (treemacs magit))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+
 (use-package ediff
   :straight (:type built-in)
   :bind
