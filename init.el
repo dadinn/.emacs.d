@@ -334,9 +334,9 @@
 (use-package sunrise-commander
   :ensure nil
   :bind
-  (("C-x d" . sunrise)
-   ("C-x C-d" . sunrise-cd)
-   :map sr-mode-map
+  ("C-x d" . sunrise)
+  ("C-x C-d" . sunrise-cd)
+  (:map sr-mode-map
    ("C-n" . dired-next-line)
    ("C-p" . dired-previous-line))
   :custom
@@ -349,7 +349,12 @@
   (sr-show-hidden-files t)
   (sr-confirm-kill-viewer nil)
   (sr-window-split-style (quote horizontal))
-  (sr-start-hook nil))
+  (sr-start-hook nil)
+  :config
+  ;; unbind scroll-down/up keys, as -up binding interferes with move-end-of-line in global-map,
+  ;; and C-v and M-v is good enough for scrolling anyway
+  (unbind-key "C-e" sr-mode-map)
+  (unbind-key "C-y" sr-mode-map))
 
 (use-package sunrise-x-loop
   :straight sunrise-commander
