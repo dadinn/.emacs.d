@@ -426,7 +426,7 @@
   (("C-c a" . org-agenda)
    ("C-c k" . org-capture)
    :map org-mode-map
-   ("C-c H" . org-archive-done-tasks)
+   ("C-c M-h" . org-archive-done-tasks)
    ("C-c C-e" . org-babel-execute-src-block))
   :hook
   (outline-mode . visual-line-mode)
@@ -487,7 +487,7 @@
    '(org-lowest-priority 70)
    '(org-highest-priority 65)
    '(org-agenda-sorting-strategy
-     '((agenda time-up todo-state-down deadline-down priority-down)
+     '((agenda time-up deadline-up scheduled-up)
        (todo category-up priority-down)
        (tags category-up priority-down)
        (search category-up)))
@@ -495,15 +495,15 @@
    ;; DEPENDENCIES
    '(org-enforce-todo-dependencies t)
    ;;'(org-enforce-todo-checkbox-dependencies t)
-   '(org-agenda-dim-blocked-tasks (quote invisible))
+   '(org-agenda-dim-blocked-tasks t)
 
    ;; CUSTOM COMMANDS
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
-       ("cb" "Backlog (tasks not scheduled)" todo "TODO"
+       ("B" "Backlog (tasks not scheduled)" todo "TODO"
         ((org-agenda-skip-function
           '(org-agenda-skip-entry-if 'scheduled))))
-       ("cf" "Focussed tasks"
+       ("F" "Focussed tasks"
         ((todo "ONGOING")
          (todo "WAITING")))
        ("cc" . "Filter tasks by CATEGORY")
