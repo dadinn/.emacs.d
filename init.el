@@ -302,10 +302,6 @@
   (TeX-parse-self t))
 
 (use-package csv-mode
-  :bind
-  (:map csv-mode-map
-   ("C-c a" . csv-align-fields)
-   ("C-c u" . csv-unalign-fields))
   :custom
   (csv-align-style (quote auto)))
 
