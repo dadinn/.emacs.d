@@ -61,6 +61,7 @@
  ("typescript.el" . "d79551c67ff5f2bd5f651eb411cdc66ceeb787e3")
  ("undo-tree" . "7523823ca3709e0327f3e9f38ddfec71a58084be")
  ("use-package" . "caa92f1d64fc25480551757d854b4b49981dfa6b")
+ ("vlfi" . "cc02f2533782d6b9b628cec7e2dcf25b2d05a27c")
  ("with-editor" . "c4768f51c7415119519b4626d8643d60e584098c")
  ("xref" . "3aa7603790685ed3b1ded0dc35b2be1e02a9c6af")
  ("xref-js2" . "6f1ed5dae0c2485416196a51f2fa92f32e4b8262")

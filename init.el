@@ -341,6 +341,11 @@
 (use-package nhexl-mode
   :bind ("C-x M-x" . nhexl-mode))
 
+(use-package vlf-setup
+  :straight vlfi
+  :custom
+  (vlf-application 'ask))
+
 (use-package nxml-mode
   :straight (:type built-in)
   :init
