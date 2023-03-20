@@ -211,7 +211,7 @@
   (geiser-guile-load-init-file t))
 
 (use-package haskell-mode)
-
+(use-package kotlin-mode)
 (use-package scala-mode)
 (use-package sbt-mode)
 

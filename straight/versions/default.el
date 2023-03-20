@@ -29,6 +29,7 @@
  ("js2-refactor.el" . "d4c40b5fc86d3edd7c6a7d83ac86483ee1cb7a28")
  ("json-process-client" . "422606a7bf08d13646e3db4f6c2bddb69bd61dec")
  ("know-your-http-well" . "3cc5ab6d2764ab7aacb1b6e026abaccbeb6c37f2")
+ ("kotlin-mode" . "fddd747e5b4736e8b27a147960f369b86179ddff")
  ("magit" . "f44f6c14500476d918e9c01de8449edb20af4113")
  ("markdown-mode" . "cf6403186119cd3d25adc702845f969071060e20")
  ("melpa" . "f5f22149f13c361f6657d41f4a22ede651eaaa25")
