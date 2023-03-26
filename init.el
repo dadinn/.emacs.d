@@ -139,8 +139,8 @@
 (use-package ediff
   :straight (:type built-in)
   :bind
-  (("C-c C-d f" . ediff-files)
-   ("C-c C-d b" . ediff-buffers))
+  ("C-x M-d f" . ediff-files)
+  ("C-x M-d b" . ediff-buffers)
   :init
   (load-library "ediff")
   :custom
