@@ -57,11 +57,8 @@
 
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
-  :init
-  (defvar exec-path-from-shell-additional-variables
-    (list "NVM_DIR" "JAVA_HOME"))
   :config
-  (dolist (var exec-path-from-shell-additional-variables)
+  (dolist (var (list "NVM_DIR" "JAVA_HOME"))
     (add-to-list (quote exec-path-from-shell-variables) var))
   (exec-path-from-shell-initialize))
 
