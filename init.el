@@ -342,9 +342,14 @@
   :custom
   (sr-cursor-follows-mouse nil)
   (sr-listing-switches
-   (if (string-equal system-type "gnu/linux")
-      "-lAD --time-style=long-iso --group-directories-first"
-      "-lA"))
+   (let ((common "-lvAD"))
+     (if (string-equal system-type "gnu/linux")
+         (string-join
+          (list common
+           "--time-style=long-iso"
+           "--group-directories-first")
+          " ")
+       common)))
   (sr-show-file-attributes t)
   (sr-show-hidden-files t)
   (sr-confirm-kill-viewer nil)
