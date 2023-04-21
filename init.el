@@ -524,12 +524,14 @@
    ;; CUSTOM COMMANDS
    '(org-agenda-custom-commands
      '(("c" . "Custom commands")
-       ("B" "Backlog (tasks not scheduled)" todo "TODO"
+       ("b" "Backlog (tasks not scheduled)" todo "TODO"
         ((org-agenda-skip-function
           '(org-agenda-skip-entry-if 'scheduled))))
-       ("F" "Focussed tasks"
-        ((todo "ONGOING")
-         (todo "WAITING")))
+       ("f" "Focussed tasks"
+        ((todo "ONGOING"
+          ((org-agenda-sorting-strategy '(priority-down))))
+         (todo "WAITING"
+          ((org-agenda-sorting-strategy '(category-up))))))
        ("cc" . "Filter tasks by CATEGORY")
        ("cci" "INBOX tasks"
         ((alltodo ""))
