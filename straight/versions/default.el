@@ -25,6 +25,7 @@
  ("god-mode" . "607aff10a7b27a8aa0c1a15c2c39337ab17cfda7")
  ("groovy-emacs-modes" . "c612ac1e9f742856914ad6e8eb9e9dc169f489ab")
  ("haskell-mode" . "e72677668f5fc7cc148008e885a0f256e245dd43")
+ ("hydra" . "f27fce1b2f0a9162e159557bdeb2c0c94defb4d2")
  ("jenkinsfile-mode" . "fa5545be1329df3067dcfd81749bbd99df070d6b")
  ("js2-mode" . "f9564769e81c612b43f99802d6a2c5e6b1f8fca4")
  ("js2-refactor.el" . "d4c40b5fc86d3edd7c6a7d83ac86483ee1cb7a28")
