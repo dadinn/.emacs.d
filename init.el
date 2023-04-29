@@ -238,16 +238,52 @@
   (global-undo-tree-mode))
 
 (use-package paredit
+  :after (hydra)
+  :init
+  (defhydra paredit-hydra nil
+    "Edit s-expressions"
+    ("f" forward-sexp "forward")
+    ("b" backward-sexp "backward")
+    ("d" down-list "down")
+    ("u" backward-up-list "up")
+    ("k" kill-sexp "kill")
+    ("y" yank "yank")
+    ("Y" paredit-yank-pop "pop")
+    ("S" paredit-split-sexp "split")
+    ("J" paredit-join-sexps "join")
+    ("P" paredit-splice-sexp "splice")
+    ("W" paredit-wrap-sexp "wrap")
+    ("]" paredit-forward-slurp-sexp "slurp forward")
+    ("[" paredit-forward-barf-sexp "barf forward")
+    ("{" paredit-backward-slurp-sexp "slurp backward")
+    ("}" paredit-backward-barf-sexp "barf backward")
+    ("RET" paredit-newline "newline")
+    ("^" delete-indentation "delete indentation"))
+  :bind
+  (:map paredit-mode-map
+   ("C-M-f" . paredit-hydra/forward-sexp)
+   ("C-M-b" . paredit-hydra/backward-sexp)
+   ("C-M-d" . paredit-hydra/down-list)
+   ("C-M-u" . paredit-hydra/backward-up-list)
+   ("C-M-k" . paredit-hydra/kill-sexp)
+   ("C-M-y" . paredit-hydra/yank)
+   ("C-M-Y" . paredit-hydra/paredit-yank-pop)
+   ;; overrides paredit-backward-down
+   ("C-M-S-S" . paredit-hydra/paredit-split-sexp)
+   ("C-M-S-J" . paredit-hydra/paredit-join-sexps)
+   ("C-M-S-P" . paredit-hydra/paredit-splice-sexp)
+   ("C-M-S-W" . paredit-hydra/paredit-wrap-sexp)
+   ("C-M-]" . paredit-hydra/paredit-forward-slurp-sexp)
+   ("C-M-[" . paredit-hydra/paredit-forward-barf-sexp)
+   ("C-M-{" . paredit-hydra/paredit-backward-slurp-sexp)
+   ("C-M-}" . paredit-hydra/paredit-backward-barf-sexp)
+   ("C-M-RET" . paredit-hydra/paredit-newline)
+   ("C-M-^" . paredit-hydra/delete-indentation))
   :hook
   (lisp-mode . paredit-mode)
   (scheme-mode . paredit-mode)
   (emacs-lisp-mode . paredit-mode)
   :config
-  ;; interferes with navigate-sexp-hydra bindings
-  (unbind-key "C-M-f" paredit-mode-map)
-  (unbind-key "C-M-b" paredit-mode-map)
-  (unbind-key "C-M-u" paredit-mode-map)
-  (unbind-key "C-M-d" paredit-mode-map)
   ;; interferes with god-mode paragraph navigation
   (unbind-key "[" paredit-mode-map)
   (unbind-key "]" paredit-mode-map)
