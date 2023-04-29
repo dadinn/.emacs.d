@@ -142,6 +142,33 @@
   :init
   (selectrum-prescient-mode))
 
+(use-package hydra
+  :init
+  (defhydra scale-window-hydra nil
+    "scale current window"
+    ("%" enlarge-window "enlarge horizontally")
+    ("^" shrink-window "shrink horizontally")
+    ("{" shrink-window-horizontally "shrink vertically")
+    ("}" enlarge-window-horizontally "enlarge vertically"))
+  (defhydra navigate-sexp-hydra nil
+    "Navigate s-expressions"
+    ("f" forward-sexp "forward")
+    ("b" backward-sexp "backward")
+    ("d" down-list "down")
+    ("u" backward-up-list "up"))
+  :bind
+  ("C-x C-%" . scale-window-hydra/enlarge-window)
+  ("C-x C-^" . scale-window-hydra/shrink-window)
+  ("C-x C-{" . scale-window-hydra/shrink-window-horizontally)
+  ("C-x C-}" . scale-window-hydra/enlarge-window-horizontally)
+  ("C-M-f" . navigate-sexp-hydra/forward-sexp)
+  ("C-M-b" . navigate-sexp-hydra/backward-sexp)
+  ("C-M-d" . navigate-sexp-hydra/down-list)
+  ("C-M-u" . navigate-sexp-hydra/backward-up-list)
+  ("C-<" . hydra-pause-resume)
+  (:map hydra-base-map
+   ("<" . hydra-pause-resume)))
+
 (use-package company
   :bind
   (:map company-mode-map
@@ -214,6 +241,11 @@
   (scheme-mode . paredit-mode)
   (emacs-lisp-mode . paredit-mode)
   :config
+  ;; interferes with navigate-sexp-hydra bindings
+  (unbind-key "C-M-f" paredit-mode-map)
+  (unbind-key "C-M-b" paredit-mode-map)
+  (unbind-key "C-M-u" paredit-mode-map)
+  (unbind-key "C-M-d" paredit-mode-map)
   ;; interferes with god-mode paragraph navigation
   (unbind-key "[" paredit-mode-map)
   (unbind-key "]" paredit-mode-map)
