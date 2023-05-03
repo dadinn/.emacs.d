@@ -443,6 +443,7 @@
   (vlf-application 'ask))
 
 (use-package nxml-mode
+  :after (hydra)
   :straight (:type built-in)
   :init
   (defvar nxml-extensions
@@ -452,6 +453,18 @@
     ;; Generate efficient regex to match all extensions
     (concat "\\." (regexp-opt nxml-extensions t) "\\'")
     'nxml-mode))
+  (defhydra navigate-nxml-hydra nil
+    "Navigate XML elements"
+    ("f" nxml-forward-element "forward")
+    ("b" nxml-backward-element "backward")
+    ("d" nxml-down-element "down")
+    ("u" nxml-backward-up-element "up"))
+  :bind
+  (:map nxml-mode-map
+   ("C-M-S-f" . navigate-nxml-hydra/nxml-forward-element)
+   ("C-M-S-b" . navigate-nxml-hydra/nxml-backward-element)
+   ("C-M-S-d" . navigate-nxml-hydra/nxml-down-element)
+   ("C-M-S-u" . navigate-nxml-hydra/nxml-backward-up-element))
   :magic-fallback
   ("<\\?xml " . nxml-mode))
 
