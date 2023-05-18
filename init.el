@@ -130,15 +130,12 @@
   :custom
   (god-mode-enable-function-key-translation nil))
 
-(use-package selectrum
-  :custom
-  (completion-ignore-case t)
-  (read-file-name-completion-ignore-case t)
-  (read-buffer-completion-ignore-case t)
-  :bind
-  (("C-x C-z" . selectrum-repeat))
+(use-package vertico
+  :straight (:files (:defaults "extensions/*"))
   :init
-  (selectrum-mode))
+  (vertico-mode)
+  :bind
+  ("C-S-V" . vertico-repeat))
 
 (use-package prescient
   :custom
@@ -148,10 +145,10 @@
   (add-to-list 'prescient-filter-method 'fuzzy)
   (prescient-persist-mode))
 
-(use-package selectrum-prescient
-  :after (prescient selectrum)
-  :init
-  (selectrum-prescient-mode))
+(use-package vertico-prescient
+  :after (vertico prescient)
+  :config
+  (vertico-prescient-mode))
 
 (use-package hydra
   :init
