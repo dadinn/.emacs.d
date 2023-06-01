@@ -567,6 +567,8 @@
   (unbind-key "<C-tab>" sr-mode-map))
 
 (use-package modus-themes
+  :straight
+  (:protocol https)
   :custom
   (modus-themes-bold-constructs t)
   (modus-themes-italic-constructs t)
