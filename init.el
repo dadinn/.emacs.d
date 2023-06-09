@@ -40,7 +40,7 @@
  '(custom-file (locate-user-emacs-file "custom.el"))
  ;; straight.el customizations
  '(straight-use-package-by-default t)
- '(straight-vc-git-default-protocol (quote ssh)))
+ '(straight-vc-git-default-protocol (quote https)))
 
 ;; install use-package
 (straight-use-package 'use-package)
@@ -348,8 +348,7 @@
 
 (use-package geiser-guile
   :straight
-  (:protocol https
-   :local-repo "geiser-guile")
+  (:local-repo "geiser-guile")
   :after (geiser)
   :custom
   (geiser-guile-load-init-file t))
