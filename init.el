@@ -171,8 +171,9 @@
 (use-package projectile
   :hook
   (projectile-grep-finished . (lambda () (pop-to-buffer next-error-last-buffer)))
-  :bind-keymap
+  :bind
   ("C-c p" . projectile-command-map)
+  :demand t
   :config
   (dolist (dir (list "node_modules" "target"))
     (add-to-list 'projectile-globally-ignored-directories dir))
