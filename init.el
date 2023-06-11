@@ -201,6 +201,8 @@
   :bind
   ("C-c p" . projectile-command-map)
   :demand t
+  :custom
+  (projectile-use-git-grep t)
   :config
   (dolist (dir (list "node_modules" "target"))
     (add-to-list 'projectile-globally-ignored-directories dir))
