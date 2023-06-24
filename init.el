@@ -129,9 +129,9 @@
 (use-package magit
   :after (project)
   :bind
-  (("C-x C-m" . magit-status)
-   ("C-x M-f" . magit-log-buffer-file)
-   ("C-x M-b" . magit-blame-addition))
+  ("C-x C-m" . magit-status)
+  ("C-x M-f" . magit-log-buffer-file)
+  ("C-x M-b" . magit-blame-addition)
   :custom
   (magit-repository-directories (quote ("~/Workspace/dev")))
   (magit-repository-directories-depth 1))
