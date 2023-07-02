@@ -230,10 +230,11 @@
   (clojure-indent-style :always-indent))
 
 (use-package cider
-  :after (paredit company)
+  :after (clojure-mode paredit company)
   :bind
-  ("C-c c c" . cider-connect)
-  ("C-c c j" . cider-jack-in)
+  (:map clojure-mode-map
+   ("C-c C-c" . cider-connect)
+   ("C-c C-j" . cider-jack-in))
   (:map cider-mode-map
    ("C-c b n" . cider-browse-ns-all)
    ("C-c b s" . cider-browse-spec-all)
