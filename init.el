@@ -63,6 +63,31 @@
   (exec-path-from-shell-initialize))
 
 (use-package god-mode
+  :init
+  (defvar god-modeline-active-face
+    (list :background "firebrick" :box nil)
+    "Face for modeline of active buffer while in god-mode.")
+  (defvar god-modeline-inactive-face
+    (list :background "darkred" :box nil)
+    "Face for modeline of inactive buffer while in god-mode.")
+  (defun god-modeline-enable ()
+    (message "GOD mode on!")
+    (face-remap-add-relative
+     (quote mode-line)
+     god-modeline-active-face)
+    (face-remap-add-relative
+     (quote mode-line-inactive)
+     god-modeline-inactive-face))
+  (defun god-modeline-disable ()
+    (message "GOD mode off!")
+    (face-remap-remove-relative
+     (cons
+      (quote mode-line)
+      god-modeline-active-face))
+    (face-remap-remove-relative
+     (cons
+      (quote mode-line-inactive)
+      god-modeline-inactive-face)))
   :bind
   ("C-x C-0" . delete-window)
   ("C-x C-1" . delete-other-windows)
@@ -78,6 +103,8 @@
    ("Z" . repeat))
   :hook
   (after-init . god-mode-all)
+  (god-mode-enabled . god-modeline-enable)
+  (god-mode-disabled . god-modeline-disable)
   :custom
   (god-mode-enable-function-key-translation nil))
 
