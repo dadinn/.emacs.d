@@ -88,6 +88,17 @@
      (cons
       (quote mode-line-inactive)
       god-modeline-inactive-face)))
+  (defvar god-tab-command-alist nil
+    "Associatiation list for major-mode specific command to execute for TAB key while in god-mode")
+  (defun god-tab-command ()
+    (interactive)
+    (let* ((mode
+            (apply (function derived-mode-p)
+             (mapcar (function car) god-tab-command-alist)))
+           (command
+            (and mode (alist-get mode god-tab-command-alist))))
+      (if command (or (funcall command) (indent-for-tab-command))
+        (indent-for-tab-command))))
   :bind
   ("C-x C-0" . delete-window)
   ("C-x C-1" . delete-other-windows)
@@ -97,7 +108,7 @@
   ("<escape>" . suspend-frame)
   ("C-z" . god-mode-all)
   (:map god-local-mode-map
-   ("TAB" . indent-for-tab-command)
+   ("TAB" . god-tab-command)
    ("[" . backward-paragraph)
    ("]" . forward-paragraph)
    ("Z" . repeat))
@@ -513,6 +524,7 @@
   (set-face-background 'doom-modeline-bar (face-background 'mode-line)))
 
 (use-package org
+  :after (god-mode)
   :init
   (defun org-archive-done-tasks ()
     "Archive all DONE and CANCELED tasks in the subtree of the current entry"
@@ -532,6 +544,9 @@
   :hook
   (outline-mode . visual-line-mode)
   :config
+  (add-to-list
+   (quote god-tab-command-alist)
+   (quote (org-mode . org-cycle)))
   (custom-set-variables
    '(org-agenda-span 'day)
    '(org-startup-indented t)
