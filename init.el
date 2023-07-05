@@ -206,7 +206,7 @@
   (ediff-window-setup-function 'ediff-setup-windows-plain))
 
 (use-package undo-tree
-  :bind ("C-x u" . undo-tree-visualize)
+  :bind ("C-x C-u" . undo-tree-visualize)
   :config
   (global-undo-tree-mode))
 
