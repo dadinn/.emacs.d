@@ -524,17 +524,20 @@
   (add-to-list 'company-backends 'company-restclient))
 
 (use-package sunrise-commander
-  :ensure nil
+  :after (dired)
   :bind
   ("C-x d" . sunrise)
   ("C-x C-d" . sunrise-cd)
   (:map sr-mode-map
    ("C-n" . dired-next-line)
    ("C-p" . dired-previous-line))
+  (:map
+   dired-mode-map
+   ("J" . dired-up-directory))
   :custom
   (sr-cursor-follows-mouse nil)
   (sr-listing-switches
-   (let ((common "-lvAD"))
+   (let ((common "-lvhAD"))
      (if (string-equal system-type "gnu/linux")
          (string-join
           (list common
