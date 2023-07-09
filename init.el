@@ -671,7 +671,7 @@
    '(org-todo-keyword-faces
      (quote (("WAITING" . "purple")
              ("ONGOING" . "orange")
-             ("CANCELED" . "firebrick"))))
+             ("CANCELED" . "dark gray"))))
    ;; set ARCHIVE tag when todo state is set to CANCELED, and remove when reset to TODO
    `(org-todo-state-tags-triggers
      (quote
