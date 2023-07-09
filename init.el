@@ -571,7 +571,7 @@
   (set-face-background 'doom-modeline-bar (face-background 'mode-line)))
 
 (use-package org
-  :after (god-mode)
+  :after (hydra)
   :init
   (defun org-archive-done-tasks ()
     "Archive all DONE and CANCELED tasks in the subtree of the current entry"
@@ -582,12 +582,24 @@
          (org-archive-subtree)
          (setq org-map-continue-from prev-heading)))
      "//DONE|CANCELED" 'agenda))
+  (defhydra navigate-org-hydra nil
+    "Navigate Org headlines"
+    ("f" org-forward-heading-same-level "forward")
+    ("b" org-backward-heading-same-level "backward")
+    ("d" org-down-element "down")
+    ("u" org-up-element "up")
+    ("TAB" org-cycle "cycle"))
   :bind
-  (("C-c a" . org-agenda)
-   ("C-c k" . org-capture)
-   :map org-mode-map
+  ("C-c a" . org-agenda)
+  ("C-c k" . org-capture)
+  (:map org-mode-map
    ("C-c M-h" . org-archive-done-tasks)
-   ("C-c C-e" . org-babel-execute-src-block))
+   ("C-c C-e" . org-babel-execute-src-block)
+   ("C-M-f" . navigate-org-hydra/org-forward-element)
+   ("C-M-b" . navigate-org-hydra/org-backward-element)
+   ("C-M-d" . navigate-org-hydra/org-down-element)
+   ("C-M-u" . navigate-org-hydra/org-up-element)
+   ("C-M-TAB" . navigate-org-hydra/org-cycle))
   :hook
   (outline-mode . visual-line-mode)
   :config
