@@ -22,6 +22,7 @@
  ("geiser" . "04dbdacfeca0190856abad859360da4bb873f9dd")
  ("geiser-guile" . "c641fcc50b6b86ca95743122b5206cdcd475f96e")
  ("gnu-elpa-mirror" . "579b9cec3869e4de12cd59a976481158ec54300f")
+ ("god-mode" . "607aff10a7b27a8aa0c1a15c2c39337ab17cfda7")
  ("groovy-emacs-modes" . "c612ac1e9f742856914ad6e8eb9e9dc169f489ab")
  ("haskell-mode" . "e72677668f5fc7cc148008e885a0f256e245dd43")
  ("jenkinsfile-mode" . "fa5545be1329df3067dcfd81749bbd99df070d6b")
