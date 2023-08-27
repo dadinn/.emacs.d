@@ -62,6 +62,25 @@
     (add-to-list (quote exec-path-from-shell-variables) var))
   (exec-path-from-shell-initialize))
 
+(use-package god-mode
+  :bind
+  ("C-x C-0" . delete-window)
+  ("C-x C-1" . delete-other-windows)
+  ("C-x C-2" . split-window-below)
+  ("C-x C-3" . split-window-right)
+  ("C-x C-z") ; un-bind suspend-frame
+  ("<escape>" . suspend-frame)
+  ("C-z" . god-mode-all)
+  (:map god-local-mode-map
+   ("TAB" . indent-for-tab-command)
+   ("[" . backward-paragraph)
+   ("]" . forward-paragraph)
+   ("Z" . repeat))
+  :hook
+  (after-init . god-mode-all)
+  :custom
+  (god-mode-enable-function-key-translation nil))
+
 (use-package selectrum
   :custom
   (completion-ignore-case t)
@@ -88,7 +107,7 @@
 (use-package company
   :bind
   (:map company-mode-map
-   ("TAB" . company-indent-or-complete-common))
+   ("TAB" . company-complete-common))
   (:map company-active-map
    ("C-n" . company-select-next)
    ("C-p" . company-select-previous))
@@ -156,6 +175,9 @@
   (scheme-mode . paredit-mode)
   (emacs-lisp-mode . paredit-mode)
   :config
+  ;; interferes with god-mode paragraph navigation
+  (unbind-key "[" paredit-mode-map)
+  (unbind-key "]" paredit-mode-map)
   ;; intereferes with xref-find-references binding
   (unbind-key "M-?" paredit-mode-map))
 
@@ -455,6 +477,7 @@
   :hook
   (after-init . doom-modeline-mode)
   :custom
+  (doom-modeline-modal nil)
   (doom-modeline-height 20)
   (doom-modeline-bar-width 1)
   :config
