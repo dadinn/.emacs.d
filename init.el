@@ -218,7 +218,8 @@
   ("C-x M-b" . magit-blame-addition)
   :custom
   (magit-repository-directories (quote ("~/Workspace/dev")))
-  (magit-repository-directories-depth 1))
+  (magit-repository-directories-depth 1)
+  (magit-diff-refine-hunk 'all))
 
 (use-package ediff
   :straight (:type built-in)
