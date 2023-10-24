@@ -72,6 +72,10 @@
     (add-to-list (quote exec-path-from-shell-variables) var))
   (exec-path-from-shell-initialize))
 
+(use-package keychain-environment
+  :config
+  (keychain-refresh-environment))
+
 (use-package god-mode
   :init
   (defvar god-modeline-active-face
