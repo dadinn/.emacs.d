@@ -415,6 +415,7 @@
   (typescript-indent-level 2))
 
 (use-package indium
+  :disabled t
   :after (js2-mode)
   :hook
   (js2-mode . indium-interaction-mode)
