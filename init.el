@@ -55,6 +55,16 @@
    'display-line-numbers-mode
    'linum-mode))
 
+
+(defun executables-missing (&rest commands)
+  "Check if any of COMMANDS are missing."
+  (cl-some
+   (lambda (command)
+     "Check if COMMAND is missing."
+     (if (not (executable-find command))
+       (message "Necessary executable '%s' is not found on exec-path" command)))
+   commands))
+
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :config
@@ -369,31 +379,18 @@
   (js2r-add-keybindings-with-prefix "C-c C-r"))
 
 (use-package xref-js2
+  :unless (executables-missing "ag")
   :after (js2-mode)
-  :init
-  (defun init-js2-xref-backend ()
-    "Initialises JS2 Xref backend via hook"
-    (cond
-     ((not (executable-find "ag"))
-      (message "Necessary executable `ag' is not found on `exec-path'"))
-     (t (message "Registered JS2 Xref backend")
-      (add-hook 'xref-backend-functions 'xref-js2-xref-backend))))
   :hook
-  (js2-mode . init-js2-xref-backend))
+  (xref-backend-functions
+   xref-js2-xref-backend))
 
 (use-package company-tern
+  :unless (executables-missing "tern")
   :after (company js2-mode)
-  :init
-  (defun enable-company-tern ()
-    "Initialises Tern company backend"
-    (cond
-     ((not (executable-find "tern"))
-      (message "Necessary executable `tern' is not found on `exec-path'"))
-     (t (message "Turning on company-mode using Tern")
-        (company-mode)
-        (tern-mode))))
   :hook
-  (js2-mode . enable-company-tern)
+  (js2-mode . company-mode)
+  (js2-mode . tern-mode)
   :config
   (add-to-list 'company-backends 'company-tern)
   (unbind-key "M-." tern-mode-keymap)
@@ -428,9 +425,7 @@
 (use-package systemd)
 
 (use-package markdown-mode
-  :init
-  (when (not (executable-find "markdown"))
-    (message "Necessary executable `markdown' is not found on `exec-path'"))
+  :unless (executables-missing "markdown")
   :hook
   (markdown-mode . markdown-live-preview-mode)
   (markdown-mode . visual-line-mode)
